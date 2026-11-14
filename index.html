@@ -98,23 +98,20 @@ h1{font-size:clamp(40px,6.2vw,92px);line-height:.95;letter-spacing:-.045em;font-
 .navy .num{color:var(--mist)}
 h2{font-size:clamp(28px,3.6vw,50px);line-height:1.05;letter-spacing:-.035em;font-weight:800}
 
-/* Work row */
-.track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-left:var(--gl);padding-right:var(--gr);scroll-padding-left:var(--gl)}
-.track::-webkit-scrollbar{display:none}
-.card{flex:0 0 clamp(230px,24vw,330px);scroll-snap-align:start;text-align:left}
-.frame{position:relative;aspect-ratio:9/16;overflow:hidden;background:var(--deep)}
-.frame video,.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s}
-.card:hover .frame video,.card:hover .frame img{transform:scale(1.04)}
-.frame::before,.frame::after{content:"";position:absolute;z-index:1;width:16px;height:16px;border:1.5px solid var(--silver);pointer-events:none}
-.frame::before{top:10px;left:10px;border-right:0;border-bottom:0}
-.frame::after{top:10px;right:10px;border-left:0;border-bottom:0}
-.frame .label{position:absolute;z-index:1;top:34px;left:12px;color:var(--cream);font-size:10px;text-shadow:0 1px 8px #081d3c}
-.frame h3{position:absolute;z-index:1;left:0;right:0;bottom:0;padding:60px 14px 14px;background:linear-gradient(transparent,#081d3ce6);color:var(--cream);font-size:clamp(15px,1.3vw,18px);line-height:1.15;font-weight:700;letter-spacing:-.02em}
-.arrows{display:flex;gap:8px}
-.arrows button{display:grid;place-items:center;width:46px;height:46px;border:1px solid currentColor;border-radius:50%;transition:background .2s,color .2s}
-.arrows button:hover{background:var(--cream);color:var(--navy)}
-.arrows svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.work-note{margin-top:22px;color:var(--mist);font-size:12px}
+/* Portfolio */
+.cover{position:relative;overflow:hidden;aspect-ratio:16/9;background:var(--deep)}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cover::before,.cover::after{content:"";position:absolute;z-index:1;width:20px;height:20px;border:1.5px solid var(--silver);pointer-events:none}
+.cover::before{top:14px;left:14px;border-right:0;border-bottom:0}
+.cover::after{top:14px;right:14px;border-left:0;border-bottom:0}
+.cover-text{position:absolute;z-index:1;left:0;right:0;bottom:0;display:grid;gap:12px;justify-items:start;padding:clamp(20px,4vw,48px);background:linear-gradient(transparent,#081d3cf2)}
+.cover-text .label{color:var(--mist)}
+.cover-text h3{font-size:clamp(20px,2.4vw,32px);font-weight:800;letter-spacing:-.03em;line-height:1.15;max-width:16em}
+.cover-text .btn{background:var(--cream);color:var(--navy);border-color:var(--cream);margin-top:6px}
+.cover-text .btn:hover{background:var(--mist)}
+.folio{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;grid-auto-flow:dense}
+.folio .wide{grid-column:span 2;aspect-ratio:16/9}
+.folio .tall{grid-row:span 2;aspect-ratio:9/16}
 
 /* Brand line */
 .brands{border-block:1px solid var(--line);overflow:hidden;padding-block:26px;display:flex;align-items:center;gap:36px}
@@ -177,6 +174,10 @@ dialog p{font-size:14px;color:var(--mist)}
 dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-color:var(--cream)}
 .x{float:right;width:40px;height:40px;background:var(--cream);color:var(--navy);font-size:16px;margin:0 0 8px 12px}
 
+@media(max-width:700px){
+  .cover{aspect-ratio:9/16;max-height:82svh}
+  .folio{grid-template-columns:1fr 1fr}
+}
 @media(max-width:900px){
   .hero-in .wrap{grid-template-columns:1fr}
   .quick{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -192,7 +193,6 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
   .menu-btn b{display:none}
   .brands{flex-direction:column;align-items:flex-start;gap:14px}
   .marquee{width:100%}
-  .card{flex-basis:72%}
   .cta .btn{width:100%}
   .legal button{margin:0 18px 0 0}
 }
@@ -215,7 +215,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
     <button class="close label" type="button" id="menu-close">Close <i aria-hidden="true">✕</i></button>
   </div>
   <ol>
-    <li><a href="#work"><span>S.01</span>Work</a></li>
+    <li><a href="#portfolio"><span>S.01</span>Portfolio</a></li>
     <li><a href="#services"><span>S.02</span>Services</a></li>
     <li><a href="#packages"><span>S.03</span>Packages</a></li>
     <li><a href="#about"><span>S.04</span>About</a></li>
@@ -236,29 +236,28 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
       <p class="sub label">Branding · Video editing · AI creative</p>
     </div>
     <div class="quick" data-from="right" style="--d:0.15s">
-      <a href="#work"><img src="assets/sneaker-poster.jpg" alt=""><span>Our work <b aria-hidden="true">▸</b></span></a>
+      <a href="#portfolio"><img src="assets/eye-card.webp" alt=""><span>Portfolio <b aria-hidden="true">▸</b></span></a>
       <a href="#packages"><img src="assets/studio.webp" alt=""><span>Packages <b aria-hidden="true">▸</b></span></a>
     </div>
   </div></div>
 </section>
 
-<section class="sec navy" id="work">
-  <div class="wrap head">
-    <p class="label num" data-from="left">S.01</p>
-    <h2 data-from="left" style="--d:.08s">Selected work</h2>
-    <div class="arrows" data-from="right">
-      <button type="button" data-dir="-1" aria-label="Previous project"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <button type="button" data-dir="1" aria-label="Next project"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+<section class="sec navy" id="portfolio">
+  <div class="wrap">
+    <div class="head"><p class="label num" data-from="left">S.01</p><h2 data-from="left" style="--d:.08s">Portfolio</h2></div>
+    <!-- Portfolio items go in .folio: add class "wide" for 16:9 work and "tall" for 9:16 work. -->
+    <div class="cover" data-from="right" style="--d:.1s">
+      <picture>
+        <source media="(max-width:700px)" srcset="assets/eye-tall.webp">
+        <img src="assets/eye-wide.webp" alt="Close-up of an eye reflecting a film set with a camera and studio light" loading="lazy">
+      </picture>
+      <div class="cover-text">
+        <p class="label">Coming soon</p>
+        <h3>Our full portfolio is on its way.</h3>
+        <a class="btn" href="https://www.instagram.com/vyle.lb/" target="_blank" rel="noopener">See our latest on Instagram</a>
+      </div>
     </div>
   </div>
-  <div class="track" id="track" data-from="right" style="--d:0.1s">
-    <button class="card" type="button" data-project="sneaker"><div class="frame"><video src="assets/sneaker-commercial.mp4" poster="assets/sneaker-poster.jpg" muted loop playsinline preload="none"></video><span class="label">Video editing</span><h3>Sneaker Study</h3></div></button>
-    <button class="card" type="button" data-project="watch"><div class="frame"><video src="assets/watch-commercial.mp4" poster="assets/watch-poster.jpg" muted loop playsinline preload="none"></video><span class="label">Video editing</span><h3>Watch Film</h3></div></button>
-    <button class="card" type="button" data-project="mountain"><div class="frame"><video src="assets/people.mp4" poster="assets/people-poster.jpg" muted loop playsinline preload="none"></video><span class="label">AI creative</span><h3>Above the Ordinary</h3></div></button>
-    <button class="card" type="button" data-project="spaces"><div class="frame"><video src="assets/vyle-work-film.mp4" poster="assets/vyle-work-poster.jpg" muted loop playsinline preload="none"></video><span class="label">Video editing</span><h3>Plans to Living Spaces</h3></div></button>
-    <button class="card" type="button" data-project="jewelry"><div class="frame"><img src="assets/jewelry-portrait.webp" alt="Jewelry campaign portrait with a gold necklace" loading="lazy"><span class="label">Branding</span><h3>The Detail That Matters</h3></div></button>
-  </div>
-  <p class="wrap work-note">Tap a project to play it. Concept pieces, not commissioned by the brands shown.</p>
 </section>
 
 <section class="brands" aria-label="Noticed by Swiss Butter, Beirut Beer and Deek Duke" data-from="left">
@@ -322,7 +321,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
       <a class="btn" data-from="right" href="https://wa.me/96170508546" target="_blank" rel="noopener">WhatsApp us</a>
     </div>
     <div class="cols">
-      <div data-from="left"><p class="label">Explore</p><ul><li><a href="#work">Work</a></li><li><a href="#services">Services</a></li><li><a href="#packages">Packages</a></li><li><a href="#about">About</a></li></ul></div>
+      <div data-from="left"><p class="label">Explore</p><ul><li><a href="#portfolio">Portfolio</a></li><li><a href="#services">Services</a></li><li><a href="#packages">Packages</a></li><li><a href="#about">About</a></li></ul></div>
       <div data-from="left" style="--d:.08s"><p class="label">Contact</p><ul><li><a href="https://wa.me/96170508546" target="_blank" rel="noopener">+961 70 508 546</a></li><li><a href="https://calendly.com/info-vyle-lb" target="_blank" rel="noopener">Book a call</a></li></ul></div>
       <div data-from="right" style="--d:.08s"><p class="label">Follow</p><ul><li><a href="https://www.instagram.com/vyle.lb/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
       <div data-from="right"><p class="label">Studio</p><ul><li>Beirut, Lebanon</li><li>Working worldwide</li></ul></div>
@@ -337,18 +336,10 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 <dialog id="viewer" aria-labelledby="viewer-title"><button class="x" type="button" aria-label="Close">✕</button><div id="viewer-body"></div></dialog>
 
 <script>
-const WA='https://wa.me/96170508546';
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const projects={
-  sneaker:{title:'Sneaker Study',video:'sneaker-commercial.mp4',text:'Product commercial. Independent concept featuring Nike footwear, not commissioned by or affiliated with Nike.'},
-  watch:{title:'Watch Film',video:'watch-commercial.mp4',text:'Product film. Portfolio concept featuring Rolex. No commissioned relationship or endorsement is implied.'},
-  spaces:{title:'Plans to Living Spaces',video:'vyle-work-film.mp4',text:'Architectural interiors edit, from plans to finished spaces.'},
-  mountain:{title:'Above the Ordinary',video:'people.mp4',text:'AI fashion film on a mountain peak. Independent concept.'},
-  jewelry:{title:'The Detail That Matters',image:'jewelry-portrait.webp',text:'Jewelry campaign visual. Independent concept.'}
-};
 const legal={
   privacy:['Privacy','This site has no forms and does not collect personal information. The WhatsApp, Calendly and Instagram links open those services, and what you share there is handled by them and by VYLE when we reply. Fonts load from Google Fonts.'],
-  terms:['Terms','Concept projects on this site are illustrative and do not imply endorsement by, or a commissioned relationship with, any third-party brand. Brands listed under "Noticed by" interacted with VYLE posts; these are not paid partnerships. Scope, timing, fees, revisions and usage rights are agreed before work begins.']
+  terms:['Terms','Brands listed under "Noticed by" interacted with VYLE posts; these are not paid partnerships or endorsements. Scope, timing, fees, revisions and usage rights are agreed before work begins.']
 };
 
 // Project and legal viewer
@@ -358,23 +349,8 @@ function shut(){body.querySelectorAll('video').forEach(v=>v.pause());body.innerH
 dlg.querySelector('.x').addEventListener('click',shut);
 dlg.addEventListener('cancel',e=>{e.preventDefault();shut()});
 dlg.addEventListener('click',e=>{if(e.target===dlg)shut()});
-document.querySelectorAll('[data-project]').forEach(c=>{
-  const p=projects[c.dataset.project],v=c.querySelector('video');
-  c.addEventListener('click',()=>{
-    if(v)v.pause();
-    show(`<h2 id="viewer-title">${p.title}</h2>${p.video?`<video src="assets/${p.video}" controls playsinline autoplay></video>`:`<img src="assets/${p.image}" alt="${p.title}">`}<p>${p.text}</p><a class="btn" href="${WA}" target="_blank" rel="noopener">Want something like this?</a>`);
-  });
-  if(v&&!reduce){c.addEventListener('mouseenter',()=>v.play().catch(()=>{}));c.addEventListener('mouseleave',()=>v.pause())}
-});
 document.querySelectorAll('[data-legal]').forEach(b=>b.addEventListener('click',()=>{
   const [h,t]=legal[b.dataset.legal];show(`<h2 id="viewer-title">${h}</h2><p style="margin-top:12px">${t}</p>`);
-}));
-
-// Work row arrows
-const track=document.getElementById('track');
-document.querySelectorAll('[data-dir]').forEach(b=>b.addEventListener('click',()=>{
-  const step=track.querySelector('.card').offsetWidth+16;
-  track.scrollBy({left:step*Number(b.dataset.dir),behavior:reduce?'auto':'smooth'});
 }));
 
 // Corner bar turns solid after the opening film
