@@ -65,12 +65,14 @@ ul{padding:0;list-style:none}
 .menu-btn i::before{content:"";width:16px;height:6px;border-block:1.5px solid currentColor}
 
 /* Full-screen menu */
-.nav{position:fixed;inset:0;z-index:30;background:var(--navy);color:var(--cream);display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 14px) var(--gr) calc(env(safe-area-inset-bottom,0px) + 28px) var(--gl);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.nav{position:fixed;inset:0;z-index:30;background:var(--deep);color:var(--cream);isolation:isolate;overflow:hidden;display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 14px) var(--gr) calc(env(safe-area-inset-bottom,0px) + 28px) var(--gl);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
 .nav.open{opacity:1;visibility:visible}
 .nav-top{display:flex;justify-content:space-between;align-items:center;height:58px}
 .close{display:flex;align-items:center;gap:14px}
 .nav ol{list-style:none;margin:auto 0;padding:0;display:grid;gap:4px}
-.nav ol a{display:flex;align-items:baseline;gap:18px;font-size:clamp(30px,5vw,58px);font-weight:800;letter-spacing:-.04em;line-height:1.1}
+.nav-film{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center}
+.nav::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#081d3ce0 0%,#081d3c80 55%,#081d3c40 100%)}
+.nav ol a{display:flex;align-items:baseline;gap:16px;padding-block:5px;font-size:clamp(24px,3.6vw,42px);font-weight:800;letter-spacing:-.04em;line-height:1.1}
 .nav ol a span{font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--mist)}
 .nav ol a:hover{color:var(--mist)}
 .nav-foot{display:flex;flex-wrap:wrap;gap:10px 28px;color:var(--mist)}
@@ -210,6 +212,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 </div></header>
 
 <nav class="nav" id="nav" aria-label="Menu">
+  <video class="nav-film" id="nav-film" src="assets/monolith-loop.mp4" poster="assets/monolith-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
   <div class="nav-top">
     <span class="logo" aria-hidden="true"><svg viewBox="249 445 758 364"><path d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path d="M738 449H771V722H738Z"/><path fill-rule="evenodd" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg></span>
     <button class="close label" type="button" id="menu-close">Close <i aria-hidden="true">✕</i></button>
@@ -374,7 +377,8 @@ document.querySelectorAll('[data-from]').forEach(el=>reduce?el.classList.add('in
 
 // Full-screen menu
 const nav=document.getElementById('nav'),openBtn=document.getElementById('menu-open'),closeBtn=document.getElementById('menu-close');
-function setMenu(on){nav.classList.toggle('open',on);openBtn.setAttribute('aria-expanded',String(on));document.body.style.overflow=on?'hidden':'';(on?closeBtn:openBtn).focus({preventScroll:true})}
+const navFilm=document.getElementById('nav-film');
+function setMenu(on){if(on&&!reduce){try{navFilm.currentTime=film.currentTime}catch(e){}navFilm.play().catch(()=>{})}else navFilm.pause();nav.classList.toggle('open',on);openBtn.setAttribute('aria-expanded',String(on));document.body.style.overflow=on?'hidden':'';(on?closeBtn:openBtn).focus({preventScroll:true})}
 openBtn.addEventListener('click',()=>setMenu(true));
 closeBtn.addEventListener('click',()=>setMenu(false));
 nav.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
