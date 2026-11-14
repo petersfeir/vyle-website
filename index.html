@@ -3,307 +3,340 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>VYLE | Content People Stop For</title>
-<meta name="description" content="VYLE is a creative studio in Beirut. Video editing, AI creative, product ads and brand visuals. See the work, the prices and how to start.">
+<title>VYLE | Ideas Into Impact</title>
+<meta name="description" content="VYLE is a creative studio in Beirut for branding, video editing and AI creative.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
 <link rel="icon" href="favicon.svg">
 <link rel="canonical" href="https://vylelb.com/">
-<meta property="og:title" content="VYLE | Content People Stop For">
-<meta property="og:description" content="Creative studio in Beirut. Video editing, AI creative, product ads and brand visuals.">
+<meta property="og:title" content="VYLE | Ideas Into Impact">
+<meta property="og:description" content="Branding, video editing and AI creative. Creative studio in Beirut.">
 <meta property="og:url" content="https://vylelb.com/">
 <meta property="og:image" content="https://vylelb.com/assets/fashion-hero-poster.jpg">
 <style>
 body{margin:0}img{max-width:100%}[hidden]{display:none!important}
-/* Layout: one continuous navy page. Sticky one-line menu, film hero, then five short bands
-   (Work, Services, Pricing, About, Contact), each answering one question in a screen or less. */
+/* Layout: full-screen film opening with corner labels, then numbered sections
+   (S.01 Work as a sliding row of large cards, S.02 Services, S.03 Packages, S.04 About),
+   a scrolling brand line, and a column footer that doubles as contact.
+   Brand colors only: navy and cream. One font: Montserrat. */
 :root{
-  color-scheme:dark;
-  --navy:#0c2952;      /* page ground */
-  --ink:#071a36;       /* alternate band */
-  --panel:#123566;     /* raised surface */
-  --white:#faf4eb;     /* text and primary button */
-  --muted:#a9bcd8;     /* secondary text */
-  --line:#ffffff24;    /* hairlines */
-  --silver:#c9d2df;    /* corner brackets */
-  --display:'Montserrat','Segoe UI',Arial,sans-serif;
-  --body:'Montserrat','Segoe UI',Arial,sans-serif;
-  --gutter-l:max(20px,env(safe-area-inset-left,0px));
-  --gutter-r:max(20px,env(safe-area-inset-right,0px));
-  --head-h:64px;
+  color-scheme:light;
+  --navy:#0c2952;
+  --deep:#081d3c;
+  --cream:#faf4eb;
+  --soft:#53627a;      /* secondary text on cream */
+  --mist:#a9bcd8;      /* secondary text on navy */
+  --line:#0c29521f;
+  --dline:#faf4eb24;
+  --silver:#c9d2df;
+  --font:'Montserrat','Segoe UI',Arial,sans-serif;
+  --gl:max(24px,env(safe-area-inset-left,0px));
+  --gr:max(24px,env(safe-area-inset-right,0px));
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--head-h) + env(safe-area-inset-top,0px) + 12px)}
-body{background:var(--navy);color:var(--white);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--navy)}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--navy);font:16px/1.6 var(--font);-webkit-font-smoothing:antialiased}
+body::after{content:"";position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.06;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 a{color:inherit;text-decoration:none}
-button{font:inherit;color:inherit;cursor:pointer}
-a:focus-visible,button:focus-visible{outline:2px solid var(--white);outline-offset:4px}
-h1,h2,h3,p{margin:0}
-h1,h2,h3{font-family:var(--display);text-wrap:balance}
-.wrap{max-width:1180px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;padding:0}
+a:focus-visible,button:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+h1,h2,h3,p,ul{margin:0}
+ul{padding:0;list-style:none}
+.wrap{max-width:1280px;margin:0 auto;padding-left:var(--gl);padding-right:var(--gr)}
+.label{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
 
-/* Header */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:#0c2952f2;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;gap:20px;min-height:var(--head-h)}
-.logo{display:block;width:84px;flex:none}
-.logo svg{display:block;width:100%;height:auto;fill:var(--white)}
-.menu{display:flex;gap:4px;margin-left:auto}
-.menu a{padding:10px 12px;font-size:14px;color:var(--muted);border-radius:6px;white-space:nowrap}
-.menu a:hover,.menu a[aria-current="true"]{color:var(--white)}
-.menu a[aria-current="true"]{background:#ffffff14}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:12px 22px;background:var(--white);color:var(--ink);border:1px solid var(--white);font-weight:700;font-size:14px;transition:transform .2s,background .2s}
-.btn:hover{background:#dceaff;transform:translateY(-2px)}
-.btn.ghost{background:transparent;color:var(--white);border-color:#ffffff70}
-.btn.ghost:hover{background:#ffffff14}
-.btn.small{min-height:40px;padding:8px 16px;font-size:13px}
-.arrow{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+/* Corner bar */
+.bar{position:fixed;inset:0 0 auto;z-index:20;padding-top:env(safe-area-inset-top,0px);color:var(--cream);transition:background .3s}
+.bar.solid{background:#0c2952f2;backdrop-filter:blur(10px)}
+.bar:not(.solid) .menu-btn{padding:4px 4px 4px 16px;border-radius:30px;background:#0c2952b3;backdrop-filter:blur(8px)}
+.bar:not(.solid) .menu-btn i{border-color:#faf4eb80}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:none}
+.logo{width:78px;display:block}
+.logo svg{display:block;width:100%;height:auto;fill:currentColor}
+.menu-btn{display:flex;align-items:center;gap:14px}
+.menu-btn i,.close i{display:grid;place-items:center;width:44px;height:44px;border:1px solid currentColor;border-radius:50%;font-style:normal;font-size:15px}
+.menu-btn i::before{content:"";width:16px;height:6px;border-block:1.5px solid currentColor}
 
-/* Hero */
-.hero{position:relative;overflow:hidden;background:var(--navy) url('assets/fashion-hero-poster.jpg') 65% center/cover no-repeat}
-.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% center}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#081d3cf0 0%,#0a2347c7 42%,#0c295240 100%),linear-gradient(0deg,#0c2952,transparent 45%)}
-.hero .wrap{position:relative;z-index:1;padding-block:clamp(72px,11vw,150px) clamp(64px,9vw,120px)}
-.script{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
-h1{font-size:clamp(38px,6.2vw,84px);line-height:1.04;letter-spacing:-.05em;font-weight:800;max-width:11em}
-.lead{max-width:34em;margin-top:22px;color:#d5dbe4;font-size:clamp(16px,1.4vw,18px)}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.facts{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:38px;padding:0;list-style:none;font-size:13px;color:var(--muted)}
-.facts b{color:var(--white);font-weight:600}
+/* Full-screen menu */
+.nav{position:fixed;inset:0;z-index:30;background:var(--navy);color:var(--cream);display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 14px) var(--gr) calc(env(safe-area-inset-bottom,0px) + 28px) var(--gl);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.nav.open{opacity:1;visibility:visible}
+.nav-top{display:flex;justify-content:space-between;align-items:center;height:58px}
+.close{display:flex;align-items:center;gap:14px}
+.nav ol{list-style:none;margin:auto 0;padding:0;display:grid;gap:4px}
+.nav ol a{display:flex;align-items:baseline;gap:18px;font-size:clamp(38px,7vw,80px);font-weight:800;letter-spacing:-.04em;line-height:1.1}
+.nav ol a span{font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--mist)}
+.nav ol a:hover{color:var(--mist)}
+.nav-foot{display:flex;flex-wrap:wrap;gap:10px 28px;color:var(--mist)}
+.nav-foot a:hover{color:var(--cream)}
 
-/* Bands */
-.band{padding-block:clamp(56px,7vw,96px)}
-.band{background:radial-gradient(ellipse at 50% 0%,#12386b 0%,var(--navy) 55%,#0a2347 100%)}
-.band.dark{background:var(--ink)}
-/* Brand film grain over the whole page */
-body::after{content:"";position:fixed;inset:0;z-index:8;pointer-events:none;opacity:.09;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-/* Brand silver corner brackets */
-.frame::before,.frame::after{content:"";position:absolute;z-index:1;width:18px;height:18px;border:1.5px solid var(--silver);opacity:.85;pointer-events:none}
-.frame::before{top:8px;left:8px;border-right:0;border-bottom:0}
-.frame::after{bottom:8px;left:8px;border-right:0;border-top:0}
-.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
-h2{font-size:clamp(30px,4.2vw,54px);line-height:1.08;letter-spacing:-.04em;font-weight:800}
-.intro{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 48px;margin-bottom:clamp(28px,4vw,44px)}
-.intro p{max-width:26em;color:var(--muted)}
+/* Hero: scroll-driven film. The section is tall; the screen inside sticks while the
+   film frames advance with the visitor's scroll and the headline builds word by word. */
+.hero{position:relative;height:320svh;background:var(--deep);color:var(--cream)}
+.stage{position:sticky;top:0;height:100svh;min-height:540px;overflow:hidden}
+.stage canvas,.stage .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% center}
+.stage::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#081d3cd9 0%,#0c295266 42%,transparent 70%),linear-gradient(0deg,#081d3cb3,transparent 40%);pointer-events:none}
+.hero-in{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:calc(env(safe-area-inset-bottom,0px) + clamp(28px,5vw,56px))}
+.hero-in .wrap{width:100%;max-width:none;display:grid;grid-template-columns:1fr auto;align-items:end;gap:28px}
+h1{font-size:clamp(52px,9vw,140px);line-height:.92;letter-spacing:-.05em;font-weight:800}
+h1 .w{display:inline-block;opacity:.12;transform:translateY(.12em);transition:opacity .5s,transform .5s}
+h1 .w.on{opacity:1;transform:none}
+.later{opacity:0;transform:translateY(12px);transition:opacity .5s,transform .5s;pointer-events:none}
+.later.on{opacity:1;transform:none;pointer-events:auto}
+.hero .sub{margin-top:20px;color:var(--mist)}
+.quick{display:grid;grid-template-columns:repeat(2,minmax(0,200px));gap:12px}
+.quick a{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--dline)}
+.quick img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.quick a:hover img{transform:scale(1.05)}
+.quick span{position:absolute;left:8px;right:8px;bottom:8px;display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--cream);color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.progress{position:absolute;z-index:2;right:var(--gr);top:50%;width:2px;height:120px;margin-top:-60px;background:var(--dline)}
+.progress i{position:absolute;inset:0 0 auto;height:0;background:var(--cream)}
+.hint{position:absolute;z-index:2;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);color:var(--mist);transition:opacity .4s}
 
-/* Work */
-.reel{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
-.tile{display:block;padding:0;border:0;background:none;text-align:left;min-width:0}
-.frame{position:relative;aspect-ratio:9/16;overflow:hidden;background:var(--panel);border:1px solid var(--line)}
-.frame video,.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.tile:hover .frame video,.tile:hover .frame img{transform:scale(1.03)}
-.play{position:absolute;right:12px;bottom:12px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#071a36b0;border:1px solid #ffffff80}
-.play svg{width:14px;height:14px;fill:var(--white);margin-left:2px}
-.tile h3{font-size:16px;letter-spacing:-.02em;margin-top:12px}
-.tile small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px}
-.noticed{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 22px;margin-top:36px;padding-top:22px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
-.noticed b{color:var(--white);font-family:var(--display);font-weight:700;font-size:16px}
-.fine{font-size:12px;color:var(--muted);margin-top:14px;max-width:60em}
+/* Sections */
+.sec{padding-block:clamp(72px,10vw,140px)}
+.navy{background:var(--navy);color:var(--cream)}
+.head{display:grid;grid-template-columns:140px 1fr auto;align-items:end;gap:20px;margin-bottom:clamp(32px,5vw,60px)}
+.num{color:var(--soft)}
+.navy .num{color:var(--mist)}
+h2{font-size:clamp(34px,5.4vw,76px);line-height:1;letter-spacing:-.045em;font-weight:800}
 
-/* Services */
-.services{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
-.services article{padding:26px 24px 6px 0;min-width:0}
-.services article+article{padding-left:24px;border-left:1px solid var(--line)}
-.services h3{font-size:21px;letter-spacing:-.03em;margin-bottom:10px}
-.services p{font-size:15px;color:var(--muted)}
-.services .have{display:block;margin-bottom:14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--white)}
+/* Work row */
+.track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-left:var(--gl);padding-right:var(--gr);scroll-padding-left:var(--gl)}
+.track::-webkit-scrollbar{display:none}
+.card{flex:0 0 clamp(230px,24vw,330px);scroll-snap-align:start;text-align:left}
+.frame{position:relative;aspect-ratio:9/16;overflow:hidden;background:var(--deep)}
+.frame video,.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.card:hover .frame video,.card:hover .frame img{transform:scale(1.04)}
+.frame::before,.frame::after{content:"";position:absolute;z-index:1;width:16px;height:16px;border:1.5px solid var(--silver);pointer-events:none}
+.frame::before{top:10px;left:10px;border-right:0;border-bottom:0}
+.frame::after{top:10px;right:10px;border-left:0;border-bottom:0}
+.frame .label{position:absolute;z-index:1;top:34px;left:12px;color:var(--cream);font-size:10px;text-shadow:0 1px 8px #081d3c}
+.frame h3{position:absolute;z-index:1;left:0;right:0;bottom:0;padding:60px 14px 14px;background:linear-gradient(transparent,#081d3ce6);color:var(--cream);font-size:clamp(17px,1.6vw,21px);line-height:1.15;font-weight:700;letter-spacing:-.02em}
+.arrows{display:flex;gap:8px}
+.arrows button{display:grid;place-items:center;width:46px;height:46px;border:1px solid currentColor;border-radius:50%;transition:background .2s,color .2s}
+.arrows button:hover{background:var(--cream);color:var(--navy)}
+.arrows svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.work-note{margin-top:22px;color:var(--mist);font-size:12px}
 
-/* Pricing */
+/* Brand line */
+.brands{border-block:1px solid var(--line);overflow:hidden;padding-block:26px;display:flex;align-items:center;gap:36px}
+.brands .label{flex:none;color:var(--soft);padding-left:var(--gl)}
+.marquee{display:flex;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee ul{display:flex;flex:none;animation:slide 26s linear infinite}
+.marquee li{font-size:clamp(22px,2.6vw,34px);font-weight:800;letter-spacing:-.03em;white-space:nowrap;padding-right:64px}
+.marquee li::after{content:"✦";font-size:.5em;margin-left:64px;vertical-align:middle;color:var(--soft)}
+@keyframes slide{to{transform:translateX(-100%)}}
+
+/* Services list */
+.svc li{display:grid;grid-template-columns:140px 1fr 1fr;gap:20px;align-items:baseline;padding-block:clamp(22px,3vw,34px);border-top:1px solid var(--line)}
+.svc li:last-child{border-bottom:1px solid var(--line)}
+.svc h3{font-size:clamp(26px,3.4vw,46px);font-weight:800;letter-spacing:-.04em;line-height:1}
+.svc p{color:var(--soft);max-width:26em}
+
+/* Packages */
 .plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.plan{display:flex;flex-direction:column;gap:14px;padding:28px;border:1px solid var(--line);background:var(--navy);min-width:0}
-.plan.main{background:var(--white);color:var(--ink);border-color:var(--white)}
-.plan h3{font-size:18px;letter-spacing:-.02em}
-.price{font-family:var(--display);font-weight:800;font-size:clamp(34px,4vw,48px);line-height:1;letter-spacing:-.04em}
-.price span{font-size:15px;font-weight:500;letter-spacing:0;opacity:.7}
-.plan p{font-size:15px;color:var(--muted);flex:1}
-.plan.main p{color:#3a4656}
-.plan .btn{align-self:flex-start}
-.plan.main .btn{background:var(--ink);color:var(--white);border-color:var(--ink)}
-.plan.main .btn:hover{background:#123566}
-.terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px;padding:0;list-style:none}
-.terms li{padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
-.terms b{display:block;font-family:var(--display);font-size:20px;color:var(--white);letter-spacing:-.02em}
+.plan{display:flex;flex-direction:column;gap:18px;padding:30px 28px;border:1px solid var(--dline);min-width:0}
+.plan.main{background:var(--cream);color:var(--navy);border-color:var(--cream)}
+.plan-top{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:24px}
+.tag{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 8px;background:var(--navy);color:var(--cream)}
+.price{font-size:clamp(44px,4.8vw,60px);font-weight:800;letter-spacing:-.05em;line-height:1}
+.price small{font-size:14px;font-weight:500;letter-spacing:0;opacity:.6}
+.plan ul{display:grid;gap:10px;padding-top:18px;border-top:1px solid var(--dline);flex:1;font-size:14px;align-content:start}
+.plan.main ul{border-color:var(--line)}
+.plan li{display:flex;gap:12px}
+.plan li::before{content:"";flex:none;width:6px;height:6px;margin-top:9px;background:currentColor;opacity:.6}
+.btn{display:flex;align-items:center;justify-content:center;min-height:50px;padding:12px 20px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid currentColor;transition:background .2s,color .2s}
+.plan .btn:hover{background:var(--cream);color:var(--navy)}
+.plan.main .btn{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+.plan.main .btn:hover{background:var(--deep)}
+.plans-note{margin-top:22px;color:var(--mist);font-size:13px}
 
 /* About */
-.about{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,6vw,90px);align-items:start}
-.about .big{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.2vw,42px);line-height:1.12;letter-spacing:-.03em;text-wrap:balance}
-.about p+p{margin-top:16px}
-.about .copy{color:var(--muted);max-width:32em}
-.steps{display:grid;gap:0;padding:0;margin:0;list-style:none;counter-reset:s}
-.steps li{display:grid;grid-template-columns:44px 1fr;gap:4px 12px;padding:18px 0;border-top:1px solid var(--line);counter-increment:s}
-.steps li::before{content:"0" counter(s);font-size:12px;letter-spacing:.12em;color:var(--muted);padding-top:5px}
-.steps h3{font-size:18px;letter-spacing:-.02em}
-.steps p{grid-column:2;font-size:14px;color:var(--muted)}
+.about{display:grid;grid-template-columns:140px 1fr;gap:20px}
+.statement{font-size:clamp(30px,4.6vw,64px);line-height:1.05;letter-spacing:-.045em;font-weight:800;max-width:15em}
+.statement span{color:var(--soft)}
 
-/* Contact */
-.contact{text-align:center;background:linear-gradient(#061630cc,#061630f2),url('assets/studio.webp') center/cover}
-.contact h2{font-size:clamp(36px,6vw,80px);letter-spacing:-.05em}
-.contact p{max-width:30em;margin:18px auto 0;color:var(--muted)}
-.contact .actions{justify-content:center}
-footer{background:#061630;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-block:22px}
-footer button{background:none;border:0;padding:0;color:inherit;text-decoration:underline;text-underline-offset:3px;margin-left:18px}
+/* Footer / contact */
+footer{background:var(--deep);color:var(--cream);padding-top:clamp(72px,10vw,130px);padding-bottom:calc(env(safe-area-inset-bottom,0px) + 28px)}
+.cta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:28px;padding-bottom:clamp(48px,7vw,90px);border-bottom:1px solid var(--dline)}
+.cta .label{color:var(--mist);margin-bottom:14px}
+.cta h2{font-size:clamp(44px,8vw,120px)}
+.cta .btn{background:var(--cream);color:var(--navy);border-color:var(--cream);padding-inline:28px}
+.cta .btn:hover{background:var(--mist)}
+.cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;padding-block:44px}
+.cols .label{color:var(--mist);margin-bottom:14px}
+.cols li+li{margin-top:6px}
+.cols a:hover{color:var(--mist)}
+.legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;font-size:12px;color:var(--mist)}
+.legal button{text-decoration:underline;text-underline-offset:3px;margin-left:18px}
 
 /* Dialog */
-dialog{width:min(520px,94vw);max-height:92svh;padding:22px;background:var(--navy);color:var(--white);border:1px solid var(--line);overflow:auto}
-dialog::backdrop{background:#000d;backdrop-filter:blur(8px)}
+dialog{width:min(520px,94vw);max-height:92svh;padding:22px;background:var(--navy);color:var(--cream);border:1px solid var(--dline);overflow:auto}
+dialog::backdrop{background:#081d3ce6;backdrop-filter:blur(8px)}
 dialog video,dialog img{display:block;width:100%;max-height:62svh;object-fit:contain;background:#000;margin:14px 0}
-dialog h2{font-size:26px}
-dialog p{font-size:14px;color:var(--muted)}
-dialog p+p{margin-top:10px}
-dialog .btn{margin-top:16px}
-.x{float:right;width:40px;height:40px;border:0;background:var(--white);color:var(--ink);font-size:16px;margin:0 0 8px 12px}
+dialog h2{font-size:24px;letter-spacing:-.03em}
+dialog p{font-size:14px;color:var(--mist)}
+dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-color:var(--cream)}
+.x{float:right;width:40px;height:40px;background:var(--cream);color:var(--navy);font-size:16px;margin:0 0 8px 12px}
 
 @media(max-width:900px){
-  .reel{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:minmax(190px,46%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;margin-right:calc(var(--gutter-r)*-1);padding-right:var(--gutter-r)}
-  .tile{scroll-snap-align:start}
-  .services{grid-template-columns:1fr 1fr}
-  .services article:nth-child(odd){padding-left:0;border-left:0}
-  .services article:nth-child(n+3){border-top:1px solid var(--line)}
-  .plans,.about{grid-template-columns:1fr}
+  .hero-in .wrap{grid-template-columns:1fr}
+  .quick{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .head{grid-template-columns:1fr auto}
+  .head .num{grid-column:1/-1}
+  .svc li{grid-template-columns:1fr;gap:8px}
+  .plans{grid-template-columns:1fr}
+  .plan{max-width:560px}
+  .about{grid-template-columns:1fr}
+  .cols{grid-template-columns:1fr 1fr}
 }
-@media(max-width:640px){
-  :root{--head-h:98px}
-  .top .wrap{flex-wrap:wrap;gap:0 12px;padding-block:8px 4px}
-  .logo{width:70px;margin-right:auto}
-  .menu{order:3;width:100%;margin:0;justify-content:space-between;gap:0}
-  .menu a{padding:9px 6px;font-size:13px}
-  .hero video{object-position:70% center}
-  .hero::after{background:linear-gradient(90deg,#081d3ce6,#0c29528c),linear-gradient(0deg,#0c2952,transparent 70%)}
-  .services{grid-template-columns:1fr}
-  .services article,.services article+article{padding:22px 0 18px;border-left:0}
-  .services article+article{border-top:1px solid var(--line)}
-  .terms{grid-template-columns:1fr}
-  .actions .btn{flex:1 1 100%}
-  footer button{margin:0 18px 0 0}
+@media(max-width:560px){
+  .menu-btn b{display:none}
+  .brands{flex-direction:column;align-items:flex-start;gap:14px}
+  .marquee{width:100%}
+  .card{flex-basis:72%}
+  .cta .btn{width:100%}
+  .legal button{margin:0 18px 0 0}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.marquee ul{animation:none}}
 </style>
 </head>
 <body>
 
-<header class="top"><div class="wrap">
-  <a class="logo" href="#home" aria-label="VYLE, back to top"><svg viewBox="249 445 758 364" role="img" aria-label="VYLE"><path d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path d="M738 449H771V722H738Z"/><path fill-rule="evenodd" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg></a>
-  <nav class="menu" aria-label="Sections">
-    <a href="#work">Work</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#about">About</a><a href="#contact">Contact</a>
-  </nav>
-  <a class="btn small" href="https://wa.me/96170508546" target="_blank" rel="noopener">WhatsApp us</a>
+<header class="bar" id="bar"><div class="wrap">
+  <a class="logo" href="#top" aria-label="VYLE, back to top"><svg viewBox="249 445 758 364" role="img" aria-label="VYLE"><path d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path d="M738 449H771V722H738Z"/><path fill-rule="evenodd" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg></a>
+  <button class="menu-btn label" type="button" aria-controls="nav" aria-expanded="false" id="menu-open"><b>Menu</b><i aria-hidden="true"></i></button>
 </div></header>
 
-<main>
-<section class="hero" id="home">
-  <video src="assets/fashion-hero.mp4" poster="assets/fashion-hero-poster.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
-  <div class="wrap">
-    <p class="script">Creative studio · Beirut, Lebanon</p>
-    <h1>Content people stop for.</h1>
-    <p class="lead">Send us your footage, your product or just the idea. We turn it into videos and visuals that are ready to post.</p>
-    <div class="actions">
-      <a class="btn" href="#work">See the work <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"/></svg></a>
-      <a class="btn ghost" href="#pricing">See pricing</a>
+<nav class="nav" id="nav" aria-label="Menu">
+  <div class="nav-top">
+    <span class="logo" aria-hidden="true"><svg viewBox="249 445 758 364"><path d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path d="M738 449H771V722H738Z"/><path fill-rule="evenodd" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg></span>
+    <button class="close label" type="button" id="menu-close">Close <i aria-hidden="true">✕</i></button>
+  </div>
+  <ol>
+    <li><a href="#work"><span>S.01</span>Work</a></li>
+    <li><a href="#services"><span>S.02</span>Services</a></li>
+    <li><a href="#packages"><span>S.03</span>Packages</a></li>
+    <li><a href="#about"><span>S.04</span>About</a></li>
+    <li><a href="#contact"><span>S.05</span>Contact</a></li>
+  </ol>
+  <div class="nav-foot label">
+    <a href="https://wa.me/96170508546" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="https://www.instagram.com/vyle.lb/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://calendly.com/info-vyle-lb" target="_blank" rel="noopener">Book a call</a>
+  </div>
+</nav>
+
+<main id="top">
+<section class="hero" id="hero">
+  <div class="stage">
+    <img class="poster" src="assets/scroll/f001.webp" alt="">
+    <canvas id="film" aria-hidden="true"></canvas>
+    <div class="hero-in"><div class="wrap">
+      <div>
+        <h1 aria-label="Ideas into impact."><span class="w on">Ideas</span> <span class="w">into</span><br><span class="w">impact.</span></h1>
+        <p class="sub label later">Branding · Video editing · AI creative</p>
+      </div>
+      <div class="quick later">
+        <a href="#work"><img src="assets/sneaker-poster.jpg" alt=""><span>Our work <b aria-hidden="true">▸</b></span></a>
+        <a href="#packages"><img src="assets/studio.webp" alt=""><span>Packages <b aria-hidden="true">▸</b></span></a>
+      </div>
+    </div></div>
+    <div class="progress" aria-hidden="true"><i id="bar-fill"></i></div>
+    <p class="hint label" id="hint">Scroll</p>
+  </div>
+</section>
+
+<section class="sec navy" id="work">
+  <div class="wrap head">
+    <p class="label num">S.01</p>
+    <h2>Selected work</h2>
+    <div class="arrows">
+      <button type="button" data-dir="-1" aria-label="Previous project"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button type="button" data-dir="1" aria-label="Next project"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
-    <ul class="facts">
-      <li><b>From $20</b> per video</li>
-      <li><b>48–72 h</b> turnaround</li>
-      <li><b>2 rounds</b> of revisions</li>
+  </div>
+  <div class="track" id="track">
+    <button class="card" type="button" data-project="sneaker"><div class="frame"><video src="assets/sneaker-commercial.mp4" poster="assets/sneaker-poster.jpg" muted loop playsinline preload="none"></video><span class="label">Video editing</span><h3>Sneaker Study</h3></div></button>
+    <button class="card" type="button" data-project="watch"><div class="frame"><video src="assets/watch-commercial.mp4" poster="assets/watch-poster.jpg" muted loop playsinline preload="none"></video><span class="label">Video editing</span><h3>Watch Film</h3></div></button>
+    <button class="card" type="button" data-project="mountain"><div class="frame"><video src="assets/people.mp4" poster="assets/people-poster.jpg" muted loop playsinline preload="none"></video><span class="label">AI creative</span><h3>Above the Ordinary</h3></div></button>
+    <button class="card" type="button" data-project="spaces"><div class="frame"><video src="assets/vyle-work-film.mp4" poster="assets/vyle-work-poster.jpg" muted loop playsinline preload="none"></video><span class="label">Video editing</span><h3>Plans to Living Spaces</h3></div></button>
+    <button class="card" type="button" data-project="jewelry"><div class="frame"><img src="assets/jewelry-portrait.webp" alt="Jewelry campaign portrait with a gold necklace" loading="lazy"><span class="label">Branding</span><h3>The Detail That Matters</h3></div></button>
+  </div>
+  <p class="wrap work-note">Tap a project to play it. Concept pieces, not commissioned by the brands shown.</p>
+</section>
+
+<section class="brands" aria-label="Noticed by Swiss Butter, Beirut Beer and Deek Duke">
+  <p class="label">Noticed by</p>
+  <div class="marquee" aria-hidden="true">
+    <ul><li>Swiss Butter</li><li>Beirut Beer</li><li>Deek Duke</li><li>Swiss Butter</li><li>Beirut Beer</li><li>Deek Duke</li></ul>
+    <ul><li>Swiss Butter</li><li>Beirut Beer</li><li>Deek Duke</li><li>Swiss Butter</li><li>Beirut Beer</li><li>Deek Duke</li></ul>
+  </div>
+</section>
+
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="head"><p class="label num">S.02</p><h2>Services</h2></div>
+    <ul class="svc">
+      <li><span class="label num">Identity</span><h3>Branding</h3><p>Logos, colors and visuals that make you recognizable.</p></li>
+      <li><span class="label num">Motion</span><h3>Video Editing</h3><p>Reels, ads and brand videos that keep people watching.</p></li>
+      <li><span class="label num">AI</span><h3>AI Creative</h3><p>Realistic AI images and videos, directed by people.</p></li>
     </ul>
   </div>
 </section>
 
-<section class="band" id="work"><div class="wrap">
-  <div class="intro">
-    <div><p class="eyebrow">Work</p><h2>Watch first.</h2></div>
-    <p>Tap any project to play it in full, with sound.</p>
-  </div>
-  <div class="reel">
-    <button class="tile" data-project="sneaker"><div class="frame"><video src="assets/sneaker-commercial.mp4" poster="assets/sneaker-poster.jpg" muted loop playsinline preload="none"></video><span class="play"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg></span></div><h3>Sneaker Study</h3><small>Product commercial</small></button>
-    <button class="tile" data-project="watch"><div class="frame"><video src="assets/watch-commercial.mp4" poster="assets/watch-poster.jpg" muted loop playsinline preload="none"></video><span class="play"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg></span></div><h3>Watch Film</h3><small>Product film</small></button>
-    <button class="tile" data-project="spaces"><div class="frame"><video src="assets/vyle-work-film.mp4" poster="assets/vyle-work-poster.jpg" muted loop playsinline preload="none"></video><span class="play"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg></span></div><h3>Plans to Living Spaces</h3><small>Architectural edit</small></button>
-    <button class="tile" data-project="mountain"><div class="frame"><video src="assets/people.mp4" poster="assets/people-poster.jpg" muted loop playsinline preload="none"></video><span class="play"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg></span></div><h3>Above the Ordinary</h3><small>AI fashion film</small></button>
-    <button class="tile" data-project="jewelry"><div class="frame"><img src="assets/jewelry-portrait.webp" alt="Jewelry campaign portrait with a gold circle necklace" loading="lazy"></div><h3>The Detail That Matters</h3><small>Brand campaign visual</small></button>
-  </div>
-  <p class="noticed"><span>Our edits got reactions from</span><b>Swiss Butter</b><b>Beirut Beer</b><b>Deek Duke</b></p>
-  <p class="fine">Sneaker Study, Watch Film, Above the Ordinary and The Detail That Matters are independent concepts, not commissioned by the brands shown. Brand reactions were likes, comments and reposts on VYLE's social posts, not paid partnerships.</p>
-</div></section>
-
-<section class="band dark" id="services"><div class="wrap">
-  <div class="intro">
-    <div><p class="eyebrow">Services</p><h2>What we do.</h2></div>
-    <p>Four services. Pick the one that matches what you already have.</p>
-  </div>
-  <div class="services">
-    <article><span class="have">You have footage</span><h3>Video Editing</h3><p>Reels, ads and brand videos cut with pacing, captions, sound design and effects.</p></article>
-    <article><span class="have">You have an idea</span><h3>AI Creative</h3><p>Realistic AI images and videos, directed by people, for scenes a normal shoot can't get.</p></article>
-    <article><span class="have">You have a product</span><h3>Product &amp; AI Ads</h3><p>One product photo becomes a cinematic ad and a set of short-form campaign cuts.</p></article>
-    <article><span class="have">You need a look</span><h3>Brand Visuals</h3><p>Campaign imagery and social assets that keep your page looking like one brand.</p></article>
-  </div>
-</div></section>
-
-<section class="band" id="pricing"><div class="wrap">
-  <div class="intro">
-    <div><p class="eyebrow">Pricing</p><h2>Simple prices.</h2></div>
-    <p>Start with one video. Move to a monthly package when you post often.</p>
-  </div>
-  <div class="plans">
-    <div class="plan main">
-      <h3>Single video</h3>
-      <div class="price">$20 <span>per video</span></div>
-      <p>One edited video, ready to post. Good for trying us out.</p>
-      <a class="btn" href="https://wa.me/96170508546" target="_blank" rel="noopener">Order a video</a>
+<section class="sec navy" id="packages">
+  <div class="wrap">
+    <div class="head"><p class="label num">S.03</p><h2>Packages</h2></div>
+    <div class="plans">
+      <div class="plan">
+        <div class="plan-top"><p class="label">Starter</p></div>
+        <p class="price">$200<small> / month</small></p>
+        <ul><li>4 edited videos</li><li>Captions and sound design</li><li>2 revision rounds</li></ul>
+        <a class="btn" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%27m%20interested%20in%20the%20Starter%20package" target="_blank" rel="noopener">Choose Starter</a>
+      </div>
+      <div class="plan main">
+        <div class="plan-top"><p class="label">Growth</p><span class="tag">Most popular</span></div>
+        <p class="price">$350<small> / month</small></p>
+        <ul><li>8 edited videos</li><li>1 AI visual</li><li>Monthly content ideas</li><li>2 revision rounds</li></ul>
+        <a class="btn" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%27m%20interested%20in%20the%20Growth%20package" target="_blank" rel="noopener">Choose Growth</a>
+      </div>
+      <div class="plan">
+        <div class="plan-top"><p class="label">Pro</p></div>
+        <p class="price">$650<small> / month</small></p>
+        <ul><li>12 edited videos</li><li>3 AI visuals or 1 AI video</li><li>Brand visuals and content plan</li><li>Priority delivery</li></ul>
+        <a class="btn" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%27m%20interested%20in%20the%20Pro%20package" target="_blank" rel="noopener">Choose Pro</a>
+      </div>
     </div>
-    <div class="plan">
-      <h3>Monthly package</h3>
-      <div class="price">Tiered <span>by videos per month</span></div>
-      <p>A set number of videos every month at a lower price per video.</p>
-      <a class="btn ghost" href="https://wa.me/96170508546" target="_blank" rel="noopener">Ask for package prices</a>
-    </div>
-    <div class="plan">
-      <h3>AI ads &amp; brand visuals</h3>
-      <div class="price">Quote <span>per project</span></div>
-      <p>AI product ads, campaign images and full brand visual sets, priced by scope.</p>
-      <a class="btn ghost" href="https://calendly.com/info-vyle-lb" target="_blank" rel="noopener">Book a call</a>
-    </div>
+    <p class="plans-note">50% deposit to start · 48–72 h delivery · 2 revision rounds</p>
   </div>
-  <ul class="terms">
-    <li><b>50% deposit</b>to start, balance on final delivery</li>
-    <li><b>48–72 hours</b>from brief to first cut</li>
-    <li><b>2 revision rounds</b>included in every project</li>
-  </ul>
-</div></section>
+</section>
 
-<section class="band dark" id="about"><div class="wrap about">
-  <div>
-    <p class="eyebrow">About</p>
-    <p class="big">We build the visual world behind modern brands.</p>
-    <div class="copy" style="margin-top:22px">
-      <p>VYLE is a creative studio based in Beirut, working with brands, businesses and creators anywhere.</p>
-      <p>Real people direct and edit every project. AI is one of our tools, used where it makes the result better.</p>
-    </div>
+<section class="sec" id="about">
+  <div class="wrap about">
+    <p class="label num">S.04</p>
+    <p class="statement">We build the visual world behind modern brands. <span>A human-run studio in Beirut.</span></p>
   </div>
-  <div>
-    <p class="eyebrow">How it works</p>
-    <ol class="steps">
-      <li><h3>Tell us what you need</h3><p>Send the footage, product or idea on WhatsApp or a call.</p></li>
-      <li><h3>We create it</h3><p>Concept, editing, AI, sound and design in one place.</p></li>
-      <li><h3>You review, we deliver</h3><p>Ask for changes, then get files sized for each platform.</p></li>
-    </ol>
-  </div>
-</div></section>
-
-<section class="band contact" id="contact"><div class="wrap">
-  <p class="eyebrow">Contact</p>
-  <h2>Let's make it worth watching.</h2>
-  <p>No forms. Message us what you want to create and we'll reply with the next step.</p>
-  <div class="actions">
-    <a class="btn" href="https://wa.me/96170508546" target="_blank" rel="noopener">WhatsApp us</a>
-    <a class="btn ghost" href="https://calendly.com/info-vyle-lb" target="_blank" rel="noopener">Book a call</a>
-    <a class="btn ghost" href="https://www.instagram.com/vyle.lb/" target="_blank" rel="noopener">Instagram @vyle.lb</a>
-  </div>
-</div></section>
+</section>
 </main>
 
-<footer><div class="wrap">
-  <span>© 2026 VYLE · Beirut, Lebanon</span>
-  <span><button type="button" data-legal="privacy">Privacy</button><button type="button" data-legal="terms">Terms</button></span>
-</div></footer>
+<footer id="contact">
+  <div class="wrap">
+    <div class="cta">
+      <div><p class="label">S.05 · Contact</p><h2>Let's make<br>it happen.</h2></div>
+      <a class="btn" href="https://wa.me/96170508546" target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+    <div class="cols">
+      <div><p class="label">Explore</p><ul><li><a href="#work">Work</a></li><li><a href="#services">Services</a></li><li><a href="#packages">Packages</a></li><li><a href="#about">About</a></li></ul></div>
+      <div><p class="label">Contact</p><ul><li><a href="https://wa.me/96170508546" target="_blank" rel="noopener">+961 70 508 546</a></li><li><a href="https://calendly.com/info-vyle-lb" target="_blank" rel="noopener">Book a call</a></li></ul></div>
+      <div><p class="label">Follow</p><ul><li><a href="https://www.instagram.com/vyle.lb/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+      <div><p class="label">Studio</p><ul><li>Beirut, Lebanon</li><li>Working worldwide</li></ul></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 VYLE</span>
+      <span><button type="button" data-legal="privacy">Privacy</button><button type="button" data-legal="terms">Terms</button></span>
+    </div>
+  </div>
+</footer>
 
 <dialog id="viewer" aria-labelledby="viewer-title"><button class="x" type="button" aria-label="Close">✕</button><div id="viewer-body"></div></dialog>
 
@@ -311,46 +344,87 @@ dialog .btn{margin-top:16px}
 const WA='https://wa.me/96170508546';
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const projects={
-  sneaker:{title:'Sneaker Study',video:'sneaker-commercial.mp4',text:'A product commercial by VYLE. Independent concept featuring Nike footwear. Not commissioned by or affiliated with Nike.'},
-  watch:{title:'Watch Film',video:'watch-commercial.mp4',text:'A product film exploring the dial, bracelet and details. Portfolio concept featuring Rolex. No commissioned relationship or endorsement is implied.'},
-  spaces:{title:'Plans to Living Spaces',video:'vyle-work-film.mp4',text:'An architectural interiors edit by VYLE, moving from plans to finished living spaces.'},
-  mountain:{title:'Above the Ordinary',video:'people.mp4',text:'An AI fashion film set on a mountain peak. Independent concept.'},
-  jewelry:{title:'The Detail That Matters',image:'jewelry-portrait.webp',text:'A jewelry campaign visual using warm light to draw the eye to the necklace. Independent concept.'}
+  sneaker:{title:'Sneaker Study',video:'sneaker-commercial.mp4',text:'Product commercial. Independent concept featuring Nike footwear, not commissioned by or affiliated with Nike.'},
+  watch:{title:'Watch Film',video:'watch-commercial.mp4',text:'Product film. Portfolio concept featuring Rolex. No commissioned relationship or endorsement is implied.'},
+  spaces:{title:'Plans to Living Spaces',video:'vyle-work-film.mp4',text:'Architectural interiors edit, from plans to finished spaces.'},
+  mountain:{title:'Above the Ordinary',video:'people.mp4',text:'AI fashion film on a mountain peak. Independent concept.'},
+  jewelry:{title:'The Detail That Matters',image:'jewelry-portrait.webp',text:'Jewelry campaign visual. Independent concept.'}
 };
 const legal={
   privacy:['Privacy','This site has no forms and does not collect personal information. The WhatsApp, Calendly and Instagram links open those services, and what you share there is handled by them and by VYLE when we reply. Fonts load from Google Fonts.'],
-  terms:['Terms','Concept projects on this site are illustrative and do not imply endorsement by, or a commissioned relationship with, any third-party brand. Scope, timing, fees, revisions and usage rights are agreed before work begins. A message or booking does not create a paid agreement.']
+  terms:['Terms','Concept projects on this site are illustrative and do not imply endorsement by, or a commissioned relationship with, any third-party brand. Brands listed under "Noticed by" interacted with VYLE posts; these are not paid partnerships. Scope, timing, fees, revisions and usage rights are agreed before work begins.']
 };
+
+// Project and legal viewer
 const dlg=document.getElementById('viewer'),body=document.getElementById('viewer-body');
-function open(html){body.innerHTML=html;dlg.showModal()}
+function show(html){body.innerHTML=html;dlg.showModal()}
 function shut(){body.querySelectorAll('video').forEach(v=>v.pause());body.innerHTML='';if(dlg.open)dlg.close()}
 dlg.querySelector('.x').addEventListener('click',shut);
 dlg.addEventListener('cancel',e=>{e.preventDefault();shut()});
 dlg.addEventListener('click',e=>{if(e.target===dlg)shut()});
-document.querySelectorAll('[data-project]').forEach(t=>{
-  const p=projects[t.dataset.project],v=t.querySelector('video');
-  t.addEventListener('click',()=>{
+document.querySelectorAll('[data-project]').forEach(c=>{
+  const p=projects[c.dataset.project],v=c.querySelector('video');
+  c.addEventListener('click',()=>{
     if(v)v.pause();
-    open(`<h2 id="viewer-title">${p.title}</h2>${p.video?`<video src="assets/${p.video}" controls playsinline autoplay></video>`:`<img src="assets/${p.image}" alt="${p.title}">`}<p>${p.text}</p><a class="btn" href="${WA}" target="_blank" rel="noopener">Want something like this? WhatsApp us</a>`);
+    show(`<h2 id="viewer-title">${p.title}</h2>${p.video?`<video src="assets/${p.video}" controls playsinline autoplay></video>`:`<img src="assets/${p.image}" alt="${p.title}">`}<p>${p.text}</p><a class="btn" href="${WA}" target="_blank" rel="noopener">Want something like this?</a>`);
   });
-  if(v&&!reduce){
-    t.addEventListener('mouseenter',()=>v.play().catch(()=>{}));
-    t.addEventListener('mouseleave',()=>v.pause());
-  }
+  if(v&&!reduce){c.addEventListener('mouseenter',()=>v.play().catch(()=>{}));c.addEventListener('mouseleave',()=>v.pause())}
 });
 document.querySelectorAll('[data-legal]').forEach(b=>b.addEventListener('click',()=>{
-  const [h,t]=legal[b.dataset.legal];open(`<h2 id="viewer-title">${h}</h2><p style="margin-top:12px">${t}</p>`);
+  const [h,t]=legal[b.dataset.legal];show(`<h2 id="viewer-title">${h}</h2><p style="margin-top:12px">${t}</p>`);
 }));
-if(reduce)document.querySelector('.hero video').removeAttribute('autoplay'),document.querySelector('.hero video').pause();
 
-// Highlight the menu item for the section in view.
-const links=[...document.querySelectorAll('.menu a')];
-const spy=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;
-  links.forEach(a=>a.setAttribute('aria-current',String(a.getAttribute('href')==='#'+e.target.id)));
-}),{rootMargin:'-45% 0px -50% 0px'});
-document.querySelectorAll('main section[id]').forEach(s=>spy.observe(s));
+// Work row arrows
+const track=document.getElementById('track');
+document.querySelectorAll('[data-dir]').forEach(b=>b.addEventListener('click',()=>{
+  const step=track.querySelector('.card').offsetWidth+16;
+  track.scrollBy({left:step*Number(b.dataset.dir),behavior:reduce?'auto':'smooth'});
+}));
+
+// Corner bar turns solid after the opening film
+const bar=document.getElementById('bar'),hero=document.querySelector('.hero');
+new IntersectionObserver(([e])=>bar.classList.toggle('solid',!e.isIntersecting),{rootMargin:'-72px 0px 0px 0px'}).observe(hero);
+
+// Scroll-driven opening film: frame number follows the scroll position inside the hero.
+(function(){
+  const N=120, cv=document.getElementById('film'), ctx=cv.getContext('2d');
+  const words=[...document.querySelectorAll('h1 .w')], later=[...document.querySelectorAll('.later')];
+  const fill=document.getElementById('bar-fill'), hint=document.getElementById('hint');
+  const frames=new Array(N); let want=0, drawn=-1, ticking=false;
+  const src=i=>'assets/scroll/f'+String(i+1).padStart(3,'0')+'.webp';
+  function load(i){if(frames[i])return;const im=new Image();im.decoding='async';im.src=src(i);im.onload=()=>{if(Math.abs(i-want)<2)draw(true)};frames[i]=im}
+  // Load every 8th frame first so scrubbing works right away, then fill the gaps.
+  for(let i=0;i<N;i+=8)load(i); setTimeout(()=>{for(let i=0;i<N;i++)load(i)},300);
+  function size(){const r=Math.min(devicePixelRatio||1,2);cv.width=cv.clientWidth*r;cv.height=cv.clientHeight*r;draw(true)}
+  function nearest(i){for(let d=0;d<N;d++){for(const k of [i-d,i+d]){const im=frames[k];if(im&&im.complete&&im.naturalWidth)return im}}return null}
+  function draw(force){
+    if(!force&&want===drawn)return; const im=nearest(want); if(!im)return; drawn=want;
+    const cw=cv.width,ch=cv.height,iw=im.naturalWidth,ih=im.naturalHeight,s=Math.max(cw/iw,ch/ih);
+    const w=iw*s,h=ih*s,x=(cw-w)*.65,y=(ch-h)/2; ctx.drawImage(im,x,y,w,h);
+  }
+  function update(){
+    ticking=false;
+    const r=hero.getBoundingClientRect(), span=hero.offsetHeight-innerHeight;
+    const p=Math.min(1,Math.max(0,-r.top/span));
+    want=Math.round(p*(N-1)); draw();
+    words.forEach((w,k)=>w.classList.toggle('on',p>=[0,.3,.6][k]));
+    later.forEach(el=>el.classList.toggle('on',p>.85));
+    fill.style.height=(p*100)+'%'; hint.style.opacity=p>.03?0:1;
+  }
+  function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(update)}}
+  if(reduce){hero.style.height='100svh';words.forEach(w=>w.classList.add('on'));later.forEach(el=>el.classList.add('on'));want=N-1;hint.hidden=true}
+  addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',()=>{size();update()});
+  size(); update();
+})();
+
+// Full-screen menu
+const nav=document.getElementById('nav'),openBtn=document.getElementById('menu-open'),closeBtn=document.getElementById('menu-close');
+function setMenu(on){nav.classList.toggle('open',on);openBtn.setAttribute('aria-expanded',String(on));document.body.style.overflow=on?'hidden':'';(on?closeBtn:openBtn).focus({preventScroll:true})}
+openBtn.addEventListener('click',()=>setMenu(true));
+closeBtn.addEventListener('click',()=>setMenu(false));
+nav.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open'))setMenu(false)});
+
 </script>
-
 </body>
 </html>
