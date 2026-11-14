@@ -54,9 +54,9 @@ ul{padding:0;list-style:none}
 
 /* Corner bar */
 .bar{position:fixed;inset:0 0 auto;z-index:20;padding-top:env(safe-area-inset-top,0px);color:var(--cream);transition:background .3s}
-.bar.solid{background:#0c2952f2;backdrop-filter:blur(10px)}
-.bar:not(.solid) .menu-btn{padding:4px 4px 4px 16px;border-radius:30px;background:#0c2952b3;backdrop-filter:blur(8px)}
-.bar:not(.solid) .menu-btn i{border-color:#faf4eb80}
+.bar .menu-btn{padding:4px 4px 4px 16px;border-radius:30px;background:#0c2952b3;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.bar .menu-btn i{border-color:#faf4eb80}
+.bar .logo{filter:drop-shadow(0 1px 8px #081d3c)}
 .bar .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:none}
 .logo{width:78px;display:block}
 .logo svg{display:block;width:100%;height:auto;fill:currentColor}
@@ -360,9 +360,6 @@ document.querySelectorAll('[data-legal]').forEach(b=>b.addEventListener('click',
   const [h,t]=legal[b.dataset.legal];show(`<h2 id="viewer-title">${h}</h2><p style="margin-top:12px">${t}</p>`);
 }));
 
-// Corner bar turns solid after the opening film
-const bar=document.getElementById('bar'),hero=document.querySelector('.hero');
-new IntersectionObserver(([e])=>bar.classList.toggle('solid',!e.isIntersecting),{rootMargin:'-72px 0px 0px 0px'}).observe(hero);
 
 // Background film plays on its own; scrolling only deepens the shade and fills the progress line.
 const tint=document.getElementById('tint'), fill=document.getElementById('bar-fill'), film=document.getElementById('film');
