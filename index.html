@@ -79,7 +79,7 @@ ul{padding:0;list-style:none}
 /* Opening */
 .hero{position:relative;height:100svh;min-height:560px}
 .hero-in{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:calc(env(safe-area-inset-bottom,0px) + clamp(28px,5vw,56px))}
-.hero-in .wrap{width:100%;max-width:none;display:grid;grid-template-columns:1fr auto;align-items:end;gap:28px}
+.hero-in .wrap{width:100%;max-width:none}
 h1{font-size:clamp(40px,6.2vw,92px);line-height:.95;letter-spacing:-.045em;font-weight:800}
 .hero .sub{margin-top:20px;color:var(--mist)}
 .quick{display:grid;grid-template-columns:repeat(2,minmax(0,200px));gap:12px}
@@ -234,10 +234,6 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
     <div data-from="left">
       <h1>Ideas into<br>impact.</h1>
       <p class="sub label">Branding · Video editing · AI creative</p>
-    </div>
-    <div class="quick" data-from="right" style="--d:0.15s">
-      <a href="#portfolio"><img src="assets/eye-card.webp" alt=""><span>Portfolio <b aria-hidden="true">▸</b></span></a>
-      <a href="#packages"><img src="assets/studio.webp" alt=""><span>Packages <b aria-hidden="true">▸</b></span></a>
     </div>
   </div></div>
 </section>
