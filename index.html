@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>VYLE | Content People Stop For</title>
+<meta name="description" content="VYLE is a creative studio in Beirut. Video editing, AI creative, product ads and brand visuals. See the work, the prices and how to start.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+<link rel="icon" href="favicon.svg">
+<link rel="canonical" href="https://vylelb.com/">
+<meta property="og:title" content="VYLE | Content People Stop For">
+<meta property="og:description" content="Creative studio in Beirut. Video editing, AI creative, product ads and brand visuals.">
+<meta property="og:url" content="https://vylelb.com/">
+<meta property="og:image" content="https://vylelb.com/assets/fashion-hero-poster.jpg">
+<style>
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: one continuous navy page. Sticky one-line menu, film hero, then five short bands
+   (Work, Services, Pricing, About, Contact), each answering one question in a screen or less. */
+:root{
+  color-scheme:dark;
+  --navy:#0c2952;      /* page ground */
+  --ink:#071a36;       /* alternate band */
+  --panel:#123566;     /* raised surface */
+  --white:#faf4eb;     /* text and primary button */
+  --muted:#a9bcd8;     /* secondary text */
+  --line:#ffffff24;    /* hairlines */
+  --silver:#c9d2df;    /* corner brackets */
+  --display:'Montserrat','Segoe UI',Arial,sans-serif;
+  --body:'Montserrat','Segoe UI',Arial,sans-serif;
+  --gutter-l:max(20px,env(safe-area-inset-left,0px));
+  --gutter-r:max(20px,env(safe-area-inset-right,0px));
+  --head-h:64px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--head-h) + env(safe-area-inset-top,0px) + 12px)}
+body{background:var(--navy);color:var(--white);font:16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--navy)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible{outline:2px solid var(--white);outline-offset:4px}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-family:var(--display);text-wrap:balance}
+.wrap{max-width:1180px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:#0c2952f2;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;min-height:var(--head-h)}
+.logo{display:block;width:84px;flex:none}
+.logo svg{display:block;width:100%;height:auto;fill:var(--white)}
+.menu{display:flex;gap:4px;margin-left:auto}
+.menu a{padding:10px 12px;font-size:14px;color:var(--muted);border-radius:6px;white-space:nowrap}
+.menu a:hover,.menu a[aria-current="true"]{color:var(--white)}
+.menu a[aria-current="true"]{background:#ffffff14}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:12px 22px;background:var(--white);color:var(--ink);border:1px solid var(--white);font-weight:700;font-size:14px;transition:transform .2s,background .2s}
+.btn:hover{background:#dceaff;transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--white);border-color:#ffffff70}
+.btn.ghost:hover{background:#ffffff14}
+.btn.small{min-height:40px;padding:8px 16px;font-size:13px}
+.arrow{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:var(--navy) url('assets/fashion-hero-poster.jpg') 65% center/cover no-repeat}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% center}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#081d3cf0 0%,#0a2347c7 42%,#0c295240 100%),linear-gradient(0deg,#0c2952,transparent 45%)}
+.hero .wrap{position:relative;z-index:1;padding-block:clamp(72px,11vw,150px) clamp(64px,9vw,120px)}
+.script{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+h1{font-size:clamp(38px,6.2vw,84px);line-height:1.04;letter-spacing:-.05em;font-weight:800;max-width:11em}
+.lead{max-width:34em;margin-top:22px;color:#d5dbe4;font-size:clamp(16px,1.4vw,18px)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.facts{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:38px;padding:0;list-style:none;font-size:13px;color:var(--muted)}
+.facts b{color:var(--white);font-weight:600}
+
+/* Bands */
+.band{padding-block:clamp(56px,7vw,96px)}
+.band{background:radial-gradient(ellipse at 50% 0%,#12386b 0%,var(--navy) 55%,#0a2347 100%)}
+.band.dark{background:var(--ink)}
+/* Brand film grain over the whole page */
+body::after{content:"";position:fixed;inset:0;z-index:8;pointer-events:none;opacity:.09;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+/* Brand silver corner brackets */
+.frame::before,.frame::after{content:"";position:absolute;z-index:1;width:18px;height:18px;border:1.5px solid var(--silver);opacity:.85;pointer-events:none}
+.frame::before{top:8px;left:8px;border-right:0;border-bottom:0}
+.frame::after{bottom:8px;left:8px;border-right:0;border-top:0}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+h2{font-size:clamp(30px,4.2vw,54px);line-height:1.08;letter-spacing:-.04em;font-weight:800}
+.intro{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 48px;margin-bottom:clamp(28px,4vw,44px)}
+.intro p{max-width:26em;color:var(--muted)}
+
+/* Work */
+.reel{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.tile{display:block;padding:0;border:0;background:none;text-align:left;min-width:0}
+.frame{position:relative;aspect-ratio:9/16;overflow:hidden;background:var(--panel);border:1px solid var(--line)}
+.frame video,.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.tile:hover .frame video,.tile:hover .frame img{transform:scale(1.03)}
+.play{position:absolute;right:12px;bottom:12px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#071a36b0;border:1px solid #ffffff80}
+.play svg{width:14px;height:14px;fill:var(--white);margin-left:2px}
+.tile h3{font-size:16px;letter-spacing:-.02em;margin-top:12px}
+.tile small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.noticed{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 22px;margin-top:36px;padding-top:22px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.noticed b{color:var(--white);font-family:var(--display);font-weight:700;font-size:16px}
+.fine{font-size:12px;color:var(--muted);margin-top:14px;max-width:60em}
+
+/* Services */
+.services{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.services article{padding:26px 24px 6px 0;min-width:0}
+.services article+article{padding-left:24px;border-left:1px solid var(--line)}
+.services h3{font-size:21px;letter-spacing:-.03em;margin-bottom:10px}
+.services p{font-size:15px;color:var(--muted)}
+.services .have{display:block;margin-bottom:14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--white)}
+
+/* Pricing */
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.plan{display:flex;flex-direction:column;gap:14px;padding:28px;border:1px solid var(--line);background:var(--navy);min-width:0}
+.plan.main{background:var(--white);color:var(--ink);border-color:var(--white)}
+.plan h3{font-size:18px;letter-spacing:-.02em}
+.price{font-family:var(--display);font-weight:800;font-size:clamp(34px,4vw,48px);line-height:1;letter-spacing:-.04em}
+.price span{font-size:15px;font-weight:500;letter-spacing:0;opacity:.7}
+.plan p{font-size:15px;color:var(--muted);flex:1}
+.plan.main p{color:#3a4656}
+.plan .btn{align-self:flex-start}
+.plan.main .btn{background:var(--ink);color:var(--white);border-color:var(--ink)}
+.plan.main .btn:hover{background:#123566}
+.terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px;padding:0;list-style:none}
+.terms li{padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.terms b{display:block;font-family:var(--display);font-size:20px;color:var(--white);letter-spacing:-.02em}
+
+/* About */
+.about{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,6vw,90px);align-items:start}
+.about .big{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.2vw,42px);line-height:1.12;letter-spacing:-.03em;text-wrap:balance}
+.about p+p{margin-top:16px}
+.about .copy{color:var(--muted);max-width:32em}
+.steps{display:grid;gap:0;padding:0;margin:0;list-style:none;counter-reset:s}
+.steps li{display:grid;grid-template-columns:44px 1fr;gap:4px 12px;padding:18px 0;border-top:1px solid var(--line);counter-increment:s}
+.steps li::before{content:"0" counter(s);font-size:12px;letter-spacing:.12em;color:var(--muted);padding-top:5px}
+.steps h3{font-size:18px;letter-spacing:-.02em}
+.steps p{grid-column:2;font-size:14px;color:var(--muted)}
+
+/* Contact */
+.contact{text-align:center;background:linear-gradient(#061630cc,#061630f2),url('assets/studio.webp') center/cover}
+.contact h2{font-size:clamp(36px,6vw,80px);letter-spacing:-.05em}
+.contact p{max-width:30em;margin:18px auto 0;color:var(--muted)}
+.contact .actions{justify-content:center}
+footer{background:#061630;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-block:22px}
+footer button{background:none;border:0;padding:0;color:inherit;text-decoration:underline;text-underline-offset:3px;margin-left:18px}
+
+/* Dialog */
+dialog{width:min(520px,94vw);max-height:92svh;padding:22px;background:var(--navy);color:var(--white);border:1px solid var(--line);overflow:auto}
+dialog::backdrop{background:#000d;backdrop-filter:blur(8px)}
+dialog video,dialog img{display:block;width:100%;max-height:62svh;object-fit:contain;background:#000;margin:14px 0}
+dialog h2{font-size:26px}
+dialog p{font-size:14px;color:var(--muted)}
+dialog p+p{margin-top:10px}
+dialog .btn{margin-top:16px}
+.x{float:right;width:40px;height:40px;border:0;background:var(--white);color:var(--ink);font-size:16px;margin:0 0 8px 12px}
+
+@media(max-width:900px){
+  .reel{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:minmax(190px,46%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;margin-right:calc(var(--gutter-r)*-1);padding-right:var(--gutter-r)}
+  .tile{scroll-snap-align:start}
+  .services{grid-template-columns:1fr 1fr}
+  .services article:nth-child(odd){padding-left:0;border-left:0}
+  .services article:nth-child(n+3){border-top:1px solid var(--line)}
+  .plans,.about{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  :root{--head-h:98px}
+  .top .wrap{flex-wrap:wrap;gap:0 12px;padding-block:8px 4px}
+  .logo{width:70px;margin-right:auto}
+  .menu{order:3;width:100%;margin:0;justify-content:space-between;gap:0}
+  .menu a{padding:9px 6px;font-size:13px}
+  .hero video{object-position:70% center}
+  .hero::after{background:linear-gradient(90deg,#081d3ce6,#0c29528c),linear-gradient(0deg,#0c2952,transparent 70%)}
+  .services{grid-template-columns:1fr}
+  .services article,.services article+article{padding:22px 0 18px;border-left:0}
+  .services article+article{border-top:1px solid var(--line)}
+  .terms{grid-template-columns:1fr}
+  .actions .btn{flex:1 1 100%}
+  footer button{margin:0 18px 0 0}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="#home" aria-label="VYLE, back to top"><svg viewBox="249 445 758 364" role="img" aria-label="VYLE"><path d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path d="M738 449H771V722H738Z"/><path fill-rule="evenodd" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg></a>
+  <nav class="menu" aria-label="Sections">
+    <a href="#work">Work</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#about">About</a><a href="#contact">Contact</a>
+  </nav>
+  <a class="btn small" href="https://wa.me/96170508546" target="_blank" rel="noopener">WhatsApp us</a>
+</div></header>
+
+<main>
+<section class="hero" id="home">
+  <video src="assets/fashion-hero.mp4" poster="assets/fashion-hero-poster.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
+  <div class="wrap">
+    <p class="script">Creative studio · Beirut, Lebanon</p>
+    <h1>Content people stop for.</h1>
+    <p class="lead">Send us your footage, your product or just the idea. We turn it into videos and visuals that are ready to post.</p>
+    <div class="actions">
+      <a class="btn" href="#work">See the work <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"/></svg></a>
+      <a class="btn ghost" href="#pricing">See pricing</a>
+    </div>
+    <ul class="facts">
+      <li><b>From $20</b> per video</li>
+      <li><b>48–72 h</b> turnaround</li>
+      <li><b>2 rounds</b> of revisions</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band" id="work"><div class="wrap">
+  <div class="intro">
+    <div><p class="eyebrow">Work</p><h2>Watch first.</h2></div>
+    <p>Tap any project to play it in full, with sound.</p>
+  </div>
+  <div class="reel">
+    <button class="tile" data-project="sneaker"><div class="frame"><video src="assets/sneaker-commercial.mp4" poster="assets/sneaker-poster.jpg" muted loop playsinline preload="none"></video><span class="play"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg></span></div><h3>Sneaker Study</h3><small>Product commercial</small></button>
+    <button class="tile" data-project="watch"><div class="frame"><video src="assets/watch-commercial.mp4" poster="assets/watch-poster.jpg" muted loop playsinline preload="none"></video><span class="play"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg></span></div><h3>Watch Film</h3><small>Product film</small></button>
+    <button class="tile" data-project="spaces"><div class="frame"><video src="assets/vyle-work-film.mp4" poster="assets/vyle-work-poster.jpg" muted loop playsinline preload="none"></video><span class="play"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg></span></div><h3>Plans to Living Spaces</h3><small>Architectural edit</small></button>
+    <button class="tile" data-project="mountain"><div class="frame"><video src="assets/people.mp4" poster="assets/people-poster.jpg" muted loop playsinline preload="none"></video><span class="play"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg></span></div><h3>Above the Ordinary</h3><small>AI fashion film</small></button>
+    <button class="tile" data-project="jewelry"><div class="frame"><img src="assets/jewelry-portrait.webp" alt="Jewelry campaign portrait with a gold circle necklace" loading="lazy"></div><h3>The Detail That Matters</h3><small>Brand campaign visual</small></button>
+  </div>
+  <p class="noticed"><span>Our edits got reactions from</span><b>Swiss Butter</b><b>Beirut Beer</b><b>Deek Duke</b></p>
+  <p class="fine">Sneaker Study, Watch Film, Above the Ordinary and The Detail That Matters are independent concepts, not commissioned by the brands shown. Brand reactions were likes, comments and reposts on VYLE's social posts, not paid partnerships.</p>
+</div></section>
+
+<section class="band dark" id="services"><div class="wrap">
+  <div class="intro">
+    <div><p class="eyebrow">Services</p><h2>What we do.</h2></div>
+    <p>Four services. Pick the one that matches what you already have.</p>
+  </div>
+  <div class="services">
+    <article><span class="have">You have footage</span><h3>Video Editing</h3><p>Reels, ads and brand videos cut with pacing, captions, sound design and effects.</p></article>
+    <article><span class="have">You have an idea</span><h3>AI Creative</h3><p>Realistic AI images and videos, directed by people, for scenes a normal shoot can't get.</p></article>
+    <article><span class="have">You have a product</span><h3>Product &amp; AI Ads</h3><p>One product photo becomes a cinematic ad and a set of short-form campaign cuts.</p></article>
+    <article><span class="have">You need a look</span><h3>Brand Visuals</h3><p>Campaign imagery and social assets that keep your page looking like one brand.</p></article>
+  </div>
+</div></section>
+
+<section class="band" id="pricing"><div class="wrap">
+  <div class="intro">
+    <div><p class="eyebrow">Pricing</p><h2>Simple prices.</h2></div>
+    <p>Start with one video. Move to a monthly package when you post often.</p>
+  </div>
+  <div class="plans">
+    <div class="plan main">
+      <h3>Single video</h3>
+      <div class="price">$20 <span>per video</span></div>
+      <p>One edited video, ready to post. Good for trying us out.</p>
+      <a class="btn" href="https://wa.me/96170508546" target="_blank" rel="noopener">Order a video</a>
+    </div>
+    <div class="plan">
+      <h3>Monthly package</h3>
+      <div class="price">Tiered <span>by videos per month</span></div>
+      <p>A set number of videos every month at a lower price per video.</p>
+      <a class="btn ghost" href="https://wa.me/96170508546" target="_blank" rel="noopener">Ask for package prices</a>
+    </div>
+    <div class="plan">
+      <h3>AI ads &amp; brand visuals</h3>
+      <div class="price">Quote <span>per project</span></div>
+      <p>AI product ads, campaign images and full brand visual sets, priced by scope.</p>
+      <a class="btn ghost" href="https://calendly.com/info-vyle-lb" target="_blank" rel="noopener">Book a call</a>
+    </div>
+  </div>
+  <ul class="terms">
+    <li><b>50% deposit</b>to start, balance on final delivery</li>
+    <li><b>48–72 hours</b>from brief to first cut</li>
+    <li><b>2 revision rounds</b>included in every project</li>
+  </ul>
+</div></section>
+
+<section class="band dark" id="about"><div class="wrap about">
+  <div>
+    <p class="eyebrow">About</p>
+    <p class="big">We build the visual world behind modern brands.</p>
+    <div class="copy" style="margin-top:22px">
+      <p>VYLE is a creative studio based in Beirut, working with brands, businesses and creators anywhere.</p>
+      <p>Real people direct and edit every project. AI is one of our tools, used where it makes the result better.</p>
+    </div>
+  </div>
+  <div>
+    <p class="eyebrow">How it works</p>
+    <ol class="steps">
+      <li><h3>Tell us what you need</h3><p>Send the footage, product or idea on WhatsApp or a call.</p></li>
+      <li><h3>We create it</h3><p>Concept, editing, AI, sound and design in one place.</p></li>
+      <li><h3>You review, we deliver</h3><p>Ask for changes, then get files sized for each platform.</p></li>
+    </ol>
+  </div>
+</div></section>
+
+<section class="band contact" id="contact"><div class="wrap">
+  <p class="eyebrow">Contact</p>
+  <h2>Let's make it worth watching.</h2>
+  <p>No forms. Message us what you want to create and we'll reply with the next step.</p>
+  <div class="actions">
+    <a class="btn" href="https://wa.me/96170508546" target="_blank" rel="noopener">WhatsApp us</a>
+    <a class="btn ghost" href="https://calendly.com/info-vyle-lb" target="_blank" rel="noopener">Book a call</a>
+    <a class="btn ghost" href="https://www.instagram.com/vyle.lb/" target="_blank" rel="noopener">Instagram @vyle.lb</a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 VYLE · Beirut, Lebanon</span>
+  <span><button type="button" data-legal="privacy">Privacy</button><button type="button" data-legal="terms">Terms</button></span>
+</div></footer>
+
+<dialog id="viewer" aria-labelledby="viewer-title"><button class="x" type="button" aria-label="Close">✕</button><div id="viewer-body"></div></dialog>
+
+<script>
+const WA='https://wa.me/96170508546';
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const projects={
+  sneaker:{title:'Sneaker Study',video:'sneaker-commercial.mp4',text:'A product commercial by VYLE. Independent concept featuring Nike footwear. Not commissioned by or affiliated with Nike.'},
+  watch:{title:'Watch Film',video:'watch-commercial.mp4',text:'A product film exploring the dial, bracelet and details. Portfolio concept featuring Rolex. No commissioned relationship or endorsement is implied.'},
+  spaces:{title:'Plans to Living Spaces',video:'vyle-work-film.mp4',text:'An architectural interiors edit by VYLE, moving from plans to finished living spaces.'},
+  mountain:{title:'Above the Ordinary',video:'people.mp4',text:'An AI fashion film set on a mountain peak. Independent concept.'},
+  jewelry:{title:'The Detail That Matters',image:'jewelry-portrait.webp',text:'A jewelry campaign visual using warm light to draw the eye to the necklace. Independent concept.'}
+};
+const legal={
+  privacy:['Privacy','This site has no forms and does not collect personal information. The WhatsApp, Calendly and Instagram links open those services, and what you share there is handled by them and by VYLE when we reply. Fonts load from Google Fonts.'],
+  terms:['Terms','Concept projects on this site are illustrative and do not imply endorsement by, or a commissioned relationship with, any third-party brand. Scope, timing, fees, revisions and usage rights are agreed before work begins. A message or booking does not create a paid agreement.']
+};
+const dlg=document.getElementById('viewer'),body=document.getElementById('viewer-body');
+function open(html){body.innerHTML=html;dlg.showModal()}
+function shut(){body.querySelectorAll('video').forEach(v=>v.pause());body.innerHTML='';if(dlg.open)dlg.close()}
+dlg.querySelector('.x').addEventListener('click',shut);
+dlg.addEventListener('cancel',e=>{e.preventDefault();shut()});
+dlg.addEventListener('click',e=>{if(e.target===dlg)shut()});
+document.querySelectorAll('[data-project]').forEach(t=>{
+  const p=projects[t.dataset.project],v=t.querySelector('video');
+  t.addEventListener('click',()=>{
+    if(v)v.pause();
+    open(`<h2 id="viewer-title">${p.title}</h2>${p.video?`<video src="assets/${p.video}" controls playsinline autoplay></video>`:`<img src="assets/${p.image}" alt="${p.title}">`}<p>${p.text}</p><a class="btn" href="${WA}" target="_blank" rel="noopener">Want something like this? WhatsApp us</a>`);
+  });
+  if(v&&!reduce){
+    t.addEventListener('mouseenter',()=>v.play().catch(()=>{}));
+    t.addEventListener('mouseleave',()=>v.pause());
+  }
+});
+document.querySelectorAll('[data-legal]').forEach(b=>b.addEventListener('click',()=>{
+  const [h,t]=legal[b.dataset.legal];open(`<h2 id="viewer-title">${h}</h2><p style="margin-top:12px">${t}</p>`);
+}));
+if(reduce)document.querySelector('.hero video').removeAttribute('autoplay'),document.querySelector('.hero video').pause();
+
+// Highlight the menu item for the section in view.
+const links=[...document.querySelectorAll('.menu a')];
+const spy=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  links.forEach(a=>a.setAttribute('aria-current',String(a.getAttribute('href')==='#'+e.target.id)));
+}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('main section[id]').forEach(s=>spy.observe(s));
+</script>
+
+</body>
+</html>
