@@ -14,18 +14,17 @@
 <meta property="og:image" content="https://vylelb.com/assets/fashion-hero-poster.jpg">
 <style>
 body{margin:0}img{max-width:100%}[hidden]{display:none!important}
-/* Layout: full-screen film opening with corner labels, then numbered sections
-   (S.01 Work as a sliding row of large cards, S.02 Services, S.03 Packages, S.04 About),
-   a scrolling brand line, and a column footer that doubles as contact.
-   Brand colors only: navy and cream. One font: Montserrat. */
+/* Layout: one film fixed behind the whole page; its frames follow the scroll from top to bottom.
+   Every section sits on top of it: opening, S.01 Work, brand line, S.02 Services,
+   S.03 Packages, S.04 About, contact footer. Navy and cream only. Montserrat only. */
 :root{
   color-scheme:light;
   --navy:#0c2952;
   --deep:#081d3c;
   --cream:#faf4eb;
-  --soft:#53627a;      /* secondary text on cream */
+  --soft:#a9bcd8;      /* secondary text over the film */
   --mist:#a9bcd8;      /* secondary text on navy */
-  --line:#0c29521f;
+  --line:#faf4eb26;
   --dline:#faf4eb24;
   --silver:#c9d2df;
   --font:'Montserrat','Segoe UI',Arial,sans-serif;
@@ -34,7 +33,11 @@ body{margin:0}img{max-width:100%}[hidden]{display:none!important}
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--navy);font:16px/1.6 var(--font);-webkit-font-smoothing:antialiased}
+body{background:var(--deep);color:var(--cream);font:16px/1.6 var(--font);-webkit-font-smoothing:antialiased}
+.film{position:fixed;inset:0;z-index:-2;width:100%;height:100%;display:block}
+.tint{position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#081d3cd9 0%,#081d3c59 55%,transparent 85%),#081d3c;opacity:var(--t,.45)}
+.reveal{transform:translateY(28px);opacity:.25;transition:transform .8s cubic-bezier(.2,.7,.2,1),opacity .8s}
+.reveal.in{transform:none;opacity:1}
 body::after{content:"";position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.06;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;padding:0}
@@ -68,32 +71,23 @@ ul{padding:0;list-style:none}
 .nav-foot{display:flex;flex-wrap:wrap;gap:10px 28px;color:var(--mist)}
 .nav-foot a:hover{color:var(--cream)}
 
-/* Hero: scroll-driven film. The section is tall; the screen inside sticks while the
-   film frames advance with the visitor's scroll and the headline builds word by word. */
-.hero{position:relative;height:320svh;background:var(--deep);color:var(--cream)}
-.stage{position:sticky;top:0;height:100svh;min-height:540px;overflow:hidden}
-.stage canvas,.stage .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% center}
-.stage::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#081d3cd9 0%,#0c295266 42%,transparent 70%),linear-gradient(0deg,#081d3cb3,transparent 40%);pointer-events:none}
-.hero-in{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:calc(env(safe-area-inset-bottom,0px) + clamp(28px,5vw,56px))}
+/* Opening */
+.hero{position:relative;height:100svh;min-height:560px}
+.hero-in{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:calc(env(safe-area-inset-bottom,0px) + clamp(28px,5vw,56px))}
 .hero-in .wrap{width:100%;max-width:none;display:grid;grid-template-columns:1fr auto;align-items:end;gap:28px}
 h1{font-size:clamp(52px,9vw,140px);line-height:.92;letter-spacing:-.05em;font-weight:800}
-h1 .w{display:inline-block;opacity:.12;transform:translateY(.12em);transition:opacity .5s,transform .5s}
-h1 .w.on{opacity:1;transform:none}
-.later{opacity:0;transform:translateY(12px);transition:opacity .5s,transform .5s;pointer-events:none}
-.later.on{opacity:1;transform:none;pointer-events:auto}
 .hero .sub{margin-top:20px;color:var(--mist)}
 .quick{display:grid;grid-template-columns:repeat(2,minmax(0,200px));gap:12px}
 .quick a{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--dline)}
 .quick img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .quick a:hover img{transform:scale(1.05)}
 .quick span{position:absolute;left:8px;right:8px;bottom:8px;display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--cream);color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.progress{position:absolute;z-index:2;right:var(--gr);top:50%;width:2px;height:120px;margin-top:-60px;background:var(--dline)}
+.progress{position:fixed;z-index:15;right:calc(var(--gr) - 12px);top:50%;width:2px;height:120px;margin-top:-60px;background:var(--dline)}
 .progress i{position:absolute;inset:0 0 auto;height:0;background:var(--cream)}
-.hint{position:absolute;z-index:2;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);color:var(--mist);transition:opacity .4s}
 
 /* Sections */
 .sec{padding-block:clamp(72px,10vw,140px)}
-.navy{background:var(--navy);color:var(--cream)}
+.navy{background:transparent}
 .head{display:grid;grid-template-columns:140px 1fr auto;align-items:end;gap:20px;margin-bottom:clamp(32px,5vw,60px)}
 .num{color:var(--soft)}
 .navy .num{color:var(--mist)}
@@ -134,14 +128,14 @@ h2{font-size:clamp(34px,5.4vw,76px);line-height:1;letter-spacing:-.045em;font-we
 
 /* Packages */
 .plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.plan{display:flex;flex-direction:column;gap:18px;padding:30px 28px;border:1px solid var(--dline);min-width:0}
+.plan{display:flex;flex-direction:column;gap:18px;padding:30px 28px;border:1px solid var(--dline);min-width:0;background:#081d3c8c;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
 .plan.main{background:var(--cream);color:var(--navy);border-color:var(--cream)}
 .plan-top{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:24px}
 .tag{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 8px;background:var(--navy);color:var(--cream)}
 .price{font-size:clamp(44px,4.8vw,60px);font-weight:800;letter-spacing:-.05em;line-height:1}
 .price small{font-size:14px;font-weight:500;letter-spacing:0;opacity:.6}
 .plan ul{display:grid;gap:10px;padding-top:18px;border-top:1px solid var(--dline);flex:1;font-size:14px;align-content:start}
-.plan.main ul{border-color:var(--line)}
+.plan.main ul{border-color:#0c29521f}
 .plan li{display:flex;gap:12px}
 .plan li::before{content:"";flex:none;width:6px;height:6px;margin-top:9px;background:currentColor;opacity:.6}
 .btn{display:flex;align-items:center;justify-content:center;min-height:50px;padding:12px 20px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid currentColor;transition:background .2s,color .2s}
@@ -156,7 +150,7 @@ h2{font-size:clamp(34px,5.4vw,76px);line-height:1;letter-spacing:-.045em;font-we
 .statement span{color:var(--soft)}
 
 /* Footer / contact */
-footer{background:var(--deep);color:var(--cream);padding-top:clamp(72px,10vw,130px);padding-bottom:calc(env(safe-area-inset-bottom,0px) + 28px)}
+footer{background:#081d3ce6;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--cream);padding-top:clamp(72px,10vw,130px);padding-bottom:calc(env(safe-area-inset-bottom,0px) + 28px)}
 .cta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:28px;padding-bottom:clamp(48px,7vw,90px);border-bottom:1px solid var(--dline)}
 .cta .label{color:var(--mist);margin-bottom:14px}
 .cta h2{font-size:clamp(44px,8vw,120px)}
@@ -201,6 +195,9 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 </style>
 </head>
 <body>
+<canvas class="film" id="film" aria-hidden="true"></canvas>
+<div class="tint" id="tint"></div>
+<div class="progress" aria-hidden="true"><i id="bar-fill"></i></div>
 
 <header class="bar" id="bar"><div class="wrap">
   <a class="logo" href="#top" aria-label="VYLE, back to top"><svg viewBox="249 445 758 364" role="img" aria-label="VYLE"><path d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path d="M738 449H771V722H738Z"/><path fill-rule="evenodd" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg></a>
@@ -228,26 +225,20 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 
 <main id="top">
 <section class="hero" id="hero">
-  <div class="stage">
-    <img class="poster" src="assets/scroll/f001.webp" alt="">
-    <canvas id="film" aria-hidden="true"></canvas>
-    <div class="hero-in"><div class="wrap">
-      <div>
-        <h1 aria-label="Ideas into impact."><span class="w on">Ideas</span> <span class="w">into</span><br><span class="w">impact.</span></h1>
-        <p class="sub label later">Branding · Video editing · AI creative</p>
-      </div>
-      <div class="quick later">
-        <a href="#work"><img src="assets/sneaker-poster.jpg" alt=""><span>Our work <b aria-hidden="true">▸</b></span></a>
-        <a href="#packages"><img src="assets/studio.webp" alt=""><span>Packages <b aria-hidden="true">▸</b></span></a>
-      </div>
-    </div></div>
-    <div class="progress" aria-hidden="true"><i id="bar-fill"></i></div>
-    <p class="hint label" id="hint">Scroll</p>
-  </div>
+  <div class="hero-in"><div class="wrap">
+    <div>
+      <h1>Ideas into<br>impact.</h1>
+      <p class="sub label">Branding · Video editing · AI creative</p>
+    </div>
+    <div class="quick">
+      <a href="#work"><img src="assets/sneaker-poster.jpg" alt=""><span>Our work <b aria-hidden="true">▸</b></span></a>
+      <a href="#packages"><img src="assets/studio.webp" alt=""><span>Packages <b aria-hidden="true">▸</b></span></a>
+    </div>
+  </div></div>
 </section>
 
 <section class="sec navy" id="work">
-  <div class="wrap head">
+  <div class="wrap head reveal">
     <p class="label num">S.01</p>
     <h2>Selected work</h2>
     <div class="arrows">
@@ -255,7 +246,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
       <button type="button" data-dir="1" aria-label="Next project"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
     </div>
   </div>
-  <div class="track" id="track">
+  <div class="reveal track" id="track">
     <button class="card" type="button" data-project="sneaker"><div class="frame"><video src="assets/sneaker-commercial.mp4" poster="assets/sneaker-poster.jpg" muted loop playsinline preload="none"></video><span class="label">Video editing</span><h3>Sneaker Study</h3></div></button>
     <button class="card" type="button" data-project="watch"><div class="frame"><video src="assets/watch-commercial.mp4" poster="assets/watch-poster.jpg" muted loop playsinline preload="none"></video><span class="label">Video editing</span><h3>Watch Film</h3></div></button>
     <button class="card" type="button" data-project="mountain"><div class="frame"><video src="assets/people.mp4" poster="assets/people-poster.jpg" muted loop playsinline preload="none"></video><span class="label">AI creative</span><h3>Above the Ordinary</h3></div></button>
@@ -276,7 +267,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 <section class="sec" id="services">
   <div class="wrap">
     <div class="head"><p class="label num">S.02</p><h2>Services</h2></div>
-    <ul class="svc">
+    <ul class="reveal svc">
       <li><span class="label num">Identity</span><h3>Branding</h3><p>Logos, colors and visuals that make you recognizable.</p></li>
       <li><span class="label num">Motion</span><h3>Video Editing</h3><p>Reels, ads and brand videos that keep people watching.</p></li>
       <li><span class="label num">AI</span><h3>AI Creative</h3><p>Realistic AI images and videos, directed by people.</p></li>
@@ -287,7 +278,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 <section class="sec navy" id="packages">
   <div class="wrap">
     <div class="head"><p class="label num">S.03</p><h2>Packages</h2></div>
-    <div class="plans">
+    <div class="reveal plans">
       <div class="plan">
         <div class="plan-top"><p class="label">Starter</p></div>
         <p class="price">$200<small> / month</small></p>
@@ -314,14 +305,14 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 <section class="sec" id="about">
   <div class="wrap about">
     <p class="label num">S.04</p>
-    <p class="statement">We build the visual world behind modern brands. <span>A human-run studio in Beirut.</span></p>
+    <p class="reveal statement">We build the visual world behind modern brands. <span>A human-run studio in Beirut.</span></p>
   </div>
 </section>
 </main>
 
 <footer id="contact">
   <div class="wrap">
-    <div class="cta">
+    <div class="reveal cta">
       <div><p class="label">S.05 · Contact</p><h2>Let's make<br>it happen.</h2></div>
       <a class="btn" href="https://wa.me/96170508546" target="_blank" rel="noopener">WhatsApp us</a>
     </div>
@@ -385,37 +376,37 @@ document.querySelectorAll('[data-dir]').forEach(b=>b.addEventListener('click',()
 const bar=document.getElementById('bar'),hero=document.querySelector('.hero');
 new IntersectionObserver(([e])=>bar.classList.toggle('solid',!e.isIntersecting),{rootMargin:'-72px 0px 0px 0px'}).observe(hero);
 
-// Scroll-driven opening film: frame number follows the scroll position inside the hero.
+// Page-wide film: frame number follows how far the visitor has scrolled through the whole page.
 (function(){
-  const N=120, cv=document.getElementById('film'), ctx=cv.getContext('2d');
-  const words=[...document.querySelectorAll('h1 .w')], later=[...document.querySelectorAll('.later')];
-  const fill=document.getElementById('bar-fill'), hint=document.getElementById('hint');
-  const frames=new Array(N); let want=0, drawn=-1, ticking=false;
+  const N=160, cv=document.getElementById('film'), ctx=cv.getContext('2d');
+  const tint=document.getElementById('tint'), fill=document.getElementById('bar-fill');
+  const frames=new Array(N); let target=0, cur=0, drawn=-1, running=false;
   const src=i=>'assets/scroll/f'+String(i+1).padStart(3,'0')+'.webp';
-  function load(i){if(frames[i])return;const im=new Image();im.decoding='async';im.src=src(i);im.onload=()=>{if(Math.abs(i-want)<2)draw(true)};frames[i]=im}
-  // Load every 8th frame first so scrubbing works right away, then fill the gaps.
-  for(let i=0;i<N;i+=8)load(i); setTimeout(()=>{for(let i=0;i<N;i++)load(i)},300);
-  function size(){const r=Math.min(devicePixelRatio||1,2);cv.width=cv.clientWidth*r;cv.height=cv.clientHeight*r;draw(true)}
+  function load(i){if(frames[i])return;const im=new Image();im.decoding='async';im.src=src(i);im.onload=()=>{if(Math.abs(i-Math.round(cur))<3)paint(true)};frames[i]=im}
+  // Every 10th frame first so the film works at once, then the rest in order.
+  for(let i=0;i<N;i+=10)load(i); let next=0; (function more(){for(let k=0;k<8&&next<N;k++)load(next++); if(next<N)setTimeout(more,60)})();
+  function size(){const r=Math.min(devicePixelRatio||1,1.5);cv.width=Math.round(innerWidth*r);cv.height=Math.round(innerHeight*r);paint(true)}
   function nearest(i){for(let d=0;d<N;d++){for(const k of [i-d,i+d]){const im=frames[k];if(im&&im.complete&&im.naturalWidth)return im}}return null}
-  function draw(force){
-    if(!force&&want===drawn)return; const im=nearest(want); if(!im)return; drawn=want;
-    const cw=cv.width,ch=cv.height,iw=im.naturalWidth,ih=im.naturalHeight,s=Math.max(cw/iw,ch/ih);
-    const w=iw*s,h=ih*s,x=(cw-w)*.65,y=(ch-h)/2; ctx.drawImage(im,x,y,w,h);
+  function paint(force){
+    const i=Math.round(cur); if(!force&&i===drawn)return; const im=nearest(i); if(!im)return; drawn=i;
+    const cw=cv.width,ch=cv.height,iw=im.naturalWidth,ih=im.naturalHeight,sc=Math.max(cw/iw,ch/ih);
+    const w=iw*sc,h=ih*sc; ctx.drawImage(im,(cw-w)*.65,(ch-h)/2,w,h);
   }
-  function update(){
-    ticking=false;
-    const r=hero.getBoundingClientRect(), span=hero.offsetHeight-innerHeight;
-    const p=Math.min(1,Math.max(0,-r.top/span));
-    want=Math.round(p*(N-1)); draw();
-    words.forEach((w,k)=>w.classList.toggle('on',p>=[0,.3,.6][k]));
-    later.forEach(el=>el.classList.toggle('on',p>.85));
-    fill.style.height=(p*100)+'%'; hint.style.opacity=p>.03?0:1;
+  function read(){
+    const max=document.documentElement.scrollHeight-innerHeight, p=max>0?Math.min(1,Math.max(0,scrollY/max)):0;
+    target=p*(N-1); fill.style.height=(p*100)+'%';
+    tint.style.setProperty('--t',(.52+Math.min(1,scrollY/innerHeight)*.24).toFixed(3));
   }
-  function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(update)}}
-  if(reduce){hero.style.height='100svh';words.forEach(w=>w.classList.add('on'));later.forEach(el=>el.classList.add('on'));want=N-1;hint.hidden=true}
-  addEventListener('scroll',onScroll,{passive:true}); addEventListener('resize',()=>{size();update()});
-  size(); update();
+  // Ease toward the scroll position so the film glides instead of jumping.
+  function loop(){cur+=(target-cur)*.18; if(Math.abs(target-cur)<.05)cur=target; paint(); if(cur!==target)requestAnimationFrame(loop); else running=false}
+  function kick(){read(); if(reduce){cur=target;paint();return} if(!running){running=true;requestAnimationFrame(loop)}}
+  addEventListener('scroll',kick,{passive:true}); addEventListener('resize',()=>{size();kick()});
+  size(); read(); cur=target; paint(true);
 })();
+
+// Sections glide into place as they enter the screen.
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>reduce?el.classList.add('in'):io.observe(el));
 
 // Full-screen menu
 const nav=document.getElementById('nav'),openBtn=document.getElementById('menu-open'),closeBtn=document.getElementById('menu-close');
