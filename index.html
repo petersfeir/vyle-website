@@ -99,7 +99,7 @@ h1{font-size:clamp(40px,6.2vw,92px);line-height:.95;letter-spacing:-.045em;font-
 h2{font-size:clamp(28px,3.6vw,50px);line-height:1.05;letter-spacing:-.035em;font-weight:800}
 
 /* Portfolio */
-.cover{position:relative;overflow:hidden;aspect-ratio:16/9;background:var(--deep);width:min(100%,720px);margin-left:auto}
+.cover{position:relative;overflow:hidden;aspect-ratio:16/9;background:var(--deep);width:min(100%,960px,(100svh - 240px)*16/9);margin-inline:auto}
 .cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .cover::before,.cover::after{content:"";position:absolute;z-index:1;width:20px;height:20px;border:1.5px solid var(--silver);pointer-events:none}
 .cover::before{top:14px;left:14px;border-right:0;border-bottom:0}
@@ -175,7 +175,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 .x{float:right;width:40px;height:40px;background:var(--cream);color:var(--navy);font-size:16px;margin:0 0 8px 12px}
 
 @media(max-width:700px){
-  .cover{aspect-ratio:9/16;width:min(78%,300px)}
+  .cover{aspect-ratio:9/16;width:min(100%,420px,(100svh - 230px)*9/16)}
   .folio{grid-template-columns:1fr 1fr}
 }
 @media(max-width:900px){
