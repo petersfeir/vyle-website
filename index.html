@@ -16,7 +16,7 @@
 body{margin:0}img{max-width:100%}[hidden]{display:none!important}
 /* Layout: one looping film fixed behind the whole page. Every block slides in from the
    left or the right as it scrolls into view and slides back out when it leaves.
-   Opening, S.01 Work, brand line, S.02 Services, S.03 Packages, S.04 About, contact.
+   Opening, Portfolio, brand line, Services, Packages, About, contact.
    Navy and cream only. Montserrat only. */
 :root{
   color-scheme:light;
@@ -95,7 +95,7 @@ h1{font-size:clamp(40px,6.2vw,92px);line-height:.95;letter-spacing:-.045em;font-
 /* Sections */
 .sec{padding-block:clamp(64px,8vw,112px)}
 .navy{background:transparent}
-.head{display:grid;grid-template-columns:140px 1fr auto;align-items:end;gap:20px;margin-bottom:clamp(32px,5vw,60px)}
+.head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:20px;margin-bottom:clamp(32px,5vw,60px)}
 .num{color:var(--soft)}
 .navy .num{color:var(--mist)}
 h2{font-size:clamp(28px,3.6vw,50px);line-height:1.05;letter-spacing:-.035em;font-weight:800}
@@ -149,7 +149,7 @@ h2{font-size:clamp(28px,3.6vw,50px);line-height:1.05;letter-spacing:-.035em;font
 .plans-note{margin-top:22px;color:var(--mist);font-size:13px}
 
 /* About */
-.about{display:grid;grid-template-columns:140px 1fr;gap:20px}
+.about{display:block}
 .statement{font-size:clamp(24px,3vw,42px);line-height:1.15;letter-spacing:-.03em;font-weight:800;max-width:18em}
 .statement span{color:var(--soft)}
 
@@ -184,11 +184,10 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
   .hero-in .wrap{grid-template-columns:1fr}
   .quick{grid-template-columns:repeat(2,minmax(0,1fr))}
   .head{grid-template-columns:1fr auto}
-  .head .num{grid-column:1/-1}
   .svc li{grid-template-columns:1fr;gap:8px}
   .plans{grid-template-columns:1fr}
   .plan{max-width:560px}
-  .about{grid-template-columns:1fr}
+
   .cols{grid-template-columns:1fr 1fr}
 }
 @media(max-width:560px){
@@ -218,11 +217,11 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
     <button class="close label" type="button" id="menu-close">Close <i aria-hidden="true">✕</i></button>
   </div>
   <ol>
-    <li><a href="#portfolio"><span>S.01</span>Portfolio</a></li>
-    <li><a href="#services"><span>S.02</span>Services</a></li>
-    <li><a href="#packages"><span>S.03</span>Packages</a></li>
-    <li><a href="#about"><span>S.04</span>About</a></li>
-    <li><a href="#contact"><span>S.05</span>Contact</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ol>
   <div class="nav-foot label">
     <a href="https://wa.me/96170508546" target="_blank" rel="noopener">WhatsApp</a>
@@ -243,7 +242,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 
 <section class="sec navy" id="portfolio">
   <div class="wrap">
-    <div class="head"><p class="label num" data-from="left">S.01</p><h2 data-from="left" style="--d:.08s">Portfolio</h2></div>
+    <div class="head"><h2 data-from="left" style="--d:.08s">Portfolio</h2></div>
     <!-- Portfolio items go in .folio: add class "wide" for 16:9 work and "tall" for 9:16 work. -->
     <div class="cover" data-from="right" style="--d:.1s">
       <picture>
@@ -269,7 +268,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 
 <section class="sec" id="services">
   <div class="wrap">
-    <div class="head"><p class="label num" data-from="left">S.02</p><h2 data-from="left" style="--d:.08s">Services</h2></div>
+    <div class="head"><h2 data-from="left" style="--d:.08s">Services</h2></div>
     <ul class="svc">
       <li data-from="left"><span class="label num">Identity</span><h3>Branding</h3><p>Logos, colors and visuals that make you recognizable.</p></li>
       <li data-from="right"><span class="label num">Motion</span><h3>Video Editing</h3><p>Reels, ads and brand videos that keep people watching.</p></li>
@@ -280,7 +279,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 
 <section class="sec navy" id="packages">
   <div class="wrap">
-    <div class="head"><p class="label num" data-from="left">S.03</p><h2 data-from="left" style="--d:.08s">Packages</h2></div>
+    <div class="head"><h2 data-from="left" style="--d:.08s">Packages</h2></div>
     <div class="plans">
       <div class="plan" data-from="left">
         <div class="plan-top"><p class="label">Starter</p></div>
@@ -307,7 +306,6 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 
 <section class="sec" id="about">
   <div class="wrap about">
-    <p class="label num" data-from="left">S.04</p>
     <p class="statement" data-from="right">We build the visual world behind modern brands. <span>A human-run studio in Beirut.</span></p>
   </div>
 </section>
@@ -316,7 +314,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 <footer id="contact">
   <div class="wrap">
     <div class="cta">
-      <div data-from="left"><p class="label">S.05 · Contact</p><h2>Let's make<br>it happen.</h2></div>
+      <div data-from="left"><p class="label">Contact</p><h2>Let's make<br>it happen.</h2></div>
       <a class="btn" data-from="right" href="https://wa.me/96170508546" target="_blank" rel="noopener">WhatsApp us</a>
     </div>
     <div class="cols">
