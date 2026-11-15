@@ -160,7 +160,16 @@ h2{font-size:clamp(28px,3.6vw,50px);line-height:1.05;letter-spacing:-.035em;font
 .statement span{color:var(--soft)}
 
 /* Footer / contact */
-footer{background:#081d3ced;color:var(--cream);padding-top:clamp(72px,10vw,130px);padding-bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
+footer{position:relative;overflow:hidden;isolation:isolate;background:#081d3ced;color:var(--cream);padding-top:clamp(72px,10vw,130px);padding-bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
+/* Giant VYLE outline that draws itself behind "Let's make it happen", with the brand light sweep. */
+.giant{position:absolute;z-index:-1;left:50%;top:clamp(24px,4vw,60px);width:min(1250px,112%);transform:translateX(-50%);fill:none;stroke:#faf4eb;stroke-width:1.4;opacity:.22;pointer-events:none}
+.giant path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.6s cubic-bezier(.6,.05,.25,1)}
+.giant path:nth-child(2){transition-delay:.25s}
+.giant path:nth-child(3){transition-delay:.5s}
+.giant path:nth-child(4){transition-delay:.75s}
+.giant.in path{stroke-dashoffset:0}
+footer::before{content:"";position:absolute;z-index:-1;inset:-40% -60%;background:linear-gradient(115deg,transparent 44%,#faf4eb17 50%,transparent 56%);animation:sweep 8s ease-in-out infinite;pointer-events:none}
+@keyframes sweep{0%{transform:translateX(-35%)}60%,100%{transform:translateX(35%)}}
 .cta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:28px;padding-bottom:clamp(48px,7vw,90px);border-bottom:1px solid var(--dline)}
 .cta .label{color:var(--mist);margin-bottom:14px}
 .cta h2{font-size:clamp(34px,5.4vw,76px)}
@@ -210,7 +219,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
   .cta .btn{width:100%}
   .legal button{margin:0 18px 0 0}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.marquee ul{animation:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.marquee ul{animation:none}footer::before{animation:none;display:none}}
 </style>
 </head>
 <body>
@@ -326,6 +335,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 </main>
 
 <footer id="contact">
+  <svg class="giant" id="giant" viewBox="245 441 766 372" aria-hidden="true"><path pathLength="1" d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path pathLength="1" d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path pathLength="1" d="M738 449H771V722H738Z"/><path pathLength="1" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg>
   <div class="wrap">
     <div class="cta">
       <div data-from="left"><p class="label">Contact</p><h2>Let's make<br>it happen.</h2></div>
@@ -385,6 +395,10 @@ if(reduce){film.removeAttribute('autoplay');film.pause()}
 // Blocks slide in from their side when they enter the screen and slide back out when they leave.
 const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('in',e.isIntersecting)),{rootMargin:'-6% 0px -6% 0px'});
 document.querySelectorAll('[data-from]').forEach(el=>reduce?el.classList.add('in'):io.observe(el));
+// The big VYLE outline draws itself each time the contact panel comes into view.
+const giant=document.getElementById('giant');
+if(reduce)giant.classList.add('in');
+else new IntersectionObserver(([e])=>giant.classList.toggle('in',e.isIntersecting),{threshold:.25}).observe(document.getElementById('contact'));
 
 // Full-screen menu
 const nav=document.getElementById('nav'),openBtn=document.getElementById('menu-open'),closeBtn=document.getElementById('menu-close');
