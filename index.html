@@ -66,6 +66,9 @@ body{background:var(--deep);color:var(--cream);font:16px/1.6 var(--font);-webkit
 [data-from]{opacity:0;transition:transform .9s cubic-bezier(.2,.75,.2,1),opacity .7s ease;transition-delay:var(--d,0s);will-change:transform,opacity}
 [data-from="left"]{transform:translateX(-90px)}
 [data-from="right"]{transform:translateX(90px)}
+/* Soft entrance: comes into focus and settles instead of sliding. */
+[data-from="fade"]{transform:scale(1.07);filter:blur(16px);transition:transform 1.8s cubic-bezier(.2,.7,.2,1),opacity 1.3s ease,filter 1.5s ease}
+[data-from="fade"].in{filter:blur(0)}
 [data-from].in{opacity:1;transform:none}
 body::after{content:"";position:fixed;inset:0;z-index:50;pointer-events:none;opacity:.06;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 a{color:inherit;text-decoration:none}
@@ -125,12 +128,10 @@ h1{font-size:clamp(40px,6.2vw,92px);line-height:.95;letter-spacing:-.045em;font-
 h2{font-size:clamp(28px,3.6vw,50px);line-height:1.05;letter-spacing:-.035em;font-weight:800}
 
 /* Portfolio */
-.cover{position:relative;overflow:hidden;aspect-ratio:16/9;background:var(--deep);width:min(100%,960px,(100svh - 240px)*16/9);margin-inline:auto}
-.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.cover::before,.cover::after{content:"";position:absolute;z-index:1;width:20px;height:20px;border:1.5px solid var(--silver);pointer-events:none}
-.cover::before{top:14px;left:14px;border-right:0;border-bottom:0}
-.cover::after{top:14px;right:14px;border-left:0;border-bottom:0}
-.cover-text{position:absolute;z-index:1;left:0;right:0;bottom:0;display:grid;gap:10px;justify-items:start;padding:clamp(18px,3vw,32px);background:linear-gradient(transparent,#081d3cf2)}
+.cover{position:relative;overflow:hidden;aspect-ratio:16/9;width:min(100%,960px,(100svh - 240px)*16/9);margin-inline:auto}
+/* Edges dissolve into the background film, so the picture has no hard frame. */
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;-webkit-mask-image:radial-gradient(closest-side at 50% 50%,#000 58%,transparent 100%);mask-image:radial-gradient(closest-side at 50% 50%,#000 58%,transparent 100%)}
+.cover-text{position:absolute;z-index:1;left:0;right:0;bottom:0;display:grid;gap:10px;justify-items:start;padding:clamp(18px,3vw,32px) clamp(18px,4vw,44px) clamp(22px,3.4vw,40px);background:radial-gradient(ellipse 75% 100% at 20% 100%,#081d3ce6,transparent 75%)}
 .cover-text .label{color:var(--mist)}
 .cover-text h3{font-size:clamp(17px,1.8vw,24px);font-weight:800;letter-spacing:-.03em;line-height:1.15;max-width:16em}
 .cover-text .btn{background:var(--cream);color:var(--navy);border-color:var(--cream);margin-top:6px}
@@ -317,7 +318,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
   <div class="wrap">
     <div class="head"><h2 data-from="left" style="--d:.08s">Portfolio</h2></div>
     <!-- Portfolio items go in .folio: add class "wide" for 16:9 work and "tall" for 9:16 work. -->
-    <div class="cover" data-from="right" style="--d:.1s">
+    <div class="cover" data-from="fade" style="--d:.1s">
       <picture>
         <source media="(max-width:700px)" srcset="assets/eye-tall.webp">
         <img src="assets/eye-wide.webp" alt="Close-up of an eye reflecting a film set with a camera and studio light" loading="lazy">
