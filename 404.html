@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Page not found | VYLE</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#081d3c">
+<link rel="icon" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap">
+<style>
+/* Same world as the home page: monolith film, navy shade, cream type. */
+:root{--navy:#0c2952;--deep:#081d3c;--cream:#faf4eb;--mist:#a9bcd8}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--deep);color:var(--cream);font:16px/1.6 'Montserrat','Segoe UI',Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;background:var(--deep) url('/assets/monolith-poster.jpg') center/cover}
+.shade{position:fixed;inset:0;z-index:-1;background:linear-gradient(90deg,#081d3ce6 0%,#081d3c8c 60%,#081d3c59 100%)}
+main{height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:calc(env(safe-area-inset-top,0px) + 22px) max(24px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 40px) max(24px,env(safe-area-inset-left,0px))}
+.logo{display:block;width:78px}
+.logo svg{display:block;width:100%;fill:var(--cream)}
+.label{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mist)}
+h1{margin:14px 0 0;font-size:clamp(40px,7vw,96px);line-height:.95;letter-spacing:-.045em;font-weight:800}
+p{margin:18px 0 0;color:var(--mist);max-width:28em}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;margin-top:28px;padding:12px 28px;background:var(--cream);color:var(--navy);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none}
+.btn:hover{background:var(--mist)}
+a:focus-visible{outline:2px solid var(--cream);outline-offset:4px}
+@media(max-width:560px){.btn{width:100%}}
+@media(prefers-reduced-motion:reduce){video{display:none}}
+</style>
+</head>
+<body>
+<video src="/assets/monolith-loop.mp4" poster="/assets/monolith-poster.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
+<div class="shade"></div>
+<main>
+  <a class="logo" href="/" aria-label="VYLE home"><svg viewBox="249 445 758 364" aria-hidden="true"><path d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path d="M738 449H771V722H738Z"/><path fill-rule="evenodd" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg></a>
+  <div>
+    <p class="label">Error 404</p>
+    <h1>This page<br>doesn't exist.</h1>
+    <p>The link may be old or mistyped. Everything about VYLE is on the home page.</p>
+    <a class="btn" href="/">Back to VYLE</a>
+  </div>
+</main>
+</body>
+</html>
