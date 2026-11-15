@@ -22,7 +22,7 @@ gtag('js',new Date());gtag('config','G-0S7D8YQK2B');
 body{margin:0}img{max-width:100%}[hidden]{display:none!important}
 /* Layout: one looping film fixed behind the whole page. Every block slides in from the
    left or the right as it scrolls into view and slides back out when it leaves.
-   Opening, Portfolio, brand line, Services, Packages, About, contact.
+   Opening, Services, brand line, Portfolio, Packages, About, contact.
    Navy and cream only. Montserrat only. */
 :root{
   color-scheme:light;
@@ -230,8 +230,8 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
     <button class="close label" type="button" id="menu-close">Close <i aria-hidden="true">✕</i></button>
   </div>
   <ol>
-    <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#packages">Packages</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -254,6 +254,25 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
   </div></div>
 </section>
 
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="head"><h2 data-from="left" style="--d:.08s">Services</h2></div>
+    <ul class="svc">
+      <li data-from="left"><span class="label num">Identity</span><h3>Branding</h3><p>Logos, colors and visuals that make you recognizable.</p></li>
+      <li data-from="right"><span class="label num">Motion</span><h3>Video Editing</h3><p>Reels, ads and brand videos that keep people watching.</p></li>
+      <li data-from="left"><span class="label num">AI</span><h3>AI Creative</h3><p>Realistic AI images and videos, directed by people.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="brands" aria-label="Noticed by Swiss Butter, Beirut Beer and Deek Duke" data-from="left">
+  <p class="label">Noticed by</p>
+  <div class="marquee" aria-hidden="true">
+    <ul><li>Swiss Butter</li><li>Beirut Beer</li><li>Deek Duke</li><li>Swiss Butter</li><li>Beirut Beer</li><li>Deek Duke</li></ul>
+    <ul><li>Swiss Butter</li><li>Beirut Beer</li><li>Deek Duke</li><li>Swiss Butter</li><li>Beirut Beer</li><li>Deek Duke</li></ul>
+  </div>
+</section>
+
 <section class="sec navy" id="portfolio">
   <div class="wrap">
     <div class="head"><h2 data-from="left" style="--d:.08s">Portfolio</h2></div>
@@ -269,25 +288,6 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
         <a class="btn" href="https://www.instagram.com/vyle.lb/" target="_blank" rel="noopener">See our latest on Instagram</a>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="brands" aria-label="Noticed by Swiss Butter, Beirut Beer and Deek Duke" data-from="left">
-  <p class="label">Noticed by</p>
-  <div class="marquee" aria-hidden="true">
-    <ul><li>Swiss Butter</li><li>Beirut Beer</li><li>Deek Duke</li><li>Swiss Butter</li><li>Beirut Beer</li><li>Deek Duke</li></ul>
-    <ul><li>Swiss Butter</li><li>Beirut Beer</li><li>Deek Duke</li><li>Swiss Butter</li><li>Beirut Beer</li><li>Deek Duke</li></ul>
-  </div>
-</section>
-
-<section class="sec" id="services">
-  <div class="wrap">
-    <div class="head"><h2 data-from="left" style="--d:.08s">Services</h2></div>
-    <ul class="svc">
-      <li data-from="left"><span class="label num">Identity</span><h3>Branding</h3><p>Logos, colors and visuals that make you recognizable.</p></li>
-      <li data-from="right"><span class="label num">Motion</span><h3>Video Editing</h3><p>Reels, ads and brand videos that keep people watching.</p></li>
-      <li data-from="left"><span class="label num">AI</span><h3>AI Creative</h3><p>Realistic AI images and videos, directed by people.</p></li>
-    </ul>
   </div>
 </section>
 
@@ -332,7 +332,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
       <a class="btn" data-from="right" href="https://wa.me/96170508546" target="_blank" rel="noopener">WhatsApp us</a>
     </div>
     <div class="cols">
-      <div data-from="left"><p class="label">Explore</p><ul><li><a href="#portfolio">Portfolio</a></li><li><a href="#services">Services</a></li><li><a href="#packages">Packages</a></li><li><a href="#about">About</a></li></ul></div>
+      <div data-from="left"><p class="label">Explore</p><ul><li><a href="#services">Services</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#packages">Packages</a></li><li><a href="#about">About</a></li></ul></div>
       <div data-from="left" style="--d:.08s"><p class="label">Contact</p><ul><li><a href="https://wa.me/96170508546" target="_blank" rel="noopener">+961 70 508 546</a></li><li><a href="mailto:info.vyle.lb@gmail.com">info.vyle.lb@gmail.com</a></li><li><a href="https://calendly.com/info-vyle-lb" target="_blank" rel="noopener">Book a call</a></li></ul></div>
       <div data-from="right" style="--d:.08s"><p class="label">Follow</p><ul><li><a href="https://www.instagram.com/vyle.lb/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
       <div data-from="right"><p class="label">Studio</p><ul><li>Beirut, Lebanon</li><li>Working worldwide</li></ul></div>
