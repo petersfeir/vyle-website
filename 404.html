@@ -32,8 +32,18 @@ a:focus-visible{outline:2px solid var(--cream);outline-offset:4px}
 </style>
 </head>
 <body>
-<video src="/assets/monolith-loop.mp4" poster="/assets/monolith-poster.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
+<video data-film poster="/assets/monolith-poster.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
 <div class="shade"></div>
+<script>
+// Pick the sharpest film for the screen: tall phone cut for portrait screens, full HD otherwise.
+(function(){var tall=matchMedia('(max-aspect-ratio: 4/5)').matches;
+document.querySelectorAll('video[data-film]').forEach(function(v){
+  if(tall)v.poster='/assets/monolith-poster-phone.jpg';
+  v.src='/assets/'+(tall?'monolith-phone.mp4':'monolith-hd.mp4');
+  if(v.autoplay){var p=v.play();if(p)p.catch(function(){})}
+});})();
+</script>
+
 <main>
   <a class="logo" href="/" aria-label="VYLE home"><svg viewBox="249 445 758 364" aria-hidden="true"><path d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path d="M738 449H771V722H738Z"/><path fill-rule="evenodd" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg></a>
   <div>
