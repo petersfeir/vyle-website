@@ -12,7 +12,9 @@
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 gtag('js',new Date());gtag('config','G-0S7D8YQK2B');
 </script>
-<link rel="icon" href="favicon.svg">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-96.png" type="image/png" sizes="96x96">
 <link rel="canonical" href="https://vylelb.com/">
 <meta property="og:title" content="VYLE | Ideas Into Impact">
 <meta property="og:description" content="Branding, video editing and AI creative. Creative studio in Beirut.">
@@ -185,7 +187,7 @@ h2{font-size:clamp(28px,3.6vw,50px);line-height:1.05;letter-spacing:-.035em;font
 footer{position:relative;overflow:hidden;isolation:isolate;background:#081d3ced;color:var(--cream);padding-top:clamp(72px,10vw,130px);padding-bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
 /* VYLE signature behind "Let's make it happen", with the brand light sweep. */
 /* Signed one letter after another, like a pen: v, y, l, e. */
-.giant{position:absolute;z-index:-1;left:clamp(150px,24vw,380px);top:clamp(-10px,1vw,20px);padding:0 .35em .3em .25em;font-family:'Mrs Saint Delafield','Brush Script MT',cursive;font-size:clamp(150px,16vw,240px);line-height:1.1;color:#faf4eb;opacity:.34;white-space:nowrap;transform:rotate(-7deg);transform-origin:left center;pointer-events:none;clip-path:inset(-40% 100% -40% -10%)}
+.giant{position:absolute;z-index:-1;left:50%;top:clamp(-10px,1vw,20px);padding:0 .35em .3em .25em;font-family:'Mrs Saint Delafield','Brush Script MT',cursive;font-size:clamp(150px,16vw,240px);line-height:1.1;color:#faf4eb;opacity:.34;white-space:nowrap;transform:translateX(-50%) rotate(-7deg);transform-origin:center;pointer-events:none;clip-path:inset(-40% 100% -40% -10%)}
 /* Revealed left to right, like a pen writing the signature. */
 .giant.in{clip-path:inset(-40% -10% -40% -10%);transition:clip-path 2.2s cubic-bezier(.55,.05,.35,1)}
 footer::before{content:"";position:absolute;z-index:-1;inset:-40% -60%;background:linear-gradient(115deg,transparent 44%,#faf4eb17 50%,transparent 56%);animation:sweep 8s ease-in-out infinite;pointer-events:none}
@@ -234,7 +236,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 }
 @media(max-width:560px){
   .hero-in{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
-  .giant{left:24%;top:40px;font-size:112px;opacity:.34}
+  .giant{top:40px;font-size:112px;opacity:.34}
   .menu-btn b{display:none}
   .brands{flex-direction:column;align-items:flex-start;gap:14px}
   .marquee{width:100%}
