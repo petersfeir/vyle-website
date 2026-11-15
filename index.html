@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>VYLE | Ideas Into Impact</title>
 <meta name="description" content="VYLE is a creative studio in Beirut for branding, video editing and AI creative.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Mrs+Saint+Delafield&display=swap">
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0S7D8YQK2B"></script>
 <script>
@@ -32,7 +32,7 @@ gtag('js',new Date());gtag('config','G-0S7D8YQK2B');
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"VYLE","url":"https://vylelb.com/","logo":"https://vylelb.com/icon-512.png","image":"https://vylelb.com/assets/og-image.jpg","slogan":"Ideas into impact.","description":"Human-run creative studio in Beirut for branding, video editing and AI creative.","email":"info.vyle.lb@gmail.com","telephone":"+96170508546","address":{"@type":"PostalAddress","addressLocality":"Beirut","addressCountry":"LB"},"areaServed":"Worldwide","sameAs":["https://www.instagram.com/vyle.lb/"],"knowsAbout":["Branding","Video editing","AI creative"],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Branding"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Video Editing"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"AI Creative"}}]}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"VYLE","url":"https://vylelb.com/","logo":"https://vylelb.com/icon-512.png","image":"https://vylelb.com/assets/og-image.jpg","slogan":"Ideas into impact.","description":"Human-run creative studio in Beirut for branding, video editing and AI creative.","email":"info.vyle.lb@gmail.com","telephone":"+96170508546","address":{"@type":"PostalAddress","addressLocality":"Beirut","addressCountry":"LB"},"areaServed":"Worldwide","sameAs":["https://www.instagram.com/vyle.lb/","https://www.tiktok.com/@vyle.lb"],"knowsAbout":["Branding","Video editing","AI creative"],"makesOffer":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Branding"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Video Editing"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"AI Creative"}}]}
 </script>
 <style>
 body{margin:0}img{max-width:100%}[hidden]{display:none!important}
@@ -183,15 +183,11 @@ h2{font-size:clamp(28px,3.6vw,50px);line-height:1.05;letter-spacing:-.035em;font
 
 /* Footer / contact */
 footer{position:relative;overflow:hidden;isolation:isolate;background:#081d3ced;color:var(--cream);padding-top:clamp(72px,10vw,130px);padding-bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
-/* Giant VYLE outline that draws itself behind "Let's make it happen", with the brand light sweep. */
+/* VYLE signature behind "Let's make it happen", with the brand light sweep. */
 /* Signed one letter after another, like a pen: v, y, l, e. */
-.giant{position:absolute;z-index:-1;left:clamp(120px,22vw,340px);top:clamp(30px,5vw,70px);width:min(560px,44vw);transform:rotate(-9deg);transform-origin:left center;fill:none;stroke:#faf4eb;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;opacity:.3;pointer-events:none}
-.giant path{stroke-dasharray:1;stroke-dashoffset:1}
-.giant.in path{stroke-dashoffset:0}
-.giant.in path:nth-child(1){transition:stroke-dashoffset .55s cubic-bezier(.45,0,.55,1) 0s}
-.giant.in path:nth-child(2){transition:stroke-dashoffset .6s cubic-bezier(.45,0,.55,1) .55s}
-.giant.in path:nth-child(3){transition:stroke-dashoffset .3s cubic-bezier(.45,0,.55,1) 1.15s}
-.giant.in path:nth-child(4){transition:stroke-dashoffset .75s cubic-bezier(.45,0,.55,1) 1.45s}
+.giant{position:absolute;z-index:-1;left:clamp(150px,24vw,380px);top:clamp(-10px,1vw,20px);padding:0 .35em .3em .25em;font-family:'Mrs Saint Delafield','Brush Script MT',cursive;font-size:clamp(150px,16vw,240px);line-height:1.1;color:#faf4eb;opacity:.34;white-space:nowrap;transform:rotate(-7deg);transform-origin:left center;pointer-events:none;clip-path:inset(0 100% 0 0)}
+/* Revealed left to right, like a pen writing the signature. */
+.giant.in{clip-path:inset(0 0 0 0);transition:clip-path 2.2s cubic-bezier(.55,.05,.35,1)}
 footer::before{content:"";position:absolute;z-index:-1;inset:-40% -60%;background:linear-gradient(115deg,transparent 44%,#faf4eb17 50%,transparent 56%);animation:sweep 8s ease-in-out infinite;pointer-events:none}
 @keyframes sweep{0%{transform:translateX(-35%)}60%,100%{transform:translateX(35%)}}
 .cta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:28px;padding-bottom:clamp(48px,7vw,90px);border-bottom:1px solid var(--dline)}
@@ -238,7 +234,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 }
 @media(max-width:560px){
   .hero-in{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
-  .giant{width:72%;left:22%;top:34px;stroke-width:4;opacity:.3}
+  .giant{left:30%;top:6px;font-size:118px;opacity:.34}
   .menu-btn b{display:none}
   .brands{flex-direction:column;align-items:flex-start;gap:14px}
   .marquee{width:100%}
@@ -276,6 +272,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
   <div class="nav-foot label">
     <a href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" data-where="menu">WhatsApp</a>
     <a href="https://www.instagram.com/vyle.lb/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.tiktok.com/@vyle.lb" target="_blank" rel="noopener">TikTok</a>
     <a href="https://calendly.com/info-vyle-lb" target="_blank" rel="noopener">Book a call</a>
     <a href="mailto:info.vyle.lb@gmail.com">Email</a>
   </div>
@@ -367,7 +364,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 </main>
 
 <footer id="contact">
-  <svg class="giant" id="giant" viewBox="245 441 766 372" aria-hidden="true"><path pathLength="1" d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path pathLength="1" d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path pathLength="1" d="M738 449H771V722H738Z"/><path pathLength="1" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg>
+  <span class="giant" id="giant" aria-hidden="true">Vyle</span>
   <div class="wrap">
     <div class="cta">
       <div data-from="left"><p class="label">Contact</p><h2>Let's make<br>it happen.</h2></div>
@@ -376,7 +373,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
     <div class="cols">
       <div data-from="left"><p class="label">Explore</p><ul><li><a href="#services">Services</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#packages">Packages</a></li><li><a href="#about">About</a></li></ul></div>
       <div data-from="left" style="--d:.08s"><p class="label">Contact</p><ul><li><a href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" data-where="footer number">+961 70 508 546</a></li><li><a href="mailto:info.vyle.lb@gmail.com">info.vyle.lb@gmail.com</a></li><li><a href="https://calendly.com/info-vyle-lb" target="_blank" rel="noopener">Book a call</a></li></ul></div>
-      <div data-from="right" style="--d:.08s"><p class="label">Follow</p><ul><li><a href="https://www.instagram.com/vyle.lb/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+      <div data-from="right" style="--d:.08s"><p class="label">Follow</p><ul><li><a href="https://www.instagram.com/vyle.lb/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@vyle.lb" target="_blank" rel="noopener">TikTok</a></li></ul></div>
       <div data-from="right"><p class="label">Studio</p><ul><li>Beirut, Lebanon</li><li>Working worldwide</li></ul></div>
     </div>
     <div class="legal">
@@ -393,7 +390,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 <script>
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const legal={
-  privacy:['Privacy','This site has no forms. We use Google Analytics to count visits and see which pages people view; it uses cookies and does not tell us who you are. The WhatsApp, email, Calendly and Instagram links open those services, and what you share there is handled by them and by VYLE when we reply. Fonts load from Google Fonts.'],
+  privacy:['Privacy','This site has no forms. We use Google Analytics to count visits and see which pages people view; it uses cookies and does not tell us who you are. The WhatsApp, email, Calendly, Instagram and TikTok links open those services, and what you share there is handled by them and by VYLE when we reply. Fonts load from Google Fonts.'],
   terms:['Terms','Brands listed under "Noticed by" interacted with VYLE posts; these are not paid partnerships or endorsements. Scope, timing, fees, revisions and usage rights are agreed before work begins.']
 };
 
@@ -427,7 +424,7 @@ if(reduce){film.removeAttribute('autoplay');film.pause()}
 // Blocks slide in from their side when they enter the screen and slide back out when they leave.
 const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('in',e.isIntersecting)),{rootMargin:'-6% 0px -6% 0px'});
 document.querySelectorAll('[data-from]').forEach(el=>reduce?el.classList.add('in'):io.observe(el));
-// The big VYLE outline draws itself each time the contact panel comes into view.
+// The VYLE signature writes itself each time the contact panel comes into view.
 const giant=document.getElementById('giant');
 if(reduce)giant.classList.add('in');
 else new IntersectionObserver(([e])=>giant.classList.toggle('in',e.isIntersecting),{threshold:.25}).observe(document.getElementById('contact'));
@@ -449,6 +446,7 @@ document.addEventListener('click',e=>{
   else if(h.startsWith('mailto:'))name='email_click';
   else if(h.includes('calendly.com'))name='book_call_click';
   else if(h.includes('instagram.com'))name='instagram_click';
+  else if(h.includes('tiktok.com'))name='tiktok_click';
   if(name)gtag('event',name,{link_location:where,transport_type:'beacon'});
 });
 
