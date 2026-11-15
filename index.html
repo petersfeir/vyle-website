@@ -152,6 +152,12 @@ h2{font-size:clamp(28px,3.6vw,50px);line-height:1.05;letter-spacing:-.035em;font
 .svc h3{font-size:clamp(21px,2.4vw,32px);font-weight:800;letter-spacing:-.03em;line-height:1.1}
 .svc p{color:var(--soft);max-width:26em;font-size:15px}
 
+.svc-cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:clamp(28px,4vw,44px)}
+.svc-cta .btn{background:var(--cream);color:var(--navy);border-color:var(--cream);padding-inline:28px}
+.svc-cta .btn:hover{background:var(--mist)}
+.text-link{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);border-bottom:1px solid currentColor;padding-bottom:2px}
+.text-link:hover{color:var(--cream)}
+
 /* Packages */
 .plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .plan{display:flex;flex-direction:column;gap:18px;padding:30px 28px;border:1px solid var(--dline);min-width:0;background:#081d3cb3}
@@ -237,6 +243,8 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
   .brands{flex-direction:column;align-items:flex-start;gap:14px}
   .marquee{width:100%}
   .cta .btn{width:100%}
+  .svc-cta .btn{width:100%}
+  .svc-cta{flex-direction:column;align-items:flex-start}
   .legal button{margin:0 18px 0 0}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.marquee ul{animation:none}footer::before{animation:none;display:none}}
@@ -266,7 +274,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
     <li><a href="#contact">Contact</a></li>
   </ol>
   <div class="nav-foot label">
-    <a href="https://wa.me/96170508546" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" data-where="menu">WhatsApp</a>
     <a href="https://www.instagram.com/vyle.lb/" target="_blank" rel="noopener">Instagram</a>
     <a href="https://calendly.com/info-vyle-lb" target="_blank" rel="noopener">Book a call</a>
     <a href="mailto:info.vyle.lb@gmail.com">Email</a>
@@ -291,6 +299,10 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
       <li data-from="right"><span class="label num">Motion</span><h3>Video Editing</h3><p>Reels, ads and brand videos that keep people watching.</p></li>
       <li data-from="left"><span class="label num">AI</span><h3>AI Creative</h3><p>Realistic AI images and videos, directed by people.</p></li>
     </ul>
+    <div class="svc-cta">
+      <a class="btn" data-from="left" data-where="services" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Start a project</a>
+      <a class="text-link" data-from="right" href="#packages">See packages →</a>
+    </div>
   </div>
 </section>
 
@@ -359,11 +371,11 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
   <div class="wrap">
     <div class="cta">
       <div data-from="left"><p class="label">Contact</p><h2>Let's make<br>it happen.</h2></div>
-      <a class="btn" data-from="right" href="https://wa.me/96170508546" target="_blank" rel="noopener">WhatsApp us</a>
+      <a class="btn" data-from="right" data-where="contact panel" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">WhatsApp us</a>
     </div>
     <div class="cols">
       <div data-from="left"><p class="label">Explore</p><ul><li><a href="#services">Services</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#packages">Packages</a></li><li><a href="#about">About</a></li></ul></div>
-      <div data-from="left" style="--d:.08s"><p class="label">Contact</p><ul><li><a href="https://wa.me/96170508546" target="_blank" rel="noopener">+961 70 508 546</a></li><li><a href="mailto:info.vyle.lb@gmail.com">info.vyle.lb@gmail.com</a></li><li><a href="https://calendly.com/info-vyle-lb" target="_blank" rel="noopener">Book a call</a></li></ul></div>
+      <div data-from="left" style="--d:.08s"><p class="label">Contact</p><ul><li><a href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" data-where="footer number">+961 70 508 546</a></li><li><a href="mailto:info.vyle.lb@gmail.com">info.vyle.lb@gmail.com</a></li><li><a href="https://calendly.com/info-vyle-lb" target="_blank" rel="noopener">Book a call</a></li></ul></div>
       <div data-from="right" style="--d:.08s"><p class="label">Follow</p><ul><li><a href="https://www.instagram.com/vyle.lb/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
       <div data-from="right"><p class="label">Studio</p><ul><li>Beirut, Lebanon</li><li>Working worldwide</li></ul></div>
     </div>
@@ -374,7 +386,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
   </div>
 </footer>
 
-<a class="wa" href="https://wa.me/96170508546" target="_blank" rel="noopener" aria-label="Chat with VYLE on WhatsApp, +961 70 508 546"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.9 7L4 20l1.5-4A8 8 0 1 1 20 11.5z"/><path d="M9 9.5c.3 2 2 3.8 4.5 4.5"/></svg><span>WhatsApp</span></a>
+<a class="wa" data-where="floating button" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" aria-label="Chat with VYLE on WhatsApp, +961 70 508 546"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.9 7L4 20l1.5-4A8 8 0 1 1 20 11.5z"/><path d="M9 9.5c.3 2 2 3.8 4.5 4.5"/></svg><span>WhatsApp</span></a>
 
 <dialog id="viewer" aria-labelledby="viewer-title"><button class="x" type="button" aria-label="Close">✕</button><div id="viewer-body"></div></dialog>
 
@@ -427,6 +439,19 @@ function setMenu(on){if(on&&!reduce){try{navFilm.currentTime=film.currentTime}ca
 openBtn.addEventListener('click',()=>setMenu(true));
 closeBtn.addEventListener('click',()=>setMenu(false));
 nav.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+// Count every way people reach out, so Analytics shows which part of the site brings messages.
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a[href]'); if(!a||typeof gtag!=='function')return;
+  const h=a.getAttribute('href'), plan=a.closest('.plan');
+  const where=a.dataset.where||(plan?plan.querySelector('.plan-top .label').textContent.trim()+' package':a.closest('#nav')?'menu':a.closest('footer')?'footer':a.closest('.cover')?'portfolio':'page');
+  let name=null;
+  if(h.includes('wa.me'))name='whatsapp_click';
+  else if(h.startsWith('mailto:'))name='email_click';
+  else if(h.includes('calendly.com'))name='book_call_click';
+  else if(h.includes('instagram.com'))name='instagram_click';
+  if(name)gtag('event',name,{link_location:where,transport_type:'beacon'});
+});
+
 // Logo always returns to the opening screen.
 document.querySelectorAll('[data-home]').forEach(a=>a.addEventListener('click',e=>{
   e.preventDefault(); if(nav.classList.contains('open'))setMenu(false);
