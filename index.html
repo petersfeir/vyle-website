@@ -5,12 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>VYLE | Ideas Into Impact</title>
 <meta name="description" content="VYLE is a creative studio in Beirut for branding, video editing and AI creative.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Mrs+Saint+Delafield&display=swap">
 <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0S7D8YQK2B"></script>
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
 gtag('js',new Date());gtag('config','G-0S7D8YQK2B');
+// Load the Analytics script once the page has finished loading, so it never slows the first view.
+addEventListener('load',function(){setTimeout(function(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-0S7D8YQK2B';document.head.appendChild(s)},1200)});
 </script>
 <link rel="icon" href="favicon.ico?v=2" sizes="48x48">
 <link rel="icon" href="favicon.svg?v=2" type="image/svg+xml">
@@ -60,7 +63,7 @@ body{margin:0}img{max-width:100%}[hidden]{display:none!important}
 html{scroll-behavior:smooth;overflow-x:clip;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
 body{overflow-x:clip}
 body{background:var(--deep);color:var(--cream);font:16px/1.6 var(--font);-webkit-font-smoothing:antialiased}
-.film{position:fixed;inset:0;z-index:-2;width:100%;height:100%;display:block;object-fit:cover;object-position:center;background:var(--deep) url("assets/monolith-poster.jpg") center/cover}
+.film{position:fixed;inset:0;z-index:-2;width:100%;height:100%;display:block;object-fit:cover;object-position:center;background:var(--deep)}
 .tint{position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#081d3cd9 0%,#081d3c59 55%,transparent 85%),#081d3c;opacity:.4;transition:opacity .3s linear}
 /* Slide in from a side; slide back out when the block leaves the screen. */
 [data-from]{opacity:0;transition:transform .9s cubic-bezier(.2,.75,.2,1),opacity .7s ease;transition-delay:var(--d,0s);will-change:transform,opacity}
@@ -264,17 +267,17 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 </style>
 </head>
 <body>
-<video class="film" id="film" data-film poster="assets/monolith-poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+<video class="film" id="film" data-film poster="assets/monolith-poster.webp" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
 <div class="tint" id="tint"></div>
 <div class="progress" aria-hidden="true"><i id="bar-fill"></i></div>
 
 <header class="bar" id="bar"><div class="wrap">
   <a class="logo" href="#top" data-home aria-label="VYLE, back to the start"><svg viewBox="249 445 758 364" role="img" aria-label="VYLE"><path d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path d="M738 449H771V722H738Z"/><path fill-rule="evenodd" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg></a>
-  <button class="menu-btn label" type="button" aria-controls="nav" aria-expanded="false" id="menu-open"><b>Menu</b><i aria-hidden="true"></i></button>
+  <button class="menu-btn label" type="button" aria-controls="nav" aria-expanded="false" aria-label="Open menu" id="menu-open"><b>Menu</b><i aria-hidden="true"></i></button>
 </div></header>
 
 <nav class="nav" id="nav" aria-label="Menu">
-  <video class="nav-film" id="nav-film" data-film poster="assets/monolith-poster.jpg" muted loop playsinline preload="none" aria-hidden="true"></video>
+  <video class="nav-film" id="nav-film" data-film poster="assets/monolith-poster.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
   <div class="nav-top">
     <a class="logo" href="#top" data-home aria-label="VYLE, back to the start"><svg viewBox="249 445 758 364" aria-hidden="true"><path d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path d="M738 449H771V722H738Z"/><path fill-rule="evenodd" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg></a>
     <button class="close label" type="button" id="menu-close">Close <i aria-hidden="true">✕</i></button>
@@ -299,7 +302,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 // Pick the sharpest film for the screen: tall phone cut for portrait screens, full HD otherwise.
 (function(){var tall=matchMedia('(max-aspect-ratio: 4/5)').matches;
 document.querySelectorAll('video[data-film]').forEach(function(v){
-  if(tall)v.poster='assets/monolith-poster-phone.jpg';
+  if(tall)v.poster='assets/monolith-poster-phone.webp';
   v.src='assets/'+(tall?'monolith-phone.mp4':'monolith-hd.mp4');
   if(v.autoplay){var p=v.play();if(p)p.catch(function(){})}
 });})();
@@ -343,8 +346,8 @@ document.querySelectorAll('video[data-film]').forEach(function(v){
     <!-- Portfolio items go in .folio: add class "wide" for 16:9 work and "tall" for 9:16 work. -->
     <div class="cover" data-from="fade" style="--d:.1s">
       <picture>
-        <source media="(max-width:700px)" srcset="assets/eye-tall.webp">
-        <img src="assets/eye-wide.webp" alt="Close-up of an eye reflecting a film set with a camera and studio light" loading="lazy">
+        <source media="(max-width:700px)" srcset="assets/eye-tall-720.webp 720w, assets/eye-tall.webp 1024w" sizes="(max-width:700px) 80vw">
+        <img src="assets/eye-wide.webp" srcset="assets/eye-wide-960.webp 960w, assets/eye-wide.webp 1600w" sizes="(max-width:1100px) 90vw, 960px" alt="Close-up of an eye reflecting a film set with a camera and studio light" loading="lazy">
       </picture>
       <div class="cover-text">
         <p class="label">Coming soon</p>
