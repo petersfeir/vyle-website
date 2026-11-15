@@ -185,9 +185,9 @@ h2{font-size:clamp(28px,3.6vw,50px);line-height:1.05;letter-spacing:-.035em;font
 footer{position:relative;overflow:hidden;isolation:isolate;background:#081d3ced;color:var(--cream);padding-top:clamp(72px,10vw,130px);padding-bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
 /* VYLE signature behind "Let's make it happen", with the brand light sweep. */
 /* Signed one letter after another, like a pen: v, y, l, e. */
-.giant{position:absolute;z-index:-1;left:clamp(150px,24vw,380px);top:clamp(-10px,1vw,20px);padding:0 .35em .3em .25em;font-family:'Mrs Saint Delafield','Brush Script MT',cursive;font-size:clamp(150px,16vw,240px);line-height:1.1;color:#faf4eb;opacity:.34;white-space:nowrap;transform:rotate(-7deg);transform-origin:left center;pointer-events:none;clip-path:inset(0 100% 0 0)}
+.giant{position:absolute;z-index:-1;left:clamp(150px,24vw,380px);top:clamp(-10px,1vw,20px);padding:0 .35em .3em .25em;font-family:'Mrs Saint Delafield','Brush Script MT',cursive;font-size:clamp(150px,16vw,240px);line-height:1.1;color:#faf4eb;opacity:.34;white-space:nowrap;transform:rotate(-7deg);transform-origin:left center;pointer-events:none;clip-path:inset(-40% 100% -40% -10%)}
 /* Revealed left to right, like a pen writing the signature. */
-.giant.in{clip-path:inset(0 0 0 0);transition:clip-path 2.2s cubic-bezier(.55,.05,.35,1)}
+.giant.in{clip-path:inset(-40% -10% -40% -10%);transition:clip-path 2.2s cubic-bezier(.55,.05,.35,1)}
 footer::before{content:"";position:absolute;z-index:-1;inset:-40% -60%;background:linear-gradient(115deg,transparent 44%,#faf4eb17 50%,transparent 56%);animation:sweep 8s ease-in-out infinite;pointer-events:none}
 @keyframes sweep{0%{transform:translateX(-35%)}60%,100%{transform:translateX(35%)}}
 .cta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:28px;padding-bottom:clamp(48px,7vw,90px);border-bottom:1px solid var(--dline)}
@@ -234,7 +234,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 }
 @media(max-width:560px){
   .hero-in{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
-  .giant{left:30%;top:6px;font-size:118px;opacity:.34}
+  .giant{left:24%;top:40px;font-size:112px;opacity:.34}
   .menu-btn b{display:none}
   .brands{flex-direction:column;align-items:flex-start;gap:14px}
   .marquee{width:100%}
