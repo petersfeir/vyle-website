@@ -197,6 +197,16 @@ h2{font-size:clamp(28px,3.6vw,50px);line-height:1.05;letter-spacing:-.035em;font
 .plan.main .btn{background:var(--navy);color:var(--cream);border-color:var(--navy)}
 .plan.main .btn:hover{background:var(--deep)}
 .plans-note{margin-top:22px;color:var(--mist);font-size:13px}
+.plan li.more{font-weight:700}
+.plan li.more::before{content:"+";width:auto;height:auto;margin-top:0;background:none;opacity:1;font-weight:800;line-height:inherit}
+.custom{display:flex;align-items:center;justify-content:space-between;gap:20px 32px;flex-wrap:wrap;margin-top:16px;padding:26px 28px;border:1px solid var(--dline);background:#081d3cb3}
+.custom>div{flex:1 1 320px;min-width:0}
+.custom h3{font-size:clamp(20px,2vw,26px);font-weight:800;letter-spacing:-.03em;line-height:1.15}
+.custom p{margin-top:6px;color:var(--mist);font-size:14px;max-width:34em}
+.custom .btn{background:var(--cream);color:var(--navy);border-color:var(--cream);padding-inline:28px}
+.custom .btn:hover{background:var(--mist)}
+@media(max-width:900px){.custom{max-width:560px}}
+@media(max-width:560px){.custom{padding:24px 22px}.custom .btn{width:100%}}
 
 /* About */
 .about{display:block}
@@ -377,21 +387,25 @@ document.querySelectorAll('video[data-film]').forEach(function(v){
       <div class="plan" style="--fx:calc(100% + 16px);--ry:38deg;--dd:.18s">
         <div class="plan-top"><p class="label">Starter</p></div>
         <p class="price"><span class="num-to" data-to="4">4</span><small> videos / month</small></p>
-        <ul><li>Edited videos, AI videos or AI images: mix as you like</li><li>Cover image and caption for each</li><li>2 revision rounds per video</li><li>24/7 support for any adjustment</li></ul>
+        <ul><li>Edited videos, AI videos or AI images: mix as you like</li><li>Cover image and caption for each</li><li>2 revision rounds per video</li><li>24/7 support for any adjustment</li><li class="more">More, tailored to your business</li></ul>
         <a class="btn" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%27m%20interested%20in%20the%20Starter%20package.%20Can%20you%20send%20me%20the%20details%20and%20price%3F" target="_blank" rel="noopener">Ask about Starter</a>
       </div>
       <div class="plan main" style="--fx:0px;--ry:0deg;--dd:0s">
         <div class="plan-top"><p class="label">Growth</p><span class="tag">Most popular</span></div>
         <p class="price"><span class="num-to" data-to="8">8</span><small> videos / month</small></p>
-        <ul><li>Edited videos, AI videos or AI images: mix as you like</li><li>Cover image and caption for each</li><li>3 revision rounds per video</li><li>24/7 support for any adjustment</li></ul>
+        <ul><li>Edited videos, AI videos or AI images: mix as you like</li><li>Cover image and caption for each</li><li>3 revision rounds per video</li><li>24/7 support for any adjustment</li><li class="more">More, tailored to your business</li></ul>
         <a class="btn" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%27m%20interested%20in%20the%20Growth%20package.%20Can%20you%20send%20me%20the%20details%20and%20price%3F" target="_blank" rel="noopener">Ask about Growth</a>
       </div>
       <div class="plan" style="--fx:calc(-100% - 16px);--ry:-38deg;--dd:.18s">
         <div class="plan-top"><p class="label">Pro</p></div>
         <p class="price"><span class="num-to" data-to="12">12</span><small> videos / month</small></p>
-        <ul><li>Edited videos, AI videos or AI images: mix as you like</li><li>Cover image and caption for each</li><li>Unlimited revisions</li><li>Monthly strategy call</li><li>24/7 support for any adjustment</li></ul>
+        <ul><li>Edited videos, AI videos or AI images: mix as you like</li><li>Cover image and caption for each</li><li>Unlimited revisions</li><li>Monthly strategy call</li><li>24/7 support for any adjustment</li><li class="more">More, tailored to your business</li></ul>
         <a class="btn" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%27m%20interested%20in%20the%20Pro%20package.%20Can%20you%20send%20me%20the%20details%20and%20price%3F" target="_blank" rel="noopener">Ask about Pro</a>
       </div>
+    </div>
+    <div class="custom" data-from="fade">
+      <div><h3>Need something different?</h3><p>Every business is different. Tell us what you need and we'll build your package around it.</p></div>
+      <a class="btn" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%27d%20like%20a%20custom%20package%20for%20my%20business." target="_blank" rel="noopener" data-where="custom package">Build my package</a>
     </div>
     <p class="plans-note" data-from="right">Every package: 50% deposit to start · 48–72 h delivery · pricing on request</p>
   </div>
