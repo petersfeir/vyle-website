@@ -108,6 +108,10 @@ ul{padding:0;list-style:none}
 .nav ol{list-style:none;margin:auto 0;padding:0;display:grid;gap:4px}
 .nav-film{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center}
 .nav::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#081d3ce0 0%,#081d3c80 55%,#081d3c40 100%)}
+/* Poster behind the menu film so the scene shows at once, even before the video starts. */
+.nav{background:var(--deep) url('assets/monolith-poster.webp') center/cover}
+@media(max-aspect-ratio:4/5){.nav{background-image:url('assets/monolith-poster-phone.webp')}
+  .nav::before{background:linear-gradient(180deg,#081d3cb3 0%,#081d3c73 45%,#081d3c66 70%,#081d3cd9 100%)}}
 .nav ol a{display:flex;align-items:baseline;gap:16px;padding-block:5px;font-size:clamp(24px,3.6vw,42px);font-weight:800;letter-spacing:-.04em;line-height:1.1}
 .nav ol a span{font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--mist)}
 .nav ol a:hover{color:var(--mist)}
@@ -515,7 +519,11 @@ else new IntersectionObserver(([e])=>giant.classList.toggle('in',e.isIntersectin
 // Full-screen menu
 const nav=document.getElementById('nav'),openBtn=document.getElementById('menu-open'),closeBtn=document.getElementById('menu-close');
 const navFilm=document.getElementById('nav-film');
-function setMenu(on){if(on&&!reduce){try{navFilm.currentTime=film.currentTime}catch(e){}navFilm.play().catch(()=>{})}else navFilm.pause();nav.classList.toggle('open',on);openBtn.setAttribute('aria-expanded',String(on));document.body.style.overflow=on?'hidden':'';(on?closeBtn:openBtn).focus({preventScroll:true})}
+// Phones load the menu film on first open (preload none), so wait for its metadata before syncing it to the page film.
+function playNavFilm(){const sync=()=>{try{navFilm.currentTime=film.currentTime||0}catch(e){}};
+  if(navFilm.readyState<1){navFilm.preload='auto';navFilm.addEventListener('loadedmetadata',sync,{once:true});navFilm.load()}else sync();
+  const p=navFilm.play();if(p)p.catch(()=>{})}
+function setMenu(on){if(on&&!reduce)playNavFilm();else navFilm.pause();nav.classList.toggle('open',on);openBtn.setAttribute('aria-expanded',String(on));document.body.style.overflow=on?'hidden':'';(on?closeBtn:openBtn).focus({preventScroll:true})}
 openBtn.addEventListener('click',()=>setMenu(true));
 closeBtn.addEventListener('click',()=>setMenu(false));
 nav.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
