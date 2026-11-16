@@ -101,17 +101,16 @@ ul{padding:0;list-style:none}
 .menu-btn i::before{content:"";width:16px;height:6px;border-block:1.5px solid currentColor}
 
 /* Full-screen menu */
-.nav{position:fixed;inset:0;z-index:30;background:var(--deep);color:var(--cream);isolation:isolate;overflow:hidden;display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 14px) var(--gr) calc(env(safe-area-inset-bottom,0px) + 28px) var(--gl);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.nav{position:fixed;inset:0;z-index:30;background:transparent;color:var(--cream);isolation:isolate;overflow:hidden;display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 14px) var(--gr) calc(env(safe-area-inset-bottom,0px) + 28px) var(--gl);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
 .nav.open{opacity:1;visibility:visible}
 .nav-top{display:flex;justify-content:space-between;align-items:center;height:58px}
 .close{display:flex;align-items:center;gap:14px}
 .nav ol{list-style:none;margin:auto 0;padding:0;display:grid;gap:4px}
-.nav-film{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center}
 .nav::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#081d3ce0 0%,#081d3c80 55%,#081d3c40 100%)}
-/* Poster behind the menu film so the scene shows at once, even before the video starts. */
-.nav{background:var(--deep) url('assets/monolith-poster.webp') center/cover}
-@media(max-aspect-ratio:4/5){.nav{background-image:url('assets/monolith-poster-phone.webp')}
-  .nav::before{background:linear-gradient(180deg,#081d3cb3 0%,#081d3c73 45%,#081d3c66 70%,#081d3cd9 100%)}}
+/* The menu sits over the same landing film, which keeps playing: page content is hidden while it is open. */
+body.menu-on>:not(.film):not(.tint):not(.nav):not(script){visibility:hidden}
+body.menu-on .tint{opacity:.4!important}
+@media(max-aspect-ratio:4/5){.nav::before{background:linear-gradient(180deg,#081d3cb3 0%,#081d3c73 45%,#081d3c66 70%,#081d3cd9 100%)}}
 .nav ol a{display:flex;align-items:baseline;gap:16px;padding-block:5px;font-size:clamp(24px,3.6vw,42px);font-weight:800;letter-spacing:-.04em;line-height:1.1}
 .nav ol a span{font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--mist)}
 .nav ol a:hover{color:var(--mist)}
@@ -303,7 +302,6 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 </div></header>
 
 <nav class="nav" id="nav" aria-label="Menu">
-  <video class="nav-film" id="nav-film" data-film poster="assets/monolith-poster.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
   <div class="nav-top">
     <a class="logo" href="#top" data-home aria-label="VYLE, back to the start"><svg viewBox="249 445 758 364" aria-hidden="true"><path d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path d="M738 449H771V722H738Z"/><path fill-rule="evenodd" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg></a>
     <button class="close label" type="button" id="menu-close">Close <i aria-hidden="true">✕</i></button>
@@ -518,12 +516,7 @@ else new IntersectionObserver(([e])=>giant.classList.toggle('in',e.isIntersectin
 
 // Full-screen menu
 const nav=document.getElementById('nav'),openBtn=document.getElementById('menu-open'),closeBtn=document.getElementById('menu-close');
-const navFilm=document.getElementById('nav-film');
-// Phones load the menu film on first open (preload none), so wait for its metadata before syncing it to the page film.
-function playNavFilm(){const sync=()=>{try{navFilm.currentTime=film.currentTime||0}catch(e){}};
-  if(navFilm.readyState<1){navFilm.preload='auto';navFilm.addEventListener('loadedmetadata',sync,{once:true});navFilm.load()}else sync();
-  const p=navFilm.play();if(p)p.catch(()=>{})}
-function setMenu(on){if(on&&!reduce)playNavFilm();else navFilm.pause();nav.classList.toggle('open',on);openBtn.setAttribute('aria-expanded',String(on));document.body.style.overflow=on?'hidden':'';(on?closeBtn:openBtn).focus({preventScroll:true})}
+function setMenu(on){document.body.classList.toggle('menu-on',on);nav.classList.toggle('open',on);openBtn.setAttribute('aria-expanded',String(on));document.body.style.overflow=on?'hidden':'';(on?closeBtn:openBtn).focus({preventScroll:true})}
 openBtn.addEventListener('click',()=>setMenu(true));
 closeBtn.addEventListener('click',()=>setMenu(false));
 nav.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
