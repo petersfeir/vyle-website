@@ -227,7 +227,7 @@ footer::before{content:"";position:absolute;z-index:-1;inset:-40% -60%;backgroun
 @keyframes sweep{0%{transform:translateX(-35%)}60%,100%{transform:translateX(35%)}}
 .cta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:28px;padding-bottom:clamp(48px,7vw,90px);border-bottom:1px solid var(--dline)}
 .cta .label{color:var(--mist);margin-bottom:14px}
-.cta h2{font-size:clamp(34px,5.4vw,76px)}
+.cta-line{font-size:clamp(34px,5.4vw,76px);line-height:1.05;letter-spacing:-.035em;font-weight:800}
 .cta .btn{background:var(--cream);color:var(--navy);border-color:var(--cream);padding-inline:28px}
 .cta .btn:hover{background:var(--mist)}
 .cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;padding-block:44px}
@@ -275,7 +275,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
   .stat-pill{height:44px;padding:0 13px;gap:7px;font-size:9px;letter-spacing:.12em}
   .stat-pill b{font-size:15px}
   .hero-in{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
-  .giant{top:40px;font-size:112px;opacity:.34}
+  .giant{top:122px;font-size:112px;opacity:.34}
   .menu-btn b{display:none}
   .brands{flex-direction:column;align-items:flex-start;gap:14px}
   .marquee{width:100%}
@@ -424,8 +424,9 @@ document.querySelectorAll('video[data-film]').forEach(function(v){
 <footer id="contact">
   <span class="giant" id="giant" aria-hidden="true">Vyle</span>
   <div class="wrap">
+    <div class="head"><h2 data-from="left" style="--d:.08s">Contact</h2></div>
     <div class="cta">
-      <div data-from="left"><p class="label">Contact</p><h2>Let's make<br>it happen.</h2></div>
+      <div data-from="left"><p class="cta-line">Let's make<br>it happen.</p></div>
       <a class="btn" data-from="right" data-where="contact panel" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">WhatsApp us</a>
     </div>
     <div class="cols">
