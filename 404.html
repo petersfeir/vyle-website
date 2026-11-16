@@ -35,6 +35,11 @@ a:focus-visible{outline:2px solid var(--cream);outline-offset:4px}
 <video data-film poster="/assets/monolith-poster.webp" autoplay muted loop playsinline aria-hidden="true"></video>
 <div class="shade"></div>
 <script>
+// Typed with capitals or extra bits (vylelb.com/Portfolio, /portfolio.html): send to the right section.
+(function(){var m=location.pathname.toLowerCase().replace(/\.html?$/,'').replace(/\/+$/,'').match(/^\/(services|portfolio|packages|about|contact|home|work)$/);
+if(m){var s={home:'',work:'portfolio'}[m[1]];location.replace('/'+(s===undefined?m[1]:s))}})();
+</script>
+<script>
 // Pick the sharpest film for the screen: tall phone cut for portrait screens, full HD otherwise.
 (function(){var tall=matchMedia('(max-aspect-ratio: 4/5)').matches;
 document.querySelectorAll('video[data-film]').forEach(function(v){
