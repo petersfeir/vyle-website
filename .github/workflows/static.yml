@@ -34,6 +34,14 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           persist-credentials: false
+      - name: Section pages
+        # vylelb.com/services, /portfolio, /packages, /about, /contact open the one-page site at that section.
+        run: |
+          for s in services portfolio packages about contact; do
+            mkdir -p "$s"
+            T="$(echo "${s:0:1}" | tr a-z A-Z)${s:1}"
+            sed -e 's#<head>#<head><base href="/">#' -e "s#<title>VYLE | Ideas Into Impact</title>#<title>$T | VYLE</title>#" index.html > "$s/index.html"
+          done
       - name: Setup Pages
         uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
       - name: Upload artifact

@@ -547,6 +547,23 @@ const WORK=[
   build();
 })();
 
+// Clean section addresses: vylelb.com/portfolio etc. The address follows the reader as they scroll,
+// and opening one of these links lands on that section. The folders are made at deploy time.
+(function(){
+  const IDS=['services','portfolio','packages','about','contact'];
+  let path=location.pathname.replace(/\/+$/,'')||'/';
+  const set=p=>{if(p!==path&&location.protocol!=='file:'){path=p;try{history.replaceState(null,'',p+location.search)}catch(e){}}};
+  const go=(id,smooth)=>{const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:smooth&&!reduce?'smooth':'auto'})};
+  const start=(path.match(/^\/([a-z]+)$/)||[])[1]||location.hash.slice(1);
+  if(IDS.includes(start)){set('/'+start);history.scrollRestoration='manual';requestAnimationFrame(()=>go(start,false));addEventListener('load',()=>go(start,false),{once:true})}
+  document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const id=a.getAttribute('href').slice(1);
+    if(IDS.includes(id)){e.preventDefault();go(id,true);set('/'+id)}else if(id==='top'){e.preventDefault();set('/')}});
+  const els=IDS.map(id=>document.getElementById(id));let busy=false;
+  const track=()=>{busy=false;if(document.body.classList.contains('menu-on'))return;const mid=84+innerHeight*.22;let cur='/';
+    els.forEach((el,i)=>{if(el&&el.getBoundingClientRect().top<=mid)cur='/'+IDS[i]});set(cur)};
+  addEventListener('scroll',()=>{if(!busy){busy=true;requestAnimationFrame(track)}},{passive:true});
+})();
+
 // Background film plays on its own; scrolling only deepens the shade and fills the progress line.
 const tint=document.getElementById('tint'), fill=document.getElementById('bar-fill'), film=document.getElementById('film');
 let ticking=false;
