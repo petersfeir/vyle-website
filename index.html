@@ -312,14 +312,14 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 </style>
 </head>
 <body>
-<video class="film" id="film" data-film poster="assets/monolith-poster.webp" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+<video class="film" id="film" data-film autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
 <div class="tint" id="tint"></div>
 <div class="progress" aria-hidden="true"><i id="bar-fill"></i></div>
 
 <header class="bar" id="bar"><div class="wrap">
   <a class="logo" href="#top" data-home aria-label="VYLE, back to the start"><svg viewBox="249 445 758 364" role="img" aria-label="VYLE"><path d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path d="M738 449H771V722H738Z"/><path fill-rule="evenodd" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg></a>
   <div class="bar-right">
-    <p class="stat-pill" aria-label="5 brands growing with us"><i aria-hidden="true"></i><b class="num-to" id="helped" data-to="5" aria-hidden="true">5</b><span aria-hidden="true">Brands <span class="opt">growing </span>with us</span></p>
+    <p class="stat-pill" role="img" aria-label="5 brands growing with us"><i aria-hidden="true"></i><b class="num-to" id="helped" data-to="5" aria-hidden="true">5</b><span aria-hidden="true">Brands <span class="opt">growing </span>with us</span></p>
     <button class="menu-btn label" type="button" aria-controls="nav" aria-expanded="false" aria-label="Open menu" id="menu-open"><b>Menu</b><i aria-hidden="true"></i></button>
   </div>
 </div></header>
@@ -349,7 +349,7 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 // Pick the sharpest film for the screen: tall phone cut for portrait screens, full HD otherwise.
 (function(){var tall=matchMedia('(max-aspect-ratio: 4/5)').matches;
 document.querySelectorAll('video[data-film]').forEach(function(v){
-  if(tall)v.poster='assets/monolith-poster-phone.webp';
+  v.poster='assets/'+(tall?'monolith-poster-phone.webp':'monolith-poster.webp');
   v.src='assets/'+(tall?'monolith-phone.mp4':'monolith-hd.mp4');
   if(v.autoplay){var p=v.play();if(p)p.catch(function(){})}
 });})();
@@ -509,13 +509,14 @@ const WORK=[
   const pad=n=>String(n).padStart(2,'0');
   function build(){deck.innerHTML='';cards=list.map((w,i)=>{const b=document.createElement('button');b.type='button';b.className='card';b.dataset.i=i;
     b.setAttribute('aria-label',w.t+', '+w.svc);
-    b.innerHTML=`<img src="assets/work/${w.id}.webp" alt="" loading="lazy" decoding="async" width="540" height="960"><span class="card-tag">${w.svc}</span>`;deck.appendChild(b);return b});layout()}
+    b.innerHTML=`<img alt="" decoding="async" width="540" height="960" sizes="(max-width:700px) 56vw, 280px"><span class="card-tag">${w.svc}</span>`;deck.appendChild(b);return b});layout()}
   function layout(){
     const n=list.length;
     cards.forEach((c,i)=>{let o=i-cur;if(o>n/2)o-=n;if(o<-n/2)o+=n;const a=Math.abs(o);
       c.style.transform=`translateX(calc(var(--gap) * ${o})) translateZ(${-a*140}px) rotateY(${o*-24}deg) scale(${1-Math.min(a,3)*.06})`;
       c.style.opacity=a>2?0:1-a*.22;c.style.filter=`brightness(${1-Math.min(a,2)*.28})`;c.style.zIndex=20-a;c.style.pointerEvents=a>2?'none':'';
-      c.tabIndex=a===0?0:-1;c.classList.toggle('now',a===0)});
+      c.tabIndex=a===0?0:-1;c.classList.toggle('now',a===0);
+      const im=c.querySelector('img');if(a<=2&&!im.srcset){const id=list[i].id;im.srcset=`assets/work/${id}-s.webp 300w, assets/work/${id}.webp 540w`;im.src=`assets/work/${id}.webp`}});
     const w=list[cur];meta.textContent=w.m;title.textContent=w.t;count.textContent=pad(cur+1)+' / '+pad(n);
     preview()}
   function preview(){cards.forEach((c,i)=>{const v=c.querySelector('video');if(i!==cur&&v){v.pause();v.remove()}});
