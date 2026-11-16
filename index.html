@@ -63,8 +63,8 @@ body{margin:0}img{max-width:100%}[hidden]{display:none!important}
 html{scroll-behavior:smooth;overflow-x:clip;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
 body{overflow-x:clip}
 body{background:var(--deep);color:var(--cream);font:16px/1.6 var(--font);-webkit-font-smoothing:antialiased}
-.film{position:fixed;inset:0;z-index:-2;width:100%;height:100%;display:block;object-fit:cover;object-position:center;background:var(--deep)}
-.tint{position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#081d3cd9 0%,#081d3c59 55%,transparent 85%),#081d3c;opacity:.4;transition:opacity .3s linear}
+.film{position:fixed;inset:0 0 auto;z-index:-2;width:100%;height:100%;height:100lvh;display:block;object-fit:cover;object-position:center;background:var(--deep)}
+.tint{position:fixed;inset:0 0 auto;height:100%;height:100lvh;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#081d3cd9 0%,#081d3c59 55%,transparent 85%),#081d3c;opacity:.4;transition:opacity .3s linear}
 /* Slide in from a side; slide back out when the block leaves the screen. */
 [data-from]{opacity:0;transition:transform .9s cubic-bezier(.2,.75,.2,1),opacity .7s ease;transition-delay:var(--d,0s);will-change:transform,opacity}
 [data-from="left"]{transform:translateX(-90px)}
