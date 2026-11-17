@@ -309,6 +309,10 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
 }
 @media(max-width:400px){.stat-pill .opt{display:none}.bar .logo,.nav-top .logo{width:58px}.stat-pill{padding:0 11px;gap:6px;letter-spacing:.08em}.bar-right{gap:8px}}
 @media(prefers-reduced-motion:reduce){.stat-pill i{animation:none}html{scroll-behavior:auto}*{transition:none!important}.plan{opacity:1!important;transform:none!important;filter:none!important}.plan::after{display:none}.marquee ul{animation:none}footer::before{animation:none;display:none}}
+
+/* Never show the browser's own play button over background or preview videos. */
+video:not([controls])::-webkit-media-controls,video:not([controls])::-webkit-media-controls-panel,video:not([controls])::-webkit-media-controls-overlay-play-button,video:not([controls])::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none;opacity:0!important}
+video:not([controls]){pointer-events:none}
 </style>
 </head>
 <body>
@@ -353,6 +357,13 @@ document.querySelectorAll('video[data-film]').forEach(function(v){
   v.src='assets/'+(tall?'monolith-phone.mp4':'monolith-hd.mp4');
   if(v.autoplay){var p=v.play();if(p)p.catch(function(){})}
 });})();
+
+// iPhone Low Power Mode and some in-app browsers block autoplay and show a play button.
+// The button is hidden; the film starts on the visitor's first touch, tap or key press, and again when they come back to the tab.
+(function(){var still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function kick(){if(still)return;document.querySelectorAll('video[data-film],.card video').forEach(function(v){if(v.paused&&v.isConnected){var p=v.play();if(p)p.catch(function(){})}})}
+['touchstart','touchend','pointerdown','click','keydown'].forEach(function(e){addEventListener(e,kick,{passive:true,capture:true})});
+document.addEventListener('visibilitychange',function(){if(!document.hidden)kick()});addEventListener('pageshow',kick);})();
 </script>
 <main id="top">
 <section class="hero" id="hero">
