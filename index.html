@@ -524,9 +524,10 @@ function shut(){body.querySelectorAll('video').forEach(v=>v.pause());body.innerH
 dlg.querySelector('.x').addEventListener('click',shut);
 dlg.addEventListener('cancel',e=>{e.preventDefault();shut()});
 dlg.addEventListener('click',e=>{if(e.target===dlg)shut()});
-document.querySelectorAll('[data-legal]').forEach(b=>b.addEventListener('click',()=>{
-  const [h,t]=legal[b.dataset.legal];show(`<h2 id="viewer-title">${h}</h2><p style="margin-top:12px">${t}</p>`);
-}));
+function showLegal(k){const [h,t]=legal[k];show(`<h2 id="viewer-title">${h}</h2><p style="margin-top:12px">${t}</p>`)}
+document.querySelectorAll('[data-legal]').forEach(b=>b.addEventListener('click',()=>showLegal(b.dataset.legal)));
+// vylelb.com/#privacy and /#terms open the matching notice (used by the shop's footer).
+{const k=location.hash.slice(1);if(legal[k])addEventListener('load',()=>showLegal(k),{once:true})}
 
 // Portfolio reel deck
 const WORK=[
