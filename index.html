@@ -471,9 +471,9 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)kick
       <div class="shop-text">
         <p class="soon"><i aria-hidden="true"></i>Coming soon</p>
         <h3>Tools from our studio.</h3>
-        <p>Digital products made by VYLE, for creators and brands. Be the first to know when the doors open.</p>
+        <p>Digital products made by VYLE, for creators and brands. Take a look inside: the first drops are on the way.</p>
       </div>
-      <a class="btn" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20let%20me%20know%20when%20the%20shop%20opens." target="_blank" rel="noopener" data-where="shop notify">Notify me</a>
+      <a class="btn" href="https://shop.vylelb.com/" data-where="shop section">Visit the shop <span aria-hidden="true" style="margin-left:10px">&rarr;</span></a>
     </div>
   </div>
 </section>
@@ -675,6 +675,7 @@ document.addEventListener('click',e=>{
   else if(h.includes('calendly.com'))name='book_call_click';
   else if(h.includes('instagram.com'))name='instagram_click';
   else if(h.includes('tiktok.com'))name='tiktok_click';
+  else if(h.includes('shop.vylelb.com'))name='shop_click';
   if(name)gtag('event',name,{link_location:where,transport_type:'beacon'});
 });
 
