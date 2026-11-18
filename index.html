@@ -227,6 +227,23 @@ dialog.watch .btn{width:100%}
 .custom .btn{background:var(--cream);color:var(--navy);border-color:var(--cream);padding-inline:28px}
 .custom .btn:hover{background:var(--mist)}
 @media(max-width:900px){.custom{max-width:560px}}
+/* Shop teaser: one quiet card, nothing revealed yet. */
+.sec.shop{padding-block:clamp(48px,6vw,84px)}
+.shop-box{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:22px 40px;flex-wrap:wrap;padding:clamp(26px,3.4vw,40px) clamp(24px,3.4vw,44px);border:1px solid var(--dline);background:#081d3cb3}
+.shop-box::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,#faf4eb14 50%,transparent 65%);transform:translateX(-100%);pointer-events:none}
+.shop-box.in::after{animation:sheen 3.6s 1s ease-in-out infinite}
+@keyframes sheen{0%{transform:translateX(-100%)}55%,100%{transform:translateX(100%)}}
+.shop-text{flex:1 1 360px;min-width:0}
+.soon{display:inline-flex;align-items:center;gap:9px;height:30px;padding:0 13px;border:1px solid var(--dline);border-radius:16px;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--mist)}
+.soon i{width:6px;height:6px;border-radius:50%;background:var(--cream);animation:blink 1.8s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+.shop-text h3{margin-top:16px;font-size:clamp(24px,3vw,40px);font-weight:800;letter-spacing:-.035em;line-height:1.05}
+.shop-text p:last-child{margin-top:10px;max-width:34em;color:var(--mist);font-size:14px}
+.shop-box .btn{background:var(--cream);color:var(--navy);border-color:var(--cream);padding-inline:32px}
+.shop-box .btn:hover{background:var(--mist)}
+@media(max-width:560px){.shop-box .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){.shop-box.in::after,.soon i{animation:none}}
+
 @media(max-width:560px){.custom{padding:24px 22px}.custom .btn{width:100%}}
 
 /* About */
@@ -337,6 +354,7 @@ video:not([controls]){pointer-events:none}
     <li><a href="#services">Services</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#packages">Packages</a></li>
+    <li><a href="#shop">Shop</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -446,6 +464,20 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)kick
   </div>
 </section>
 
+<section class="sec shop" id="shop">
+  <div class="wrap">
+    <div class="head"><h2 data-from="left" style="--d:.08s">Shop</h2></div>
+    <div class="shop-box" data-from="right">
+      <div class="shop-text">
+        <p class="soon"><i aria-hidden="true"></i>Coming soon</p>
+        <h3>Tools from our studio.</h3>
+        <p>Digital products made by VYLE, for creators and brands. Be the first to know when the doors open.</p>
+      </div>
+      <a class="btn" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20let%20me%20know%20when%20the%20shop%20opens." target="_blank" rel="noopener" data-where="shop notify">Notify me</a>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="about">
   <div class="wrap about">
     <div class="head"><h2 data-from="left" style="--d:.08s">About</h2></div>
@@ -465,7 +497,7 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)kick
   </div>
   <div class="foot-band"><div class="wrap">
     <div class="cols">
-      <div data-from="left"><p class="label">Explore</p><ul><li><a href="#services">Services</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#packages">Packages</a></li><li><a href="#about">About</a></li></ul></div>
+      <div data-from="left"><p class="label">Explore</p><ul><li><a href="#services">Services</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#packages">Packages</a></li><li><a href="#shop">Shop</a></li><li><a href="#about">About</a></li></ul></div>
       <div data-from="left" style="--d:.08s"><p class="label">Contact</p><ul><li><a href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" data-where="footer number">+961 70 508 546</a></li><li><a href="mailto:info.vyle.lb@gmail.com">info.vyle.lb@gmail.com</a></li><li><a href="https://calendly.com/info-vyle-lb" target="_blank" rel="noopener">Book a call</a></li></ul></div>
       <div data-from="right" style="--d:.08s"><p class="label">Follow</p><ul><li><a href="https://www.instagram.com/vyle.lb/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@vyle.lb" target="_blank" rel="noopener">TikTok</a></li></ul></div>
       <div data-from="right"><p class="label">Studio</p><ul><li>Beirut, Lebanon</li><li>Working worldwide</li></ul></div>
@@ -561,7 +593,7 @@ const WORK=[
 // Clean section addresses: vylelb.com/portfolio etc. The address follows the reader as they scroll,
 // and opening one of these links lands on that section. The folders are made at deploy time.
 (function(){
-  const IDS=['services','portfolio','packages','about','contact'];
+  const IDS=['services','portfolio','packages','shop','about','contact'];
   let path=location.pathname.replace(/\/+$/,'')||'/';
   const set=p=>{if(p!==path&&location.protocol!=='file:'){path=p;try{history.replaceState(null,'',p+location.search)}catch(e){}}};
   const go=(id,smooth)=>{const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:smooth&&!reduce?'smooth':'auto'})};
