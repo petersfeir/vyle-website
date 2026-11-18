@@ -7,7 +7,7 @@
 <meta name="description" content="VYLE is a creative studio in Beirut for branding, video editing and AI creative.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Mrs+Saint+Delafield&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
 <!-- Google Analytics -->
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
@@ -254,10 +254,6 @@ footer{position:relative;overflow:hidden;isolation:isolate;background:transparen
 /* Navy band only under the contact call: links, details and legal. */
 .foot-band{background:#081d3ced;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
 /* VYLE signature behind "Let's make it happen", with the brand light sweep. */
-/* Signed one letter after another, like a pen: v, y, l, e. */
-.giant{position:absolute;z-index:-1;left:50%;top:clamp(-10px,1vw,20px);padding:0 .35em .3em .25em;font-family:'Mrs Saint Delafield','Brush Script MT',cursive;font-size:clamp(150px,16vw,240px);line-height:1.1;color:#faf4eb;opacity:.34;white-space:nowrap;transform:translateX(-50%) rotate(-7deg);transform-origin:center;pointer-events:none;clip-path:inset(-40% 100% -40% -10%)}
-/* Revealed left to right, like a pen writing the signature. */
-.giant.in{clip-path:inset(-40% -10% -40% -10%);transition:clip-path 2.2s cubic-bezier(.55,.05,.35,1)}
 footer::before{content:"";position:absolute;z-index:-1;inset:-40% -60%;background:linear-gradient(115deg,transparent 44%,#faf4eb17 50%,transparent 56%);animation:sweep 8s ease-in-out infinite;pointer-events:none}
 @keyframes sweep{0%{transform:translateX(-35%)}60%,100%{transform:translateX(35%)}}
 .cta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:28px;padding-bottom:clamp(48px,7vw,90px)}
@@ -313,7 +309,6 @@ dialog .btn{margin-top:16px;background:var(--cream);color:var(--navy);border-col
   .stat-pill{height:44px;padding:0 13px;gap:7px;font-size:9px;letter-spacing:.12em}
   .stat-pill b{font-size:15px}
   .hero-in{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
-  .giant{top:122px;font-size:112px;opacity:.34}
   .menu-btn b{display:none}
   .brands{flex-direction:column;align-items:flex-start;gap:14px}
   .marquee{width:100%}
@@ -484,7 +479,6 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)kick
 </main>
 
 <footer id="contact">
-  <span class="giant" id="giant" aria-hidden="true">Vyle</span>
   <div class="wrap">
     <div class="head"><h2 data-from="left" style="--d:.08s">Contact</h2></div>
     <div class="cta">
@@ -650,10 +644,6 @@ document.querySelectorAll('[data-from]').forEach(el=>reduce?el.classList.add('in
 (function(){const el=document.getElementById('helped'),to=+el.dataset.to;if(reduce)return;const t0=performance.now()+500,dur=1200;el.textContent='0';
 (function step(now){const k=Math.min(1,Math.max(0,(now-t0)/dur)),e=1-Math.pow(1-k,3);el.textContent=Math.round(to*e);if(k<1)requestAnimationFrame(step)})(t0);})();
 
-// The VYLE signature writes itself each time the contact panel comes into view.
-const giant=document.getElementById('giant');
-if(reduce)giant.classList.add('in');
-else new IntersectionObserver(([e])=>giant.classList.toggle('in',e.isIntersecting),{threshold:.25}).observe(document.getElementById('contact'));
 
 // Full-screen menu
 const nav=document.getElementById('nav'),openBtn=document.getElementById('menu-open'),closeBtn=document.getElementById('menu-close');
