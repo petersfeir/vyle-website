@@ -128,8 +128,6 @@ h1{font-size:clamp(40px,6.2vw,92px);line-height:.95;letter-spacing:-.045em;font-
 .quick img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .quick a:hover img{transform:scale(1.05)}
 .quick span{position:absolute;left:8px;right:8px;bottom:8px;display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--cream);color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.progress{position:fixed;z-index:15;right:calc(var(--gr) - 12px);top:50%;width:2px;height:120px;margin-top:-60px;background:var(--dline)}
-.progress i{position:absolute;inset:0;background:var(--cream);transform-origin:top;transform:scaleY(0)}
 
 /* Sections */
 .sec{padding-block:clamp(64px,8vw,112px)}
@@ -335,7 +333,6 @@ video:not([controls]){pointer-events:none}
 <body>
 <video class="film" id="film" data-film autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
 <div class="tint" id="tint"></div>
-<div class="progress" aria-hidden="true"><i id="bar-fill"></i></div>
 
 <header class="bar" id="bar"><div class="wrap">
   <a class="logo" href="#top" data-home aria-label="VYLE, back to the start"><svg viewBox="249 445 758 364" role="img" aria-label="VYLE"><path d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path d="M738 449H771V722H738Z"/><path fill-rule="evenodd" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg></a>
@@ -607,15 +604,14 @@ const WORK=[
   addEventListener('scroll',()=>{if(!busy){busy=true;requestAnimationFrame(track)}},{passive:true});
 })();
 
-// Background film plays on its own; scrolling only deepens the shade and fills the progress line.
-const tint=document.getElementById('tint'), fill=document.getElementById('bar-fill'), film=document.getElementById('film');
+// Background film plays on its own; scrolling only deepens the shade.
+const tint=document.getElementById('tint'), film=document.getElementById('film');
 let ticking=false;
 function onScroll(){
   if(ticking)return; ticking=true;
   requestAnimationFrame(()=>{
     ticking=false;
     const max=document.documentElement.scrollHeight-innerHeight, p=max>0?Math.min(1,Math.max(0,scrollY/max)):0;
-    fill.style.transform='scaleY('+p.toFixed(4)+')';
     tint.style.opacity=(.4+Math.min(1,scrollY/innerHeight)*.28).toFixed(3);
   });
 }
