@@ -153,6 +153,7 @@ h2{font-size:clamp(28px,3.6vw,50px);line-height:1.05;letter-spacing:-.035em;font
 .card::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 1px 0 #faf4eb33;pointer-events:none}
 .card-tag{position:absolute;left:12px;bottom:12px;z-index:1;padding:5px 9px;border-radius:12px;background:#081d3cc0;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);opacity:0;transition:opacity .4s}
 .card.now .card-tag{opacity:1}
+.card-client{position:absolute;left:12px;top:12px;z-index:1;padding:5px 9px;border-radius:12px;background:var(--cream);font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);box-shadow:0 4px 14px #081d3c59}
 .card.now{cursor:zoom-in}
 .reel-info{display:flex;justify-content:space-between;align-items:end;gap:16px;max-width:620px;margin:clamp(24px,3vw,34px) auto 0}
 .reel-text{min-width:0}
@@ -422,7 +423,7 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)kick
     <!-- Portfolio: pieces are listed in WORK in the script below; files live in assets/work/ (pNN.mp4 full, pNN-p.mp4 preview, pNN.webp cover). -->
     <div class="reel" data-from="fade" style="--d:.1s">
       <div class="reel-filters" role="group" aria-label="Filter work">
-        <button type="button" data-f="all" aria-pressed="true">All</button><button type="button" data-f="products" aria-pressed="false">Products</button><button type="button" data-f="worlds" aria-pressed="false">AI Worlds</button><button type="button" data-f="ads" aria-pressed="false">Brand Ads</button><button type="button" data-f="edits" aria-pressed="false">Edits</button>
+        <button type="button" data-f="all" aria-pressed="true">All</button><button type="button" data-f="client" aria-pressed="false">Client work</button><button type="button" data-f="products" aria-pressed="false">Products</button><button type="button" data-f="worlds" aria-pressed="false">AI Worlds</button><button type="button" data-f="ads" aria-pressed="false">Brand Ads</button><button type="button" data-f="edits" aria-pressed="false">Edits</button>
       </div>
       <div class="deck" id="deck" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Portfolio work, use arrow keys to browse"></div>
       <div class="reel-info">
@@ -536,28 +537,30 @@ document.querySelectorAll('[data-legal]').forEach(b=>b.addEventListener('click',
 
 // Portfolio reel deck
 const WORK=[
+ ['p16','Fuelerate · Grill Advantage','Video Editing','Case study reel','ads',1],
+ ['p12','Brewrut · Iced Ube Latte','AI Creative','Café reel','ads',1],
+ ['p10','OEG Outsourcing','Video Editing','Motion graphics ad','ads',1],
+ ['p15','Gen Z Diet · Labneh Zaatar','Video Editing','Recipe reel','ads',1],
+ ['p02','FITTED Home Concierge','Video Editing','Brand ad','ads',1],
  ['p04','Rolex Datejust','AI Creative','Product film · Concept','products'],
  ['p13','Vice Nights','AI Creative','AI city film · Concept','worlds'],
- ['p12','Brewrut · Iced Ube Latte','AI Creative','Café reel · Concept','ads'],
  ['p14','Portugal No. 7','AI Creative','Product film · Concept','products'],
  ['p07','Mountain Drive','AI Creative','AI car film','worlds'],
- ['p10','OEG Outsourcing','Video Editing','Motion graphics ad','ads'],
  ['p05','Nike Air Force 1','AI Creative','Product film · Concept','products'],
  ['p01','Blueprint to Home','AI Creative','Interior visualisation','worlds'],
  ['p09','Good Mood','Video Editing','Same clip, different edit','edits'],
  ['p11','Handcrafted Leather','AI Creative','Product film · Concept','products'],
- ['p02','FITTED Home Concierge','Video Editing','Brand ad','ads'],
  ['p03','From the Ground Up','AI Creative','Build visualisation','worlds'],
  ['p06','Hot Wheels Tee','AI Creative','Product film · Concept','products'],
  ['p08','Game Night','Video Editing','Sports edit','edits']
-].map(([id,t,svc,m,f])=>({id,t,svc,m,f}));
+].map(([id,t,svc,m,f,client])=>({id,t,svc,m,f,client:!!client}));
 (function(){
   const deck=document.getElementById('deck'),meta=document.getElementById('r-meta'),title=document.getElementById('r-title'),count=document.getElementById('r-count');
   let list=WORK,cur=0,cards=[],seen=false;
   const pad=n=>String(n).padStart(2,'0');
   function build(){deck.innerHTML='';cards=list.map((w,i)=>{const b=document.createElement('button');b.type='button';b.className='card';b.dataset.i=i;
     b.setAttribute('aria-label',w.t+', '+w.svc);
-    b.innerHTML=`<img alt="" decoding="async" width="540" height="960" sizes="(max-width:700px) 56vw, 280px"><span class="card-tag">${w.svc}</span>`;deck.appendChild(b);return b});layout()}
+    b.innerHTML=`<img alt="" decoding="async" width="540" height="960" sizes="(max-width:700px) 56vw, 280px"><span class="card-tag">${w.svc}</span>${w.client?'<span class="card-client">Client work</span>':''}`;deck.appendChild(b);return b});layout()}
   function layout(){
     const n=list.length;
     cards.forEach((c,i)=>{let o=i-cur;if(o>n/2)o-=n;if(o<-n/2)o+=n;const a=Math.abs(o);
@@ -565,7 +568,7 @@ const WORK=[
       c.style.opacity=a>2?0:1-a*.22;c.style.filter=`brightness(${1-Math.min(a,2)*.28})`;c.style.zIndex=20-a;c.style.pointerEvents=a>2?'none':'';
       c.tabIndex=a===0?0:-1;c.classList.toggle('now',a===0);
       const im=c.querySelector('img');if(a<=2&&!im.srcset){const id=list[i].id;im.srcset=`assets/work/${id}-s.webp 300w, assets/work/${id}.webp 540w`;im.src=`assets/work/${id}.webp`}});
-    const w=list[cur];meta.textContent=w.m;title.textContent=w.t;count.textContent=pad(cur+1)+' / '+pad(n);
+    const w=list[cur];meta.textContent=(w.client?'Client work · ':'')+w.m;title.textContent=w.t;count.textContent=pad(cur+1)+' / '+pad(n);
     preview()}
   function preview(){cards.forEach((c,i)=>{const v=c.querySelector('video');if(i!==cur&&v){v.pause();v.remove()}});
     if(reduce||!seen)return;const c=cards[cur];if(c.querySelector('video'))return;
@@ -573,7 +576,7 @@ const WORK=[
     v.addEventListener('playing',()=>v.classList.add('on'),{once:true});c.appendChild(v);const p=v.play();if(p)p.catch(()=>{})}
   function go(d){cur=(cur+d+list.length)%list.length;layout()}
   function watch(){const w=list[cur];pause();
-    show(`<p class="label" style="color:var(--mist)">${w.m}</p><h2 id="viewer-title" style="margin-top:6px">${w.t}</h2><video src="assets/work/${w.id}.mp4" poster="assets/work/${w.id}.webp" controls autoplay playsinline></video><a class="btn" data-where="portfolio viewer" href="https://wa.me/96170508546?text=${encodeURIComponent("Hi VYLE, I saw "+w.t+" on your website and I'd like something like it for my brand.")}" target="_blank" rel="noopener">Want this for your brand?</a>`);
+    show(`<p class="label" style="color:var(--mist)">${w.client?'Client work · ':''}${w.m}</p><h2 id="viewer-title" style="margin-top:6px">${w.t}</h2><video src="assets/work/${w.id}.mp4" poster="assets/work/${w.id}.webp" controls autoplay playsinline></video><a class="btn" data-where="portfolio viewer" href="https://wa.me/96170508546?text=${encodeURIComponent("Hi VYLE, I saw "+w.t+" on your website and I'd like something like it for my brand.")}" target="_blank" rel="noopener">Want this for your brand?</a>`);
     dlg.classList.add('watch');if(typeof gtag==='function')gtag('event','portfolio_play',{item:w.t})}
   function pause(){const v=cards[cur]&&cards[cur].querySelector('video');if(v)v.pause()}
   dlg.addEventListener('close',()=>{dlg.classList.remove('watch');if(seen){const v=cards[cur]&&cards[cur].querySelector('video');if(v)v.play().catch(()=>{})}});
@@ -590,7 +593,7 @@ const WORK=[
   deck.addEventListener('click',e=>{if(e.detail===0&&e.target.closest('.card.now'))watch()});
   document.querySelectorAll('.reel-filters button').forEach(b=>b.addEventListener('click',()=>{
     document.querySelectorAll('.reel-filters button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
-    list=b.dataset.f==='all'?WORK:WORK.filter(w=>w.f===b.dataset.f);cur=0;build()}));
+    list=b.dataset.f==='all'?WORK:b.dataset.f==='client'?WORK.filter(w=>w.client):WORK.filter(w=>w.f===b.dataset.f);cur=0;build()}));
   new IntersectionObserver(([e])=>{seen=e.isIntersecting;if(seen)preview();else pause()},{threshold:.35}).observe(deck);
   build();
 })();
