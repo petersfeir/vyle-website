@@ -115,6 +115,15 @@ body.menu-on .tint{opacity:.4!important}
 .nav ol a span{font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--mist)}
 .nav ol a:hover{color:var(--mist)}
 .nav-foot{display:flex;flex-wrap:wrap;gap:10px 28px;color:var(--mist)}
+/* Client login: in the top bar on wider screens, as a button in the menu on every screen. */
+.bar-login{display:inline-flex;align-items:center;gap:9px;height:52px;padding:0 18px;border-radius:30px;background:#0c2952b3;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--cream);transition:background .2s}
+.bar-login:hover{background:var(--navy)}
+.bar-login svg,.nav-login svg{width:12px;height:12px;fill:currentColor;flex:none}
+.nav ol li.li-login{margin-top:18px}
+.nav ol a.nav-login{display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 20px;border:1px solid #faf4eb80;border-radius:30px;font-size:11px;font-weight:700;letter-spacing:.2em;line-height:1;color:var(--cream);transition:background .2s,color .2s}
+.nav ol a.nav-login:hover{background:var(--cream);color:var(--navy)}
+@media(max-width:760px){.bar-login{display:none}}
+
 .nav-foot a:hover{color:var(--cream)}
 
 /* Opening */
@@ -341,6 +350,7 @@ video:not([controls]){pointer-events:none}
 <header class="bar" id="bar"><div class="wrap">
   <a class="logo" href="#top" data-home aria-label="VYLE, back to the start"><svg viewBox="249 445 758 364" role="img" aria-label="VYLE"><path d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path d="M738 449H771V722H738Z"/><path fill-rule="evenodd" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg></a>
   <div class="bar-right">
+    <a class="bar-login label" href="/portal/"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2h1v7h-9V7zm1.5 0h4V5a2 2 0 0 0-4 0z"/></svg>Client login</a>
     <p class="stat-pill" role="img" aria-label="5 brands growing with us"><i aria-hidden="true"></i><b class="num-to" id="helped" data-to="5" aria-hidden="true">5</b><span aria-hidden="true">Brands <span class="opt">growing </span>with us</span></p>
     <button class="menu-btn label" type="button" aria-controls="nav" aria-expanded="false" aria-label="Open menu" id="menu-open"><b>Menu</b><i aria-hidden="true"></i></button>
   </div>
@@ -358,6 +368,7 @@ video:not([controls]){pointer-events:none}
     <li><a href="#shop">Shop</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li class="li-login"><a class="nav-login label" href="/portal/"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 7V5a3.5 3.5 0 0 1 7 0v2h1v7h-9V7zm1.5 0h4V5a2 2 0 0 0-4 0z"/></svg>Client login <span aria-hidden="true">&rarr;</span></a></li>
   </ol>
   <div class="nav-foot label">
     <a href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" data-where="menu">WhatsApp</a>
@@ -365,7 +376,6 @@ video:not([controls]){pointer-events:none}
     <a href="https://www.tiktok.com/@vyle.lb" target="_blank" rel="noopener">TikTok</a>
     <a href="https://calendly.com/info-vyle-lb" target="_blank" rel="noopener">Book a call</a>
     <a href="mailto:info.vyle.lb@gmail.com">Email</a>
-    <a href="/portal/">Client login</a>
   </div>
 </nav>
 
