@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Client portal | VYLE</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#081d3c">
+<link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+<style>
+/* Client portal. Same world as vylelb.com: monolith film, navy shade, cream type. */
+:root{--navy:#0c2952;--deep:#081d3c;--cream:#faf4eb;--mist:#a9bcd8;--dline:#faf4eb24;--ok:#7fe0a8;--gl:max(24px,env(safe-area-inset-left,0px));--gr:max(24px,env(safe-area-inset-right,0px))}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{background:var(--deep);color:var(--cream);font:16px/1.6 'Montserrat','Segoe UI',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}
+a{color:inherit;text-decoration:none}
+.film{position:fixed;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;background:var(--deep) url('/assets/monolith-poster.webp') center/cover}
+.tint{position:fixed;inset:0;z-index:-1;background:linear-gradient(90deg,#081d3cd9 0%,#081d3c59 55%,transparent 85%),#081d3c;opacity:.6}
+@media(max-aspect-ratio:4/5){.film{background-image:url('/assets/monolith-poster-phone.webp')}.tint{background:linear-gradient(180deg,#081d3cb3,#081d3c73 45%,#081d3cd9)}}
+video::-webkit-media-controls-start-playback-button{display:none!important}
+
+/* Top bar: same size and spots as the main site */
+.bar{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--gr) 0 var(--gl)}
+.logo{display:block;width:78px}.logo svg{display:block;width:100%;fill:var(--cream)}
+.back{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 18px;border-radius:30px;background:#0c2952b3;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.back:hover{background:var(--navy)}
+
+main{min-height:calc(100svh - 72px);display:flex;flex-direction:column;justify-content:center;padding:24px var(--gr) 64px var(--gl)}
+.label{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mist)}
+h1{margin-top:12px;font-size:clamp(40px,6.2vw,80px);font-weight:800;line-height:.95;letter-spacing:-.045em}
+.lead{margin-top:16px;max-width:30em;color:var(--mist);font-size:15px}
+
+/* Login card */
+.card{margin-top:34px;width:min(100%,460px);padding:clamp(22px,3vw,32px);border:1px solid var(--dline);background:#081d3cb3;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.field{display:block}
+.field span{display:block;font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mist);margin-bottom:10px}
+.field input{width:100%;height:54px;padding:0 16px;border:1px solid #faf4eb40;background:#0c295299;font-size:16px;outline:none}
+.field input:focus{border-color:var(--cream)}
+.code{letter-spacing:.6em;text-align:center;font-size:22px!important;font-weight:700}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:54px;margin-top:16px;padding:12px 24px;border:1px solid var(--cream);background:var(--cream);color:var(--navy);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.btn:hover{background:var(--mist);border-color:var(--mist)}
+.btn.ghost{background:transparent;color:var(--cream);border-color:#faf4eb40}
+.btn.ghost:hover{background:#faf4eb14}
+.hint{margin-top:14px;font-size:12px;color:var(--mist)}
+.hint button{border:0;background:none;text-decoration:underline;cursor:pointer;color:var(--cream)}
+
+/* Dashboard */
+.dash{width:100%;max-width:1100px}
+.dash-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px}
+.status{display:inline-flex;align-items:center;gap:9px;height:34px;padding:0 14px;border-radius:20px;background:#0c2952b3;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.status i{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:14px;margin-top:30px}
+.tile{min-width:0;padding:24px;border:1px solid var(--dline);background:#081d3cb3;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.tile .big{margin-top:10px;font-size:clamp(34px,4vw,52px);font-weight:800;letter-spacing:-.04em;line-height:1}
+.tile .big small{font-size:.45em;font-weight:600;color:var(--mist);letter-spacing:0}
+.meter{margin-top:18px;height:8px;border-radius:8px;background:#faf4eb1f;overflow:hidden}
+.meter b{display:block;height:100%;border-radius:8px;background:var(--cream);width:0;transition:width 1.2s cubic-bezier(.2,.75,.2,1)}
+.sub{margin-top:12px;font-size:13px;color:var(--mist)}
+.rows{margin-top:14px;display:grid;gap:10px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:14px}
+.pill{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:12px}
+.pill.ok{background:var(--cream);color:var(--navy)}
+.pill.wait{border:1px solid #faf4eb55;color:var(--cream)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.actions .btn{width:auto;margin:0;padding-inline:26px}
+.signout{margin-top:22px;border:0;background:none;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);cursor:pointer}
+.signout:hover{color:var(--cream)}
+.msg{margin-top:12px;font-size:13px;color:#ffd2c2;min-height:1em}
+.btn[disabled]{opacity:.6;cursor:wait}
+[hidden]{display:none!important}
+@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}.grid .tile:first-child{grid-column:1/-1}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.actions .btn{width:100%}.back span{display:none}.back{padding:0 14px}}
+@media(max-width:400px){.logo{width:58px}}
+</style>
+</head>
+<body>
+<video class="film" id="film" autoplay muted loop playsinline aria-hidden="true"></video>
+<div class="tint"></div>
+
+<header class="bar">
+  <a class="logo" href="/" aria-label="VYLE home"><svg viewBox="249 445 758 364" aria-hidden="true"><path d="M253 527H291L371 670L452 527H490L381 722H362Z"/><path d="M497 527H535L614 668L683 527H719L576 805H537L595 702Z"/><path d="M738 449H771V722H738Z"/><path fill-rule="evenodd" d="M1003 636H836C842 669 868 693 902 693C927 693 945 684 964 666L991 680C968 709 940 724 902 724C844 724 802 683 802 626C802 570 844 527 901 527C959 527 1003 568 1003 625ZM836 610H970C963 578 938 557 902 557C869 557 844 576 836 610Z"/></svg></a>
+  <a class="back" href="/">&larr; <span>Back to vylelb.com</span></a>
+</header>
+
+<main>
+  <!-- Step 1: email -->
+  <section id="s-email">
+    <p class="label">Client portal</p>
+    <h1>Your work,<br>in one place.</h1>
+    <p class="lead">Track your package, see how many videos you have left this month, and open your files.</p>
+    <form class="card" id="f-email">
+      <label class="field"><span>Your email</span><input type="email" id="email" placeholder="you@yourbrand.com" required autocomplete="email"></label>
+      <button class="btn" type="submit">Send my login code</button>
+      <p class="msg" id="m-email" role="alert"></p>
+      <p class="hint">Use the email you gave VYLE. Not a client yet? <a href="/packages" style="text-decoration:underline">See packages</a></p>
+    </form>
+  </section>
+
+  <!-- Step 2: code -->
+  <section id="s-code" hidden>
+    <p class="label">Check your inbox</p>
+    <h1>Enter your<br>code.</h1>
+    <p class="lead">We sent a 6-digit code to <b id="sent-to" style="color:var(--cream)"></b>. It works for 10 minutes.</p>
+    <form class="card" id="f-code">
+      <label class="field"><span>Login code</span><input class="code" id="code" inputmode="numeric" maxlength="6" placeholder="••••••" required autocomplete="one-time-code"></label>
+      <button class="btn" type="submit">Open my portal</button>
+      <p class="msg" id="m-code" role="alert"></p>
+      <p class="hint">Didn't get it? Check spam, or <button type="button" id="resend">send a new code</button>.</p>
+    </form>
+  </section>
+
+  <!-- Step 3: dashboard -->
+  <section id="s-dash" class="dash" hidden>
+    <div class="dash-head">
+      <div><p class="label">Welcome back</p><h1 id="d-name"></h1></div>
+      <p class="status"><i aria-hidden="true"></i><span id="d-status"></span></p>
+    </div>
+    <div class="grid">
+      <div class="tile">
+        <p class="label">Videos this month</p>
+        <p class="big"><span id="d-used"></span><small> / <span id="d-incl"></span> used</small></p>
+        <div class="meter" aria-hidden="true"><b id="d-bar"></b></div>
+        <p class="sub" id="d-left"></p>
+      </div>
+      <div class="tile">
+        <p class="label">Package</p>
+        <p class="big" id="d-pack" style="font-size:clamp(28px,3vw,40px)"></p>
+        <p class="sub">Renews on <b id="d-renew" style="color:var(--cream)"></b></p>
+        <p class="sub">Revisions used: <b id="d-rev" style="color:var(--cream)"></b></p>
+      </div>
+      <div class="tile">
+        <p class="label">Payments</p>
+        <div class="rows">
+          <div class="row">Deposit <span class="pill" id="d-dep"></span></div>
+          <div class="row">Balance <span class="pill" id="d-bal"></span></div>
+        </div>
+        <p class="sub">Package price: <b id="d-price" style="color:var(--cream)"></b></p>
+      </div>
+    </div>
+    <div class="actions">
+      <a class="btn" id="d-files" href="#" target="_blank" rel="noopener">Open my files</a>
+      <a class="btn ghost" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%27m%20writing%20from%20my%20client%20portal." target="_blank" rel="noopener">Message VYLE</a>
+    </div>
+    <button class="signout" type="button" id="signout">Sign out</button>
+  </section>
+</main>
+
+<script>
+// Background film, same as the main site
+(function(){var v=document.getElementById('film'),tall=matchMedia('(max-aspect-ratio: 4/5)').matches;
+v.poster='/assets/'+(tall?'monolith-poster-phone.webp':'monolith-poster.webp');v.src='/assets/'+(tall?'monolith-phone.mp4':'monolith-hd.mp4');var p=v.play();if(p)p.catch(function(){});
+['touchstart','click'].forEach(function(e){addEventListener(e,function(){if(v.paused)v.play().catch(function(){})},{passive:true})})})();
+
+// Talks to the VYLE Google Apps Script, which reads vyle_client_tracker. The sheet itself stays private.
+const API='https://script.google.com/macros/s/AKfycbyk_JxWo6nYFIw7r-ZSscj059_dQyJ-UJMBYHVTG2p1eFVhZl4fQf4pcbjpXyuiFmhleg/exec';
+const $=id=>document.getElementById(id);
+const store={get(){try{return sessionStorage.getItem('vyle_t')}catch(e){return null}},set(t){try{t?sessionStorage.setItem('vyle_t',t):sessionStorage.removeItem('vyle_t')}catch(e){}}};
+async function call(body){const r=await fetch(API,{method:'POST',body:JSON.stringify(body)});return r.json()}
+function step(s){['s-email','s-code','s-dash'].forEach(x=>$(x).hidden=x!==s);window.scrollTo(0,0)}
+function busy(btn,on,label){btn.disabled=on;if(label)btn.textContent=label}
+function fmtDate(d){if(!d)return '—';const t=new Date(d+'T00:00:00');return isNaN(t)?d:t.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})}
+function showDash(c){
+  $('d-name').textContent=c.name||'Your brand';$('d-status').textContent=c.status||'Active';
+  $('d-used').textContent=c.delivered;$('d-incl').textContent=c.included||'—';
+  const left=Math.max(0,(c.included||0)-c.delivered);$('d-left').textContent=c.included?(left?left+' video'+(left>1?'s':'')+' left this month':'All videos used this month'):'';
+  $('d-pack').textContent=c.package||'—';$('d-renew').textContent=fmtDate(c.renewal);$('d-rev').textContent=c.revisions;
+  const pill=(el,yes)=>{el.textContent=yes?'Paid':'Pending';el.className='pill '+(yes?'ok':'wait')};
+  pill($('d-dep'),/^y/i.test(c.deposit));pill($('d-bal'),/^y/i.test(c.balance));$('d-price').textContent=c.price||'—';
+  const f=$('d-files');if(c.drive){f.href=c.drive;f.hidden=false}else f.hidden=true;
+  $('d-bar').style.width='0';step('s-dash');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>$('d-bar').style.width=(c.included?Math.min(100,c.delivered/c.included*100):0)+'%'));
+}
+let email='';
+$('f-email').addEventListener('submit',async e=>{e.preventDefault();const b=e.submitter||$('f-email').querySelector('.btn');
+  email=$('email').value.trim();$('m-email').textContent='';busy(b,true,'Sending…');
+  try{const r=await call({action:'requestCode',email});
+    if(r.ok){$('sent-to').textContent=email;$('code').value='';$('m-code').textContent='';step('s-code');$('code').focus()}
+    else $('m-email').textContent=r.error==='too_many'?'Too many codes requested. Try again in an hour.':'Something went wrong. Please try again.';
+  }catch(err){$('m-email').textContent='Could not connect. Check your internet and try again.'}
+  busy(b,false,'Send my login code')});
+$('f-code').addEventListener('submit',async e=>{e.preventDefault();const b=e.submitter||$('f-code').querySelector('.btn');
+  $('m-code').textContent='';busy(b,true,'Checking…');
+  try{const r=await call({action:'verify',email,code:$('code').value});
+    if(r.ok){store.set(r.token);showDash(r.client)}
+    else $('m-code').textContent=r.error==='wrong'?'That code is not right. Check it and try again.':'This code has expired. Send a new one.';
+  }catch(err){$('m-code').textContent='Could not connect. Check your internet and try again.'}
+  busy(b,false,'Open my portal')});
+$('resend').addEventListener('click',async()=>{$('m-code').textContent='Sending a new code…';
+  try{const r=await call({action:'requestCode',email});$('m-code').textContent=r.ok?'A new code is on its way.':'Too many codes requested. Try again in an hour.'}catch(err){$('m-code').textContent='Could not connect.'}});
+$('signout').addEventListener('click',()=>{store.set(null);email='';$('email').value='';$('code').value='';step('s-email')});
+// Still signed in from earlier in this visit?
+(async()=>{const t=store.get();if(!t)return;try{const r=await call({action:'data',token:t});if(r.ok)showDash(r.client);else store.set(null)}catch(err){}})();
+</script>
+</body>
+</html>
