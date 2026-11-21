@@ -252,7 +252,9 @@ dialog.watch .btn{width:100%}
 @media(max-width:560px){.shop-box .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){.shop-box.in::after,.soon i{animation:none}}
 .sticker{position:fixed;z-index:25;left:calc(env(safe-area-inset-left,0px) + 20px);bottom:calc(env(safe-area-inset-bottom,0px) + 16px);width:104px;height:104px;padding:0;border:0;border-radius:50%;background:var(--cream);color:var(--navy);box-shadow:0 10px 30px #081d3c66;cursor:pointer;transform:rotate(-10deg);transition:transform .3s,box-shadow .3s,opacity .3s}
-.sticker:hover{transform:rotate(0) scale(1.06);box-shadow:0 14px 36px #081d3c80}
+.sticker{opacity:0;pointer-events:none;transform:rotate(-30deg) scale(.4);transition:transform .55s cubic-bezier(.34,1.56,.64,1),box-shadow .3s,opacity .3s}
+body.past-hero .sticker{opacity:1;pointer-events:auto;transform:rotate(-10deg)}
+body.past-hero .sticker:hover{transform:rotate(0) scale(1.06);box-shadow:0 14px 36px #081d3c80}
 .sticker svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 18s linear infinite}
 .sticker text{font-size:9.2px;font-weight:700;letter-spacing:.08em;fill:currentColor}
 .sticker b{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;font-size:24px;font-weight:800;letter-spacing:-.04em;line-height:.9}
@@ -260,7 +262,7 @@ dialog.watch .btn{width:100%}
 @keyframes spin{to{transform:rotate(360deg)}}
 .nav.open~.sticker{opacity:0;pointer-events:none}
 @media(max-width:560px){.sticker{left:calc(env(safe-area-inset-left,0px) + 14px);bottom:calc(env(safe-area-inset-bottom,0px) + 14px);width:74px;height:74px}.sticker text{font-size:9.6px}.sticker b{font-size:18px}.sticker b small{font-size:8px}}
-@media(prefers-reduced-motion:reduce){.sticker svg{animation:none}}
+@media(prefers-reduced-motion:reduce){.sticker svg{animation:none}.sticker{transition:opacity .3s}}
 .offer-pop .label{color:var(--mist)}
 .offer-pop h2{margin-top:10px;font-size:clamp(24px,5vw,30px);line-height:1.08;text-wrap:balance}
 .offer-pop h2 span{color:var(--mist)}
@@ -577,6 +579,8 @@ function showOffer(){show(`<div class="offer-pop"><p class="label">New client of
 <a class="btn" data-where="offer popup" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%27d%20like%20to%20claim%20the%20new%20client%20offer%3A%20my%20first%20video%20free%20and%2020%25%20off%20my%20first%20month." target="_blank" rel="noopener">Claim my offer</a></div>`);
   if(typeof gtag==='function')gtag('event','offer_open')}
 document.getElementById('offer-sticker').addEventListener('click',showOffer);
+// The offer sticker stays off the opening screen (it would cover the hero text) and pops in once you scroll.
+{const st=()=>document.body.classList.toggle('past-hero',scrollY>innerHeight*.3);addEventListener('scroll',st,{passive:true});st()}
 {const op=location.pathname.replace(/\/+$/,'').toLowerCase()==='/offer'||location.hash==='#offer';
  if(op){try{history.replaceState(null,'','/')}catch(e){}addEventListener('load',()=>setTimeout(showOffer,400),{once:true})}}
 document.querySelectorAll('[data-legal]').forEach(b=>b.addEventListener('click',()=>showLegal(b.dataset.legal)));
