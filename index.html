@@ -251,6 +251,25 @@ dialog.watch .btn{width:100%}
 .shop-box .btn:hover{background:var(--mist)}
 @media(max-width:560px){.shop-box .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){.shop-box.in::after,.soon i{animation:none}}
+.offer-sec{padding-block:clamp(40px,6vw,80px) 0}
+.offer{position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:space-between;gap:26px 48px;flex-wrap:wrap;padding:clamp(26px,3.6vw,48px);border:1px solid #faf4eb40;background:#081d3cd9}
+.offer::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,#faf4eb14 50%,transparent 65%);transform:translateX(-100%);pointer-events:none}
+.offer.in::after{animation:sheen 3.6s 1s ease-in-out infinite}
+.offer-text{flex:1 1 440px;min-width:0}
+.offer h2{margin-top:16px;max-width:15em;font-size:clamp(28px,3.8vw,52px);text-wrap:balance}
+.offer h2 span{color:var(--mist)}
+.offer-text>p:not(.soon){margin-top:12px;max-width:34em;color:var(--mist);font-size:15px}
+.offer-deals{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:560px;margin:24px 0 0;padding:0;list-style:none}
+.offer-deals li{padding:18px 20px;border:1px solid var(--dline);background:#0c295280}
+.offer-deals b{display:block;font-size:clamp(30px,3.4vw,44px);font-weight:800;letter-spacing:-.04em;line-height:1}
+.offer-deals span{display:block;margin-top:10px;font-size:13px;color:var(--mist)}
+.offer-cta{display:flex;flex-direction:column;align-items:center;gap:14px;flex:0 1 280px;position:relative;z-index:1}
+.offer-cta .btn{width:100%;background:var(--cream);color:var(--navy);border-color:var(--cream);padding-inline:32px}
+.offer-cta .btn:hover{background:var(--mist);border-color:var(--mist)}
+.plan .bonus{margin-top:-8px;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--mist)}
+.plan .bonus b{color:var(--cream)}
+@media(max-width:560px){.offer-cta{flex-basis:100%}.offer-deals{gap:8px}.offer-deals li{padding:14px}.offer-deals b{font-size:28px;white-space:nowrap}}
+@media(prefers-reduced-motion:reduce){.offer.in::after{animation:none}}
 
 @media(max-width:560px){.custom{padding:24px 22px}.custom .btn{width:100%}}
 
@@ -405,6 +424,25 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)kick
   </div></div>
 </section>
 
+<section class="sec offer-sec" id="offer">
+  <div class="wrap">
+    <div class="offer" data-from="right">
+      <div class="offer-text">
+        <p class="soon"><i aria-hidden="true"></i>New client offer</p>
+        <h2>Start with VYLE. <span>Your first video is on us.</span></h2>
+        <ul class="offer-deals">
+          <li><b>Free</b><span>First video free with any package</span></li>
+          <li><b>20% off</b><span>Your first month</span></li>
+        </ul>
+      </div>
+      <div class="offer-cta">
+        <a class="btn" data-where="offer section" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%27d%20like%20to%20claim%20the%20new%20client%20offer%3A%20my%20first%20video%20free%20and%2020%25%20off%20my%20first%20month." target="_blank" rel="noopener">Claim my offer</a>
+        <a class="text-link" href="#packages">See packages →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="services">
   <div class="wrap">
     <div class="head"><h2 data-from="left" style="--d:.08s">Services</h2></div>
@@ -453,18 +491,21 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)kick
       <div class="plan" style="--fx:calc(100% + 16px);--ry:38deg;--dd:.18s">
         <div class="plan-top"><p class="label">Starter</p></div>
         <p class="price"><span class="num-to" data-to="4">4</span><small> videos / month</small></p>
+        <p class="bonus"><b>First video free</b> + 20% off your first month</p>
         <ul><li>Edited videos, AI videos or AI images: mix as you like</li><li>Cover image and caption for each</li><li>2 revision rounds per video</li><li>24/7 support for any adjustment</li><li class="more">More, tailored to your business</li></ul>
         <a class="btn" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%27m%20interested%20in%20the%20Starter%20package.%20Can%20you%20send%20me%20the%20details%20and%20price%3F" target="_blank" rel="noopener">Ask about Starter</a>
       </div>
       <div class="plan main" style="--fx:0px;--ry:0deg;--dd:0s">
         <div class="plan-top"><p class="label">Growth</p><span class="tag">Most popular</span></div>
         <p class="price"><span class="num-to" data-to="8">8</span><small> videos / month</small></p>
+        <p class="bonus"><b>First video free</b> + 20% off your first month</p>
         <ul><li>Edited videos, AI videos or AI images: mix as you like</li><li>Cover image and caption for each</li><li>3 revision rounds per video</li><li>24/7 support for any adjustment</li><li class="more">More, tailored to your business</li></ul>
         <a class="btn" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%27m%20interested%20in%20the%20Growth%20package.%20Can%20you%20send%20me%20the%20details%20and%20price%3F" target="_blank" rel="noopener">Ask about Growth</a>
       </div>
       <div class="plan" style="--fx:calc(-100% - 16px);--ry:-38deg;--dd:.18s">
         <div class="plan-top"><p class="label">Pro</p></div>
         <p class="price"><span class="num-to" data-to="12">12</span><small> videos / month</small></p>
+        <p class="bonus"><b>First video free</b> + 20% off your first month</p>
         <ul><li>Edited videos, AI videos or AI images: mix as you like</li><li>Cover image and caption for each</li><li>Unlimited revisions</li><li>Monthly strategy call</li><li>24/7 support for any adjustment</li><li class="more">More, tailored to your business</li></ul>
         <a class="btn" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%27m%20interested%20in%20the%20Pro%20package.%20Can%20you%20send%20me%20the%20details%20and%20price%3F" target="_blank" rel="noopener">Ask about Pro</a>
       </div>
@@ -612,7 +653,7 @@ const WORK=[
 // Clean section addresses: vylelb.com/portfolio etc. The address follows the reader as they scroll,
 // and opening one of these links lands on that section. The folders are made at deploy time.
 (function(){
-  const IDS=['services','portfolio','packages','shop','about','contact'];
+  const IDS=['offer','services','portfolio','packages','shop','about','contact'];
   let path=location.pathname.replace(/\/+$/,'')||'/';
   const set=p=>{if(p!==path&&location.protocol!=='file:'){path=p;try{history.replaceState(null,'',p+location.search)}catch(e){}}};
   const go=(id,smooth)=>{const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:smooth&&!reduce?'smooth':'auto'})};
