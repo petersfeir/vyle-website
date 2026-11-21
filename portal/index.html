@@ -63,14 +63,6 @@ h1{margin-top:12px;font-size:clamp(40px,6.2vw,80px);font-weight:800;line-height:
 .pill{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:12px}
 .pill.ok{background:var(--cream);color:var(--navy)}
 .pill.wait{border:1px solid #faf4eb55;color:var(--cream)}
-.refer{margin-top:14px;display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(20px,4vw,48px)}
-.refer h2{margin-top:10px;font-size:clamp(26px,3vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.05;text-wrap:balance}
-.refer-stats{display:flex;gap:clamp(24px,5vw,56px);margin-top:20px}
-.refer-stats .big{font-size:clamp(30px,3.4vw,44px)}
-.refer-stats .sub{margin-top:6px}
-.refer-share{min-width:0;align-self:end}
-.refer-share .link{margin-top:10px;padding:14px 16px;border:1px dashed #faf4eb55;font-size:14px;font-weight:600;overflow-wrap:anywhere;user-select:all}
-.refer-share .btn{margin-top:12px}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
 .actions .btn{width:auto;margin:0;padding-inline:26px}
 .signout{margin-top:22px;border:0;background:none;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);cursor:pointer}
@@ -78,7 +70,7 @@ h1{margin-top:12px;font-size:clamp(40px,6.2vw,80px);font-weight:800;line-height:
 .msg{margin-top:12px;font-size:13px;color:#ffd2c2;min-height:1em}
 .btn[disabled]{opacity:.6;cursor:wait}
 [hidden]{display:none!important}
-@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}.grid .tile:first-child{grid-column:1/-1}.refer{grid-template-columns:1fr}}
+@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}.grid .tile:first-child{grid-column:1/-1}}
 @media(max-width:560px){.grid{grid-template-columns:1fr}.actions .btn{width:100%}.back span{display:none}.back{padding:0 14px}}
 @media(max-width:400px){.logo{width:58px}}
 </style>
@@ -147,24 +139,6 @@ h1{margin-top:12px;font-size:clamp(40px,6.2vw,80px);font-weight:800;line-height:
         <p class="sub">Package price: <b id="d-price" style="color:var(--cream)"></b></p>
       </div>
     </div>
-    <div class="tile refer" id="d-refer" hidden>
-      <div class="refer-copy">
-        <p class="label">Refer a brand</p>
-        <h2>Refer a brand.<br>Get a free video.</h2>
-        <p class="sub">For every brand that signs with your link, you get <b style="color:var(--cream)">1 free video</b>. They get <b style="color:var(--cream)">15% off</b> their first package.</p>
-        <div class="refer-stats">
-          <div><p class="big" id="d-signed">0</p><p class="sub">Brands signed</p></div>
-          <div><p class="big" id="d-free">0</p><p class="sub">Free videos to use</p></div>
-        </div>
-      </div>
-      <div class="refer-share">
-        <p class="label">Your link</p>
-        <p class="link" id="d-link"></p>
-        <a class="btn" id="d-wa" href="#" target="_blank" rel="noopener">Share on WhatsApp</a>
-        <button class="btn ghost" type="button" id="d-copy">Copy link</button>
-        <p class="hint">A brand counts once it pays its deposit. Free videos are added to your next month.</p>
-      </div>
-    </div>
     <div class="actions">
       <a class="btn" id="d-files" href="#" target="_blank" rel="noopener">Open my files</a>
       <a class="btn ghost" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%27m%20writing%20from%20my%20client%20portal." target="_blank" rel="noopener">Message VYLE</a>
@@ -195,14 +169,6 @@ function showDash(c){
   const pill=(el,yes)=>{el.textContent=yes?'Paid':'Pending';el.className='pill '+(yes?'ok':'wait')};
   pill($('d-dep'),/^y/i.test(c.deposit));pill($('d-bal'),/^y/i.test(c.balance));$('d-price').textContent=c.price||'—';
   const f=$('d-files');if(c.drive){f.href=c.drive;f.hidden=false}else f.hidden=true;
-  const R=$('d-refer');
-  if(c.ref){
-    const link='https://vylelb.com/?ref='+encodeURIComponent(c.ref);
-    $('d-link').textContent=link.replace('https://','');$('d-link').dataset.full=link;$('d-signed').textContent=c.referrals||0;
-    $('d-free').textContent=Math.max(0,(c.freeEarned||0)-(c.freeUsed||0));
-    $('d-wa').href='https://wa.me/?text='+encodeURIComponent("I work with VYLE on my brand's content and I recommend them. Use my link to get 15% off your first package: "+link);
-    R.hidden=false;
-  }else R.hidden=true;
   $('d-bar').style.width='0';step('s-dash');
   requestAnimationFrame(()=>requestAnimationFrame(()=>$('d-bar').style.width=(c.included?Math.min(100,c.delivered/c.included*100):0)+'%'));
 }
@@ -224,11 +190,6 @@ $('f-code').addEventListener('submit',async e=>{e.preventDefault();const b=e.sub
   busy(b,false,'Open my portal')});
 $('resend').addEventListener('click',async()=>{$('m-code').textContent='Sending a new code…';
   try{const r=await call({action:'requestCode',email});$('m-code').textContent=r.ok?'A new code is on its way.':'Too many codes requested. Try again in an hour.'}catch(err){$('m-code').textContent='Could not connect.'}});
-$('d-copy').addEventListener('click',async e=>{const b=e.currentTarget,t=$('d-link').dataset.full;
-  try{await navigator.clipboard.writeText(t);b.textContent='Link copied'}
-  catch(err){const s=getSelection(),r=document.createRange();r.selectNodeContents($('d-link'));s.removeAllRanges();s.addRange(r);b.textContent='Link selected: copy it'}
-  if(window.gtag)gtag('event','referral_copy');setTimeout(()=>b.textContent='Copy link',2200)});
-$('d-wa').addEventListener('click',()=>{if(window.gtag)gtag('event','referral_share')});
 $('signout').addEventListener('click',()=>{store.set(null);email='';$('email').value='';$('code').value='';step('s-email')});
 // Still signed in from earlier in this visit?
 (async()=>{const t=store.get();if(!t)return;try{const r=await call({action:'data',token:t});if(r.ok)showDash(r.client);else store.set(null)}catch(err){}})();
