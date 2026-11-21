@@ -251,25 +251,28 @@ dialog.watch .btn{width:100%}
 .shop-box .btn:hover{background:var(--mist)}
 @media(max-width:560px){.shop-box .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){.shop-box.in::after,.soon i{animation:none}}
-.offer-sec{padding-block:clamp(40px,6vw,80px) 0}
-.offer{position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:space-between;gap:26px 48px;flex-wrap:wrap;padding:clamp(26px,3.6vw,48px);border:1px solid #faf4eb40;background:#081d3cd9}
-.offer::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,#faf4eb14 50%,transparent 65%);transform:translateX(-100%);pointer-events:none}
-.offer.in::after{animation:sheen 3.6s 1s ease-in-out infinite}
-.offer-text{flex:1 1 440px;min-width:0}
-.offer h2{margin-top:16px;max-width:15em;font-size:clamp(28px,3.8vw,52px);text-wrap:balance}
-.offer h2 span{color:var(--mist)}
-.offer-text>p:not(.soon){margin-top:12px;max-width:34em;color:var(--mist);font-size:15px}
-.offer-deals{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:560px;margin:24px 0 0;padding:0;list-style:none}
-.offer-deals li{padding:18px 20px;border:1px solid var(--dline);background:#0c295280}
-.offer-deals b{display:block;font-size:clamp(30px,3.4vw,44px);font-weight:800;letter-spacing:-.04em;line-height:1}
-.offer-deals span{display:block;margin-top:10px;font-size:13px;color:var(--mist)}
-.offer-cta{display:flex;flex-direction:column;align-items:center;gap:14px;flex:0 1 280px;position:relative;z-index:1}
-.offer-cta .btn{width:100%;background:var(--cream);color:var(--navy);border-color:var(--cream);padding-inline:32px}
-.offer-cta .btn:hover{background:var(--mist);border-color:var(--mist)}
+.sticker{position:fixed;z-index:25;left:calc(env(safe-area-inset-left,0px) + 20px);bottom:calc(env(safe-area-inset-bottom,0px) + 16px);width:104px;height:104px;padding:0;border:0;border-radius:50%;background:var(--cream);color:var(--navy);box-shadow:0 10px 30px #081d3c66;cursor:pointer;transform:rotate(-10deg);transition:transform .3s,box-shadow .3s,opacity .3s}
+.sticker:hover{transform:rotate(0) scale(1.06);box-shadow:0 14px 36px #081d3c80}
+.sticker svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 18s linear infinite}
+.sticker text{font-size:9.2px;font-weight:700;letter-spacing:.08em;fill:currentColor}
+.sticker b{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;font-size:24px;font-weight:800;letter-spacing:-.04em;line-height:.9}
+.sticker b small{margin-top:3px;font-size:10px;letter-spacing:.2em}
+@keyframes spin{to{transform:rotate(360deg)}}
+.nav.open~.sticker{opacity:0;pointer-events:none}
+@media(max-width:560px){.sticker{left:calc(env(safe-area-inset-left,0px) + 14px);bottom:calc(env(safe-area-inset-bottom,0px) + 14px);width:74px;height:74px}.sticker text{font-size:9.6px}.sticker b{font-size:18px}.sticker b small{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.sticker svg{animation:none}}
+.offer-pop .label{color:var(--mist)}
+.offer-pop h2{margin-top:10px;font-size:clamp(24px,5vw,30px);line-height:1.08;text-wrap:balance}
+.offer-pop h2 span{color:var(--mist)}
+.offer-deals{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 0;padding:0;list-style:none}
+.offer-deals li{padding:16px;border:1px solid var(--dline);background:#0c295280}
+.offer-deals b{display:block;font-size:30px;font-weight:800;letter-spacing:-.04em;line-height:1;white-space:nowrap}
+.offer-deals span{display:block;margin-top:8px;font-size:13px;color:var(--mist)}
+.offer-pop .how{margin-top:16px}
+.offer-pop .fine{margin-top:8px;font-size:12px}
+.offer-pop .btn{width:100%}
 .plan .bonus{margin-top:-8px;font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--mist)}
 .plan .bonus b{color:var(--cream)}
-@media(max-width:560px){.offer-cta{flex-basis:100%}.offer-deals{gap:8px}.offer-deals li{padding:14px}.offer-deals b{font-size:28px;white-space:nowrap}}
-@media(prefers-reduced-motion:reduce){.offer.in::after{animation:none}}
 
 @media(max-width:560px){.custom{padding:24px 22px}.custom .btn{width:100%}}
 
@@ -424,25 +427,6 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)kick
   </div></div>
 </section>
 
-<section class="sec offer-sec" id="offer">
-  <div class="wrap">
-    <div class="offer" data-from="right">
-      <div class="offer-text">
-        <p class="soon"><i aria-hidden="true"></i>New client offer</p>
-        <h2>Start with VYLE. <span>Your first video is on us.</span></h2>
-        <ul class="offer-deals">
-          <li><b>Free</b><span>First video free with any package</span></li>
-          <li><b>20% off</b><span>Your first month</span></li>
-        </ul>
-      </div>
-      <div class="offer-cta">
-        <a class="btn" data-where="offer section" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%27d%20like%20to%20claim%20the%20new%20client%20offer%3A%20my%20first%20video%20free%20and%2020%25%20off%20my%20first%20month." target="_blank" rel="noopener">Claim my offer</a>
-        <a class="text-link" href="#packages">See packages →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="sec" id="services">
   <div class="wrap">
     <div class="head"><h2 data-from="left" style="--d:.08s">Services</h2></div>
@@ -564,6 +548,7 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)kick
   </div></div>
 </footer>
 
+<button class="sticker" type="button" id="offer-sticker" aria-haspopup="dialog" aria-label="New client offer: first video free and 20% off your first month"><svg viewBox="0 0 100 100" aria-hidden="true"><defs><path id="ring" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0"/></defs><text><textPath href="#ring" textLength="236" lengthAdjust="spacingAndGlyphs">NEW CLIENT OFFER • FIRST VIDEO FREE • </textPath></text></svg><b aria-hidden="true">20%<small>OFF</small></b></button>
 <a class="wa" data-where="floating button" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" aria-label="Chat with VYLE on WhatsApp, +961 70 508 546"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg><span>WhatsApp</span></a>
 
 <dialog id="viewer" aria-labelledby="viewer-title"><button class="x" type="button" aria-label="Close">✕</button><div id="viewer-body"></div></dialog>
@@ -583,6 +568,17 @@ dlg.querySelector('.x').addEventListener('click',shut);
 dlg.addEventListener('cancel',e=>{e.preventDefault();shut()});
 dlg.addEventListener('click',e=>{if(e.target===dlg)shut()});
 function showLegal(k){const [h,t]=legal[k];show(`<h2 id="viewer-title">${h}</h2><p style="margin-top:12px">${t}</p>`)}
+// New client offer: the sticker opens the details. vylelb.com/offer opens it directly.
+function showOffer(){show(`<div class="offer-pop"><p class="label">New client offer</p>
+<h2 id="viewer-title">Start with VYLE. <span>Your first video is on us.</span></h2>
+<ul class="offer-deals"><li><b>Free</b><span>First video free with any package</span></li><li><b>20% off</b><span>Your first month</span></li></ul>
+<p class="how">Pick Starter, Growth or Pro, message us on WhatsApp, and we apply both to your start.</p>
+<p class="fine">For new clients, once per brand.</p>
+<a class="btn" data-where="offer popup" href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%27d%20like%20to%20claim%20the%20new%20client%20offer%3A%20my%20first%20video%20free%20and%2020%25%20off%20my%20first%20month." target="_blank" rel="noopener">Claim my offer</a></div>`);
+  if(typeof gtag==='function')gtag('event','offer_open')}
+document.getElementById('offer-sticker').addEventListener('click',showOffer);
+{const op=location.pathname.replace(/\/+$/,'').toLowerCase()==='/offer'||location.hash==='#offer';
+ if(op){try{history.replaceState(null,'','/')}catch(e){}addEventListener('load',()=>setTimeout(showOffer,400),{once:true})}}
 document.querySelectorAll('[data-legal]').forEach(b=>b.addEventListener('click',()=>showLegal(b.dataset.legal)));
 // vylelb.com/#privacy and /#terms open the matching notice (used by the shop's footer).
 {const k=location.hash.slice(1);if(legal[k])addEventListener('load',()=>showLegal(k),{once:true})}
@@ -653,7 +649,7 @@ const WORK=[
 // Clean section addresses: vylelb.com/portfolio etc. The address follows the reader as they scroll,
 // and opening one of these links lands on that section. The folders are made at deploy time.
 (function(){
-  const IDS=['offer','services','portfolio','packages','shop','about','contact'];
+  const IDS=['services','portfolio','packages','shop','about','contact'];
   let path=location.pathname.replace(/\/+$/,'')||'/';
   const set=p=>{if(p!==path&&location.protocol!=='file:'){path=p;try{history.replaceState(null,'',p+location.search)}catch(e){}}};
   const go=(id,smooth)=>{const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:smooth&&!reduce?'smooth':'auto'})};
