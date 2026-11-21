@@ -37,7 +37,7 @@ jobs:
       - name: Section pages
         # vylelb.com/services, /portfolio, /packages, /about, /contact open the one-page site at that section.
         run: |
-          for s in services portfolio packages refer shop about contact; do
+          for s in services portfolio packages shop about contact; do
             mkdir -p "$s"
             T="$(echo "${s:0:1}" | tr a-z A-Z)${s:1}"
             sed -e 's#<head>#<head><base href="/">#' -e "s#<title>VYLE | Ideas Into Impact</title>#<title>$T | VYLE</title>#" index.html > "$s/index.html"

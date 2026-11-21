@@ -251,36 +251,6 @@ dialog.watch .btn{width:100%}
 .shop-box .btn:hover{background:var(--mist)}
 @media(max-width:560px){.shop-box .btn{width:100%}}
 @media(prefers-reduced-motion:reduce){.shop-box.in::after,.soon i{animation:none}}
-.refer{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,4vw,56px);padding:clamp(26px,3.4vw,44px);border:1px solid var(--dline);background:#081d3cb3}
-.refer-pitch{min-width:0}
-.refer-pitch h3{margin-top:16px;font-size:clamp(24px,3vw,40px);font-weight:800;letter-spacing:-.035em;line-height:1.05;text-wrap:balance}
-.refer-deal{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
-.refer-deal>div{padding:20px;border:1px solid var(--dline);background:#0c295280}
-.refer-num{font-size:clamp(44px,5vw,68px);font-weight:800;letter-spacing:-.05em;line-height:1}
-.refer-deal p:last-child{margin-top:10px;font-size:14px;color:var(--mist)}
-.refer-deal b{display:block;margin-bottom:2px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--cream)}
-.refer-steps{display:flex;flex-wrap:wrap;gap:10px 22px;margin:22px 0 0;padding:0;list-style:none;font-size:13px;font-weight:600}
-.refer-steps li{display:flex;align-items:center;gap:10px}
-.refer-steps span{display:grid;place-items:center;width:26px;height:26px;border:1px solid #faf4eb55;border-radius:50%;font-size:11px}
-.refer-fine{margin-top:18px;max-width:40em;font-size:12px;color:var(--mist)}
-.refer-form{min-width:0;align-self:center;padding:clamp(20px,2.6vw,30px);border:1px solid var(--dline);background:#081d3ccc}
-.rf{display:block;margin-top:16px}
-.rf span{display:block;margin-bottom:8px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--mist)}
-.rf input{width:100%;height:52px;padding:0 16px;border:1px solid #faf4eb40;background:#0c295299;color:var(--cream);font:inherit;font-size:16px;outline:none;border-radius:0}
-.rf input:focus{border-color:var(--cream)}
-.rf input::placeholder{color:#a9bcd899}
-.refer-form .btn{width:100%;margin-top:16px;background:var(--cream);color:var(--navy);border-color:var(--cream);cursor:pointer}
-.refer-form .btn:hover{background:var(--mist);border-color:var(--mist)}
-.refer-form .btn.ghost{margin-top:10px;background:transparent;color:var(--cream);border-color:#faf4eb40}
-.refer-form .btn.ghost:hover{background:#faf4eb14}
-.refer-form .btn[disabled]{opacity:.6;cursor:wait}
-.rf-msg{margin-top:10px;min-height:1em;font-size:13px;color:#ffd2c2}
-.rf-msg a{text-decoration:underline}
-.rf-note{margin-top:10px;font-size:12px;color:var(--mist)}
-.rf-link{margin-top:14px;padding:14px 16px;border:1px dashed #faf4eb55;font-size:15px;font-weight:600;overflow-wrap:anywhere;user-select:all}
-@media(max-width:900px){.refer{grid-template-columns:1fr}}
-@media(max-width:560px){.refer-deal{gap:10px}.refer-deal>div{padding:16px 14px}.refer-deal p:last-child{font-size:13px}.refer-deal b{letter-spacing:.14em}}
-@media(max-width:330px){.refer-deal{grid-template-columns:1fr}}
 
 @media(max-width:560px){.custom{padding:24px 22px}.custom .btn{width:100%}}
 
@@ -401,7 +371,6 @@ video:not([controls]){pointer-events:none}
     <li><a href="#services">Services</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#packages">Packages</a></li>
-    <li><a href="#refer">Refer &amp; earn</a></li>
     <li><a href="#shop">Shop</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -513,41 +482,6 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)kick
   </div>
 </section>
 
-<section class="sec" id="refer">
-  <div class="wrap">
-    <div class="head"><h2 data-from="left" style="--d:.08s">Refer &amp; earn</h2></div>
-    <div class="refer" data-from="right">
-      <div class="refer-pitch">
-        <p class="soon"><i aria-hidden="true"></i>Open to everyone</p>
-        <h3>Know a brand that needs content? Send it our way.</h3>
-        <div class="refer-deal">
-          <div><p class="refer-num"><span class="num-to" data-to="15">15</span>%</p><p><b>You earn</b>of their first package, paid in cash.</p></div>
-          <div><p class="refer-num"><span class="num-to" data-to="15">15</span>%</p><p><b>They save</b>on their first package with your link.</p></div>
-        </div>
-        <ol class="refer-steps"><li><span>1</span>Get your link</li><li><span>2</span>Share it</li><li><span>3</span>Get paid when they sign</li></ol>
-        <p class="refer-fine">No limit on how many brands you send. A brand counts once it pays its deposit. VYLE clients can take a free video instead of the cash.</p>
-      </div>
-      <div class="refer-form">
-        <form id="refer-form" novalidate>
-          <p class="label">Get your link</p>
-          <label class="rf"><span>Your name</span><input id="rf-name" name="name" autocomplete="name" maxlength="60" placeholder="Your full name" required></label>
-          <label class="rf"><span>Your WhatsApp number</span><input id="rf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="20" placeholder="+961 …" required></label>
-          <button class="btn" type="submit">Get my link</button>
-          <p class="rf-msg" id="rf-msg" role="alert"></p>
-          <p class="rf-note">We only use your number to send you your reward.</p>
-        </form>
-        <div id="refer-done" hidden>
-          <p class="label">Your link is ready</p>
-          <p class="rf-link" id="rf-link"></p>
-          <a class="btn" id="rf-wa" href="#" target="_blank" rel="noopener" data-where="refer share">Share on WhatsApp</a>
-          <button class="btn ghost" type="button" id="rf-copy">Copy link</button>
-          <p class="rf-note">Save it. Every brand that signs through this link counts for you.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="sec shop" id="shop">
   <div class="wrap">
     <div class="head"><h2 data-from="left" style="--d:.08s">Shop</h2></div>
@@ -583,7 +517,7 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)kick
   </div>
   <div class="foot-band"><div class="wrap">
     <div class="cols">
-      <div data-from="left"><p class="label">Explore</p><ul><li><a href="#services">Services</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#packages">Packages</a></li><li><a href="#refer">Refer &amp; earn</a></li><li><a href="#shop">Shop</a></li><li><a href="#about">About</a></li></ul></div>
+      <div data-from="left"><p class="label">Explore</p><ul><li><a href="#services">Services</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#packages">Packages</a></li><li><a href="#shop">Shop</a></li><li><a href="#about">About</a></li></ul></div>
       <div data-from="left" style="--d:.08s"><p class="label">Contact</p><ul><li><a href="https://wa.me/96170508546?text=Hi%20VYLE%2C%20I%20found%20you%20on%20your%20website%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" rel="noopener" data-where="footer number">+961 70 508 546</a></li><li><a href="mailto:info.vyle.lb@gmail.com">info.vyle.lb@gmail.com</a></li><li><a href="https://calendly.com/info-vyle-lb" target="_blank" rel="noopener">Book a call</a></li><li><a href="/portal/">Client login</a></li></ul></div>
       <div data-from="right" style="--d:.08s"><p class="label">Follow</p><ul><li><a href="https://www.instagram.com/vyle.lb/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.tiktok.com/@vyle.lb" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://g.page/r/CadWk-wgDjI5EBI/review" target="_blank" rel="noopener">Google reviews</a></li></ul></div>
       <div data-from="right"><p class="label">Studio</p><ul><li>Beirut, Lebanon</li><li>Working worldwide</li></ul></div>
@@ -602,7 +536,7 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)kick
 <script>
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const legal={
-  privacy:['Privacy','The only form on this site is Refer & earn: it sends your name and WhatsApp number to VYLE so we can pay your referral reward, and nothing else. We use Google Analytics to count visits and see which pages people view; it uses cookies and does not tell us who you are. The WhatsApp, email, Calendly, Instagram and TikTok links open those services, and what you share there is handled by them and by VYLE when we reply. Fonts load from Google Fonts. If you arrive through a client\'s referral link, your browser remembers that referral code for 60 days so it can be added to your WhatsApp message.'],
+  privacy:['Privacy','This site has no forms. We use Google Analytics to count visits and see which pages people view; it uses cookies and does not tell us who you are. The WhatsApp, email, Calendly, Instagram and TikTok links open those services, and what you share there is handled by them and by VYLE when we reply. Fonts load from Google Fonts. If you arrive through a client\'s referral link, your browser remembers that referral code for 60 days so it can be added to your WhatsApp message.'],
   terms:['Terms','Brands listed under "Noticed by" interacted with VYLE posts; these are not paid partnerships or endorsements. Pieces marked Concept in the portfolio were made by VYLE to show our style with well-known products; they were not commissioned by, or affiliated with, those brands. Scope, timing, fees, revisions and usage rights are agreed before work begins.']
 };
 
@@ -684,7 +618,7 @@ const WORK=[
 // Clean section addresses: vylelb.com/portfolio etc. The address follows the reader as they scroll,
 // and opening one of these links lands on that section. The folders are made at deploy time.
 (function(){
-  const IDS=['services','portfolio','packages','refer','shop','about','contact'];
+  const IDS=['services','portfolio','packages','shop','about','contact'];
   let path=location.pathname.replace(/\/+$/,'')||'/';
   const set=p=>{if(p!==path&&location.protocol!=='file:'){path=p;try{history.replaceState(null,'',p+location.search)}catch(e){}}};
   const go=(id,smooth)=>{const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:smooth&&!reduce?'smooth':'auto'})};
@@ -793,34 +727,6 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.conta
   if(q){const n=document.createElement('div');n.className='ref-note';n.setAttribute('role','status');
     n.innerHTML='<p><b>Referred by a VYLE client</b>You get 15% off your first package. Message us on WhatsApp and your referral code is added for you.</p><button type="button" aria-label="Close">&times;</button>';
     document.body.appendChild(n);const hide=()=>n.classList.add('gone');n.querySelector('button').addEventListener('click',hide);setTimeout(hide,12000)}
-})();
-
-// Refer & earn: anyone gets a personal link. The VYLE Apps Script saves them in the "Referrers" tab.
-(function(){
-  const API='https://script.google.com/macros/s/AKfycbyk_JxWo6nYFIw7r-ZSscj059_dQyJ-UJMBYHVTG2p1eFVhZl4fQf4pcbjpXyuiFmhleg/exec';
-  const f=document.getElementById('refer-form');if(!f)return;
-  const msg=document.getElementById('rf-msg'),done=document.getElementById('refer-done'),btn=f.querySelector('.btn');
-  const help='<a href="https://wa.me/96170508546?text='+encodeURIComponent('Hi VYLE, I would like my referral link.')+'" target="_blank" rel="noopener">message us on WhatsApp</a>';
-  function show(code){const link='https://vylelb.com/?ref='+code;
-    document.getElementById('rf-link').textContent=link.replace('https://','');document.getElementById('rf-link').dataset.full=link;
-    document.getElementById('rf-wa').href='https://wa.me/?text='+encodeURIComponent("Looking for content for your brand? VYLE is a creative studio in Beirut. Use my link to get 15% off your first package: "+link);
-    f.hidden=true;done.hidden=false;try{localStorage.setItem('vyle_my_ref',code)}catch(e){}}
-  try{const mine=localStorage.getItem('vyle_my_ref');if(mine&&/^[A-Z0-9]{2,30}$/.test(mine))show(mine)}catch(e){}
-  f.addEventListener('submit',async e=>{e.preventDefault();msg.textContent='';
-    const N=f.elements.namedItem('name'),P=f.elements.namedItem('phone'),name=N.value.trim(),phone=P.value.trim();
-    if(name.length<2){msg.textContent='Enter your name.';N.focus();return}
-    if(phone.replace(/\D/g,'').length<7){msg.textContent='Enter your WhatsApp number.';P.focus();return}
-    btn.disabled=true;btn.textContent='Creating your link…';
-    try{const r=await(await fetch(API,{method:'POST',body:JSON.stringify({action:'join',name,phone})})).json();
-      if(r.ok&&r.code){show(r.code);if(typeof gtag==='function')gtag('event','referral_signup')}
-      else if(r.error==='too_many')msg.textContent='Too many tries. Please try again in an hour.';
-      else msg.innerHTML='Something went wrong. Try again, or '+help+'.';
-    }catch(err){msg.innerHTML='Could not connect. Check your internet, or '+help+'.'}
-    btn.disabled=false;btn.textContent='Get my link'});
-  document.getElementById('rf-copy').addEventListener('click',async e=>{const b=e.currentTarget,l=document.getElementById('rf-link');
-    try{await navigator.clipboard.writeText(l.dataset.full);b.textContent='Link copied'}
-    catch(err){const s=getSelection(),r=document.createRange();r.selectNodeContents(l);s.removeAllRanges();s.addRange(r);b.textContent='Link selected: copy it'}
-    if(typeof gtag==='function')gtag('event','referral_copy');setTimeout(()=>b.textContent='Copy link',2200)});
 })();
 </script>
 </body>
