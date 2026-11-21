@@ -288,6 +288,12 @@ footer::before{content:"";position:absolute;z-index:-1;inset:-40% -60%;backgroun
 .wa svg{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .nav.open~.wa{opacity:0;pointer-events:none}
 @media(max-width:560px){.wa{padding:14px}.wa span{display:none}}
+.ref-note{position:fixed;z-index:24;left:calc(env(safe-area-inset-left,0px) + 20px);bottom:calc(env(safe-area-inset-bottom,0px) + 20px);max-width:380px;display:flex;align-items:flex-start;gap:12px;padding:16px 16px 16px 18px;border:1px solid #faf4eb40;background:#081d3ceb;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--cream);font-size:13px;line-height:1.45;box-shadow:0 10px 30px #081d3c66;transition:opacity .4s,transform .4s}
+.ref-note b{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mist);margin-bottom:4px}
+.ref-note button{flex:none;width:28px;height:28px;margin:-6px -6px 0 0;border:0;border-radius:50%;background:none;color:var(--cream);font-size:18px;line-height:1;cursor:pointer}
+.ref-note.gone{opacity:0;transform:translateY(10px);pointer-events:none}
+.nav.open~.ref-note{opacity:0;pointer-events:none}
+@media(max-width:560px){.ref-note{left:calc(env(safe-area-inset-left,0px) + 16px);right:calc(env(safe-area-inset-right,0px) + 88px);max-width:none;font-size:12px;padding:13px 12px 13px 14px}}
 
 /* Dialog */
 dialog{width:min(520px,94vw);max-height:92svh;padding:22px;background:var(--navy);color:var(--cream);border:1px solid var(--dline);overflow:auto}
@@ -530,7 +536,7 @@ document.addEventListener('visibilitychange',function(){if(!document.hidden)kick
 <script>
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const legal={
-  privacy:['Privacy','This site has no forms. We use Google Analytics to count visits and see which pages people view; it uses cookies and does not tell us who you are. The WhatsApp, email, Calendly, Instagram and TikTok links open those services, and what you share there is handled by them and by VYLE when we reply. Fonts load from Google Fonts.'],
+  privacy:['Privacy','This site has no forms. We use Google Analytics to count visits and see which pages people view; it uses cookies and does not tell us who you are. The WhatsApp, email, Calendly, Instagram and TikTok links open those services, and what you share there is handled by them and by VYLE when we reply. Fonts load from Google Fonts. If you arrive through a client\'s referral link, your browser remembers that referral code for 60 days so it can be added to your WhatsApp message.'],
   terms:['Terms','Brands listed under "Noticed by" interacted with VYLE posts; these are not paid partnerships or endorsements. Pieces marked Concept in the portfolio were made by VYLE to show our style with well-known products; they were not commissioned by, or affiliated with, those brands. Scope, timing, fees, revisions and usage rights are agreed before work begins.']
 };
 
@@ -702,6 +708,26 @@ document.querySelectorAll('[data-home]').forEach(a=>a.addEventListener('click',e
 }));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open'))setMenu(false)});
 
+
+// Referral links: vylelb.com/?ref=CODE. The code is remembered for 60 days and added to WhatsApp messages.
+(function(){
+  const KEY='vyle_ref',DAYS=60;let code=null;
+  const q=new URLSearchParams(location.search).get('ref');
+  if(q&&/^[A-Za-z0-9]{2,30}$/.test(q)){code=q.toUpperCase();
+    try{localStorage.setItem(KEY,JSON.stringify({c:code,t:Date.now()}))}catch(e){}
+    if(typeof gtag==='function')gtag('event','referral_visit',{referral_code:code});
+    const u=new URL(location.href);u.searchParams.delete('ref');history.replaceState(null,'',u.pathname+u.search+u.hash);
+  }else{try{const r=JSON.parse(localStorage.getItem(KEY)||'null');if(r&&Date.now()-r.t<DAYS*864e5)code=r.c;else localStorage.removeItem(KEY)}catch(e){}}
+  if(!code)return;
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('a[href*="wa.me/96170508546"]');if(!a)return;
+    const u=new URL(a.href),t=u.searchParams.get('text')||'Hi VYLE';
+    if(!t.includes('Referral code'))a.href=u.origin+u.pathname+'?text='+encodeURIComponent(t+'\n\nReferral code: '+code+' (15% off my first package)');
+  },true);
+  if(q){const n=document.createElement('div');n.className='ref-note';n.setAttribute('role','status');
+    n.innerHTML='<p><b>Referred by a VYLE client</b>You get 15% off your first package. Message us on WhatsApp and your referral code is added for you.</p><button type="button" aria-label="Close">&times;</button>';
+    document.body.appendChild(n);const hide=()=>n.classList.add('gone');n.querySelector('button').addEventListener('click',hide);setTimeout(hide,12000)}
+})();
 </script>
 </body>
 </html>
