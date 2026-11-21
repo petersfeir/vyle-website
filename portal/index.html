@@ -177,6 +177,7 @@ $('f-email').addEventListener('submit',async e=>{e.preventDefault();const b=e.su
   email=$('email').value.trim();$('m-email').textContent='';busy(b,true,'Sending…');
   try{const r=await call({action:'requestCode',email});
     if(r.ok){$('sent-to').textContent=email;$('code').value='';$('m-code').textContent='';step('s-code');$('code').focus()}
+    else if(r.error==='not_client')$('m-email').textContent='This email isn\'t linked to a VYLE client account, so it can\'t log in.';
     else $('m-email').textContent=r.error==='too_many'?'Too many codes requested. Try again in an hour.':'Something went wrong. Please try again.';
   }catch(err){$('m-email').textContent='Could not connect. Check your internet and try again.'}
   busy(b,false,'Send my login code')});
